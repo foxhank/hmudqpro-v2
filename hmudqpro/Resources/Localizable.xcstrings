@@ -1,0 +1,150 @@
+{
+  "sourceLanguage" : "zh-Hans",
+  "strings" : {
+    "app.name" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "百湖医大小助手" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "HMUDQ Pro" } }
+      }
+    },
+    "login.title" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "登录" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sign In" } }
+      }
+    },
+    "login.studentId" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "学号" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Student ID" } }
+      }
+    },
+    "login.password" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "密码" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Password" } }
+      }
+    },
+    "login.submit" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "登录" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sign In" } }
+      }
+    },
+    "tab.schedule" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "课表" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Schedule" } }
+      }
+    },
+    "tab.tools" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "工具" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tools" } }
+      }
+    },
+    "tab.me" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "我的" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Me" } }
+      }
+    },
+    "schedule.title" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "课表" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Schedule" } }
+      }
+    },
+    "schedule.week %lld" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "第 %lld 周" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Week %lld" } }
+      }
+    },
+    "schedule.week.current %lld" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "第 %lld 周（本周）" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Week %lld (Current)" } }
+      }
+    },
+    "schedule.loading" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "加载课表中…" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Loading schedule…" } }
+      }
+    },
+    "schedule.empty.title" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "暂无课表" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No Schedule" } }
+      }
+    },
+    "schedule.empty.message" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "下拉或点击刷新从教务获取课表" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pull down or tap refresh to load from the academic system" } }
+      }
+    },
+    "schedule.refresh" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "刷新" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Refresh" } }
+      }
+    },
+    "weekday.mon" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "一" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Mon" } }
+      }
+    },
+    "weekday.tue" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "二" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tue" } }
+      }
+    },
+    "weekday.wed" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "三" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Wed" } }
+      }
+    },
+    "weekday.thu" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "四" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Thu" } }
+      }
+    },
+    "weekday.fri" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "五" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fri" } }
+      }
+    },
+    "weekday.sat" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "六" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sat" } }
+      }
+    },
+    "weekday.sun" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "日" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sun" } }
+      }
+    },
+    "login.error.emptyFields" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "请输入学号和密码" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Please enter student ID and password" } }
+      }
+    },
+    "login.error" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "登录失败：%@" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sign-in failed: %@" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

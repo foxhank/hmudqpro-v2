@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		83C2D7AD303804EA00EFEA5C /* BigInt in Frameworks */ = {isa = PBXBuildFile; productRef = 83AA0002303749CB00EFEA5C /* BigInt */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		83C2D70B303749CB00EFEA5C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83C2D7AD303804EA00EFEA5C /* BigInt in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = hmudqpro;
 			packageProductDependencies = (
+				83AA0002303749CB00EFEA5C /* BigInt */,
 			);
 			productName = hmudqpro;
 			productReference = 83C2D6F5303749C700EFEA5C /* hmudqpro.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = 83C2D6EC303749C700EFEA5C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				83AA0000303749CB00EFEA5C /* XCRemoteSwiftPackageReference "BigInt" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 83C2D6F6303749C700EFEA5C /* Products */;
 			projectDirPath = "";
@@ -321,7 +330,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -378,7 +387,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -454,7 +463,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WNT524TUR2;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = cn.foxhank.hmudqproTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -473,7 +482,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WNT524TUR2;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = cn.foxhank.hmudqproTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -558,6 +567,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		83AA0000303749CB00EFEA5C /* XCRemoteSwiftPackageReference "BigInt" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/attaswift/BigInt.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		83AA0002303749CB00EFEA5C /* BigInt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 83AA0000303749CB00EFEA5C /* XCRemoteSwiftPackageReference "BigInt" */;
+			productName = BigInt;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 83C2D6ED303749C700EFEA5C /* Project object */;
 }
