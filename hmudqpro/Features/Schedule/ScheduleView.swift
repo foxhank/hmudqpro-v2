@@ -10,8 +10,6 @@ struct ScheduleView: View {
 
     @State private var showSettings = false
     @State private var refreshTrigger = 0
-    /// 跟手滑动的水平偏移。
-    @State private var dragOffset: CGFloat = 0
 
     private var colorStyle: CourseColorStyle {
         CourseColorStyle(rawValue: colorStyleRaw) ?? .default
@@ -27,8 +25,6 @@ struct ScheduleView: View {
 
     private let slotHeight: CGFloat = 88
     private let gridSpacing: CGFloat = 4
-    /// 超过此滑动距离才切周。
-    private let swipeThreshold: CGFloat = 70
 
     var body: some View {
         NavigationStack {
@@ -46,11 +42,7 @@ struct ScheduleView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            // 整个页面（周切换行 + 网格）跟手左右滑动，参考安卓端
-            .offset(x: dragOffset)
-            .opacity(1 - min(abs(dragOffset) / 600.0, 0.35))
-            .animation(.interactiveSpring(), value: dragOffset)
-            .simultaneousGesture(swipeGesture)
+            // 整页（周切换行 + pager）参考安卓端左右翻页切换周
             .navigationTitle("schedule.title")
             .navigationBarTitleDisplayMode(.inline)
             .task { await viewModel.loadIfNeeded() }
@@ -86,7 +78,7 @@ struct ScheduleView: View {
     private var weekSwitcher: some View {
         HStack(spacing: 12) {
             Button {
-                viewModel.changeWeek(by: -1)
+                withAnimation { viewModel.changeWeek(by: -1) }
             } label: {
                 Image(systemName: "chevron.left")
                     .font(.subheadline.weight(.semibold))
@@ -114,7 +106,7 @@ struct ScheduleView: View {
             }
 
             Button {
-                viewModel.changeWeek(by: 1)
+                withAnimation { viewModel.changeWeek(by: 1) }
             } label: {
                 Image(systemName: "chevron.right")
                     .font(.subheadline.weight(.semibold))
@@ -140,12 +132,49 @@ struct ScheduleView: View {
         }
     }
 
-    // MARK: - 网格
+    // MARK: - 网格（三页式 pager：左右滑动整周翻页，参考安卓 SwipeableCourseTable）
+
+    private var weekSelection: Binding<Int> {
+        Binding(get: { viewModel.selectedWeek }, set: { viewModel.selectedWeek = $0 })
+    }
 
     private var scheduleGrid: some View {
-        let entries = viewModel.gridEntries(week: viewModel.selectedWeek)
         let background = ScheduleBackground.load()
-        let weekDates = viewModel.weekDates(viewModel.selectedWeek)
+
+        return TabView(selection: weekSelection) {
+            ForEach(1...SemesterCalculator.totalWeeks, id: \.self) { week in
+                weekPage(week)
+                    .tag(week)
+            }
+        }
+        .tabViewStyle(.page(indexDisplayMode: .never))
+        .background {
+            // 用户设置的背景图（30% 透明度衬底，对齐安卓）
+            if let background {
+                Image(uiImage: background)
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                    .opacity(0.3)
+                    .id(backgroundVersion) // 背景更换后强制刷新
+            }
+        }
+        .overlay(alignment: .bottom) {
+            if let error = viewModel.errorMessage {
+                Text(error)
+                    .font(.footnote)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .adaptiveGlass()
+                    .padding(.bottom, 8)
+            }
+        }
+    }
+
+    /// 单周页面：时间列 + 7 天网格，可纵向滚动/下拉刷新。
+    private func weekPage(_ week: Int) -> some View {
+        let entries = viewModel.gridEntries(week: week)
+        let weekDates = viewModel.weekDates(week)
         let today = Date()
 
         return ScrollView(.vertical) {
@@ -182,60 +211,7 @@ struct ScheduleView: View {
             }
             .padding(.horizontal, 4)
         }
-        .background {
-            // 用户设置的背景图（30% 透明度衬底，对齐安卓）
-            if let background {
-                Image(uiImage: background)
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
-                    .opacity(0.3)
-                    .id(backgroundVersion) // 背景更换后强制刷新
-            }
-        }
-        .overlay(alignment: .bottom) {
-            if let error = viewModel.errorMessage {
-                Text(error)
-                    .font(.footnote)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .adaptiveGlass()
-                    .padding(.bottom, 8)
-            }
-        }
         .refreshable { await viewModel.refresh() }
-    }
-
-    private var swipeGesture: some Gesture {
-        DragGesture(minimumDistance: 20)
-            .onChanged { value in
-                // 垂直滚动优先；只有横向占主导时才跟手
-                guard abs(value.translation.width) > abs(value.translation.height) else {
-                    if dragOffset != 0 { dragOffset = 0 }
-                    return
-                }
-                let width = value.translation.width
-                // 边界橡皮筋：第 1 周不能继续右滑、第 20 周不能继续左滑
-                if (viewModel.selectedWeek <= 1 && width > 0)
-                    || (viewModel.selectedWeek >= SemesterCalculator.totalWeeks && width < 0) {
-                    dragOffset = width / 6
-                } else {
-                    dragOffset = width
-                }
-            }
-            .onEnded { value in
-                let width = value.translation.width
-                // 甩动速度足够时降低阈值，更跟手
-                let velocityBonus: CGFloat = abs(value.velocity.width) > 600 ? 25 : 0
-                let delta: Int
-                if width < -(swipeThreshold - velocityBonus) { delta = 1 }
-                else if width > (swipeThreshold - velocityBonus) { delta = -1 }
-                else { delta = 0 }
-                withAnimation(.spring(response: 0.3, dampingFraction: 0.85)) {
-                    viewModel.changeWeek(by: delta)
-                    dragOffset = 0
-                }
-            }
     }
 }
 
