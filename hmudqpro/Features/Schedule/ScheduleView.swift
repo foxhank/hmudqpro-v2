@@ -10,13 +10,16 @@ struct ScheduleView: View {
 
     @State private var showSettings = false
     @State private var refreshTrigger = 0
+    /// 跟手滑动的水平偏移。
+    @State private var dragOffset: CGFloat = 0
 
     private var colorStyle: CourseColorStyle {
         CourseColorStyle(rawValue: colorStyleRaw) ?? .default
     }
 
-    /// 大节开始时间（共 6 大节）。
-    private let slotTimes = ["8:00", "9:55", "13:30", "15:25", "18:00", "19:35"]
+    /// 大节起止时间（共 6 大节）。
+    private let slotStartTimes = ["8:00", "9:55", "13:30", "15:25", "18:00", "19:35"]
+    private let slotEndTimes = ["9:35", "11:30", "15:05", "17:00", "19:30", "21:10"]
     private let weekdays: [(index: Int, key: LocalizedStringKey)] = [
         (1, "weekday.mon"), (2, "weekday.tue"), (3, "weekday.wed"),
         (4, "weekday.thu"), (5, "weekday.fri"), (6, "weekday.sat"), (7, "weekday.sun"),
@@ -24,6 +27,8 @@ struct ScheduleView: View {
 
     private let slotHeight: CGFloat = 88
     private let gridSpacing: CGFloat = 4
+    /// 超过此滑动距离才切周。
+    private let swipeThreshold: CGFloat = 70
 
     var body: some View {
         NavigationStack {
@@ -41,8 +46,8 @@ struct ScheduleView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
+            // 大标题置顶，上滑后系统自动收起为居中小字（标准导航行为）
             .navigationTitle("schedule.title")
-            .navigationBarTitleDisplayMode(.inline)
             .task { await viewModel.loadIfNeeded() }
             .onChange(of: refreshTrigger) { _ in
                 Task { await viewModel.refresh() }
@@ -140,18 +145,22 @@ struct ScheduleView: View {
 
         return ScrollView(.vertical) {
             HStack(alignment: .top, spacing: gridSpacing) {
-                // 左侧节次/时间列
+                // 左侧时间列：节次对 + 起止时间（7-8 / 15:25 / - / 17:00）
                 VStack(spacing: gridSpacing) {
                     Text("").frame(height: 34)
                     ForEach(0..<Course.bigSlotsPerDay, id: \.self) { slot in
-                        VStack(spacing: 2) {
-                            Text("\(slot * 2 + 1)")
-                                .font(.caption2.monospacedDigit())
-                            Text(slotTimes[slot])
+                        VStack(spacing: 1) {
+                            Text("\(slot * 2 + 1)-\(slot * 2 + 2)")
+                                .font(.system(size: 10, weight: .medium).monospacedDigit())
+                            Text(slotStartTimes[slot])
+                                .font(.system(size: 9).monospacedDigit())
+                            Text("-")
                                 .font(.system(size: 9))
+                            Text(slotEndTimes[slot])
+                                .font(.system(size: 9).monospacedDigit())
                         }
                         .foregroundStyle(.secondary)
-                        .frame(width: 30, height: slotHeight - gridSpacing)
+                        .frame(width: 34, height: slotHeight - gridSpacing)
                     }
                 }
                 // 7 天列（表头带日期，如 8.30 四）
@@ -166,7 +175,11 @@ struct ScheduleView: View {
                               gridSpacing: gridSpacing)
                 }
             }
-            .padding(.horizontal, 6)
+            .padding(.horizontal, 4)
+            // 跟手：滑动时网格随手平移并渐隐，松手回弹/切周
+            .offset(x: dragOffset)
+            .opacity(1 - min(abs(dragOffset) / 600.0, 0.35))
+            .animation(.interactiveSpring(), value: dragOffset)
         }
         .background {
             // 用户设置的背景图（30% 透明度衬底，对齐安卓）
@@ -190,17 +203,39 @@ struct ScheduleView: View {
             }
         }
         .refreshable { await viewModel.refresh() }
-        // 左右滑动切周（与纵向滚动共存：位移明显偏向水平才触发）
+        // 左右滑动切周（与纵向滚动共存：位移明显偏向水平才接管）
         .simultaneousGesture(swipeGesture)
     }
 
     private var swipeGesture: some Gesture {
-        DragGesture(minimumDistance: 30)
+        DragGesture(minimumDistance: 20)
+            .onChanged { value in
+                // 垂直滚动优先；只有横向占主导时才跟手
+                guard abs(value.translation.width) > abs(value.translation.height) else {
+                    if dragOffset != 0 { dragOffset = 0 }
+                    return
+                }
+                let width = value.translation.width
+                // 边界橡皮筋：第 1 周不能继续右滑、第 20 周不能继续左滑
+                if (viewModel.selectedWeek <= 1 && width > 0)
+                    || (viewModel.selectedWeek >= SemesterCalculator.totalWeeks && width < 0) {
+                    dragOffset = width / 6
+                } else {
+                    dragOffset = width
+                }
+            }
             .onEnded { value in
-                let horizontal = value.translation.width
-                let vertical = value.translation.height
-                guard abs(horizontal) > abs(vertical) * 1.5, abs(horizontal) > 40 else { return }
-                viewModel.changeWeek(by: horizontal < 0 ? 1 : -1) // 左滑下周，右滑上周
+                let width = value.translation.width
+                // 甩动速度足够时降低阈值，更跟手
+                let velocityBonus: CGFloat = abs(value.velocity.width) > 600 ? 25 : 0
+                let delta: Int
+                if width < -(swipeThreshold - velocityBonus) { delta = 1 }
+                else if width > (swipeThreshold - velocityBonus) { delta = -1 }
+                else { delta = 0 }
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.85)) {
+                    viewModel.changeWeek(by: delta)
+                    dragOffset = 0
+                }
             }
     }
 }

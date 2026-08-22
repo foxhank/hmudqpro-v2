@@ -17,6 +17,7 @@ struct ScheduleSettingsSheet: View {
     @AppStorage("schedule.backgroundVersion") private var backgroundVersion = 0
 
     private let fontSizeRange: ClosedRange<Double> = 9...16
+    private let defaultFontSize = 11.0
 
     var body: some View {
         NavigationStack {
@@ -30,6 +31,12 @@ struct ScheduleSettingsSheet: View {
                             Text("\(Int(fontSize))")
                                 .monospacedDigit()
                                 .foregroundStyle(.secondary)
+                            if fontSize != defaultFontSize {
+                                Button("settings.fontSize.reset") {
+                                    withAnimation { fontSize = defaultFontSize }
+                                }
+                                .font(.caption)
+                            }
                         }
                         Slider(value: $fontSize, in: fontSizeRange, step: 1)
                     }

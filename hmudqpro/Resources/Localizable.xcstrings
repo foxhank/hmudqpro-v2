@@ -139,6 +139,12 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Refresh Schedule" } }
       }
     },
+    "settings.fontSize.reset" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "恢复默认" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reset" } }
+      }
+    },
     "login.error.emptyFields" : {
       "localizations" : {
         "en" : {
