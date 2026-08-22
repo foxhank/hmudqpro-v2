@@ -1,15 +1,25 @@
 import SwiftUI
 
-/// 课表页：周次选择器 + 周视图网格。
-/// 用原生 ScrollView + LazyVGrid 布局，不自绘。
+/// 课表页：周次选择器 + 6 大节 × 7 天网格（对齐安卓端块式课表）。
+/// 一节课默认占一个大节（2 小节，如 1-2、3-4）；连堂课跨多个大节连成一整块卡片。
 struct ScheduleView: View {
     @StateObject private var viewModel = ScheduleViewModel()
+    @AppStorage("schedule.colorStyle") private var colorStyleRaw = CourseColorStyle.default.rawValue
 
+    private var colorStyle: CourseColorStyle {
+        CourseColorStyle(rawValue: colorStyleRaw) ?? .default
+    }
+
+    /// 大节时间（1-2 节起算，共 6 大节）。
+    private let slotTimes = [
+        "8:00", "9:55", "13:30", "15:25", "18:00", "19:35",
+    ]
     private let weekdays: [(index: Int, key: LocalizedStringKey)] = [
         (1, "weekday.mon"), (2, "weekday.tue"), (3, "weekday.wed"),
         (4, "weekday.thu"), (5, "weekday.fri"), (6, "weekday.sat"), (7, "weekday.sun"),
     ]
-    private let totalSlots = 12
+
+    private let slotHeight: CGFloat = 88
 
     var body: some View {
         NavigationStack {
@@ -17,17 +27,7 @@ struct ScheduleView: View {
                 if viewModel.courses.isEmpty && viewModel.isLoading {
                     ProgressView("schedule.loading")
                 } else if viewModel.courses.isEmpty {
-                    VStack(spacing: 12) {
-                        Image(systemName: "calendar.badge.exclamationmark")
-                            .font(.largeTitle)
-                            .foregroundStyle(.secondary)
-                        Text("schedule.empty.title").font(.headline)
-                        Text("schedule.empty.message")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                        Button("schedule.refresh") { Task { await viewModel.refresh() } }
-                            .buttonStyle(.borderedProminent)
-                    }
+                    emptyState
                 } else {
                     scheduleGrid
                 }
@@ -45,6 +45,20 @@ struct ScheduleView: View {
                 }
             }
             .task { await viewModel.loadIfNeeded() }
+        }
+    }
+
+    private var emptyState: some View {
+        VStack(spacing: 12) {
+            Image(systemName: "calendar.badge.exclamationmark")
+                .font(.largeTitle)
+                .foregroundStyle(.secondary)
+            Text("schedule.empty.title").font(.headline)
+            Text("schedule.empty.message")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+            Button("schedule.refresh") { Task { await viewModel.refresh() } }
+                .buttonStyle(.borderedProminent)
         }
     }
 
@@ -76,25 +90,33 @@ struct ScheduleView: View {
     // MARK: - 网格
 
     private var scheduleGrid: some View {
-        ScrollView(.vertical) {
+        let entries = viewModel.gridEntries(week: viewModel.selectedWeek)
+
+        return ScrollView(.vertical) {
             HStack(alignment: .top, spacing: 4) {
-                // 左侧节次列
+                // 左侧时间列
                 VStack(spacing: 4) {
                     Text("").frame(height: 28)
-                    ForEach(1...totalSlots, id: \.self) { slot in
-                        Text("\(slot)")
-                            .font(.caption2.monospacedDigit())
-                            .frame(width: 22, height: cellHeight(slot) - 4)
-                            .foregroundStyle(.secondary)
+                    ForEach(0..<Course.bigSlotsPerDay, id: \.self) { slot in
+                        VStack(spacing: 2) {
+                            Text("\(slot * 2 + 1)")
+                                .font(.caption2.monospacedDigit())
+                            Text(slotTimes[slot])
+                                .font(.system(size: 9))
+                        }
+                        .foregroundStyle(.secondary)
+                        .frame(width: 30, height: slotHeight - 4)
                     }
                 }
                 // 7 天列
                 ForEach(weekdays, id: \.index) { day in
-                    DayColumn(viewModel: viewModel, weekday: day.index, week: viewModel.selectedWeek,
-                              label: Text(day.key), totalSlots: totalSlots)
+                    DayColumn(weekday: day.index, label: Text(day.key),
+                              entries: entries[day.index] ?? [:],
+                              colorStyle: colorStyle,
+                              slotHeight: slotHeight)
                 }
             }
-            .padding(.horizontal, 8)
+            .padding(.horizontal, 6)
         }
         .overlay(alignment: .bottom) {
             if let error = viewModel.errorMessage {
@@ -102,23 +124,21 @@ struct ScheduleView: View {
                     .font(.footnote)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 6)
-                    .background(.ultraThinMaterial, in: .capsule)
+                    .adaptiveGlass()
                     .padding(.bottom, 8)
             }
         }
         .refreshable { await viewModel.refresh() }
     }
-
-    private func cellHeight(_ slot: Int) -> CGFloat { 52 }
 }
 
-/// 单日列：竖排节次格。
+/// 单日列：6 个大节格，跨块课程卡片纵向连成一块。
 private struct DayColumn: View {
-    @ObservedObject var viewModel: ScheduleViewModel
     let weekday: Int
-    let week: Int
     let label: Text
-    let totalSlots: Int
+    let entries: [Int: ScheduleViewModel.GridEntry]
+    let colorStyle: CourseColorStyle
+    let slotHeight: CGFloat
 
     var body: some View {
         VStack(spacing: 4) {
@@ -127,64 +147,116 @@ private struct DayColumn: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 24)
                 .foregroundStyle(weekday == 6 || weekday == 7 ? Color.red.opacity(0.8) : .primary)
-            ForEach(1...totalSlots, id: \.self) { slot in
-                CourseCell(courses: viewModel.courses(weekday: weekday, slot: slot, inWeek: week),
-                           isStart: viewModel.courses(weekday: weekday, slot: slot, inWeek: week)
-                               .contains { $0.startSlot == slot })
-                    .frame(height: 48)
+
+            ZStack(alignment: .top) {
+                // 空格背景（节界标线）
+                VStack(spacing: 4) {
+                    ForEach(0..<Course.bigSlotsPerDay, id: \.self) { _ in
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(.quaternary.opacity(0.25))
+                            .frame(height: slotHeight - 4)
+                    }
+                }
+                // 课程块（起始大节定位，跨度展开）
+                VStack(spacing: 4) {
+                    ForEach(0..<Course.bigSlotsPerDay, id: \.self) { slot in
+                        if let entry = entries[slot] {
+                            CourseCard(entry: entry, colorStyle: colorStyle,
+                                       height: CGFloat(entry.span) * (slotHeight - 4)
+                                               + CGFloat(entry.span - 1) * 4)
+                            Spacer(minLength: 0)
+                                .frame(height: 0)
+                        } else {
+                            Color.clear.frame(height: slotHeight - 4)
+                        }
+                    }
+                }
             }
         }
     }
 }
 
-/// 单个课格：只在该课起始节显示完整卡片，跨节的后续节显示延续色条。
-private struct CourseCell: View {
-    let courses: [Course]
-    let isStart: Bool
+/// 课程卡片：课名 + 教室 + 教师（对齐安卓 CourseCard）。
+private struct CourseCard: View {
+    let entry: ScheduleViewModel.GridEntry
+    let colorStyle: CourseColorStyle
+    let height: CGFloat
+
+    @State private var showDetail = false
 
     var body: some View {
-        if courses.isEmpty {
-            RoundedRectangle(cornerRadius: 8)
-                .fill(.quaternary.opacity(0.3))
-        } else if isStart {
+        let palette = CoursePalette.color(for: entry.course.kcmc, style: colorStyle)
+
+        Button {
+            showDetail = true
+        } label: {
             VStack(alignment: .leading, spacing: 2) {
-                ForEach(courses) { course in
-                    Text(course.kcmc)
-                        .font(.system(size: 10, weight: .medium))
-                        .lineLimit(3)
+                Text(entry.course.kcmc)
+                    .font(.system(size: 11, weight: .semibold))
+                    .lineLimit(4)
+                    .minimumScaleFactor(0.6)
+                    .multilineTextAlignment(.leading)
+                if !entry.course.jxcdmc.isEmpty {
+                    Text(entry.course.jxcdmc.replacingOccurrences(of: "哈尔滨医科大学大庆校区", with: ""))
+                        .font(.system(size: 9))
+                        .lineLimit(2)
                         .minimumScaleFactor(0.6)
-                    if !course.jxcdmc.isEmpty {
-                        Text(course.jxcdmc)
-                            .font(.system(size: 9))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.6)
-                            .foregroundStyle(.secondary)
-                    }
+                        .opacity(0.85)
+                }
+                if !entry.course.teaxms.isEmpty {
+                    Text(entry.course.teaxms)
+                        .font(.system(size: 9))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.6)
+                        .opacity(0.75)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             .padding(4)
-            .background(Color(hexString: courses.first?.bgcolor ?? "").opacity(0.25), in: .rect(cornerRadius: 8))
-            .overlay(alignment: .topLeading) { }
-        } else {
-            // 跨节延续：显示细色条
-            RoundedRectangle(cornerRadius: 2)
-                .fill(Color(hexString: courses.first?.bgcolor ?? "").opacity(0.15))
+            .foregroundStyle(palette.text)
+            .background(palette.background, in: .rect(cornerRadius: 8))
+        }
+        .buttonStyle(.plain)
+        .frame(height: height)
+        .sheet(isPresented: $showDetail) {
+            CourseDetailSheet(course: entry.course, palette: palette)
+                .presentationDetents([.medium])
         }
     }
 }
 
-extension Color {
-    /// 教务 bgcolor 字段（hex 如 "#FFCC99"，也可能为空）。
-    init(hexString: String) {
-        var s = hexString.trimmingCharacters(in: .whitespaces)
-        if s.hasPrefix("#") { s.removeFirst() }
-        guard s.count == 6, let rgb = UInt64(s, radix: 16) else {
-            self = .blue.opacity(0.15) // 无色课程给个默认淡蓝
-            return
+/// 课程详情（点卡片弹出）。
+private struct CourseDetailSheet: View {
+    let course: Course
+    let palette: CoursePalette
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Section {
+                    row("course.name", course.kcmc)
+                    row("course.teacher", course.teaxms)
+                    row("course.location", course.jxcdmc)
+                    row("course.week", String(localized: "course.week.value \(course.zc)"))
+                    if !course.jxhjmc.isEmpty { row("course.type", course.jxhjmc) }
+                }
+            }
+            .navigationTitle(course.kcmc)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("common.done") { dismiss() }
+                }
+            }
         }
-        self = Color(red: Double((rgb >> 16) & 0xFF) / 255,
-                     green: Double((rgb >> 8) & 0xFF) / 255,
-                     blue: Double(rgb & 0xFF) / 255)
+    }
+
+    private func row(_ key: LocalizedStringKey, _ value: String) -> some View {
+        HStack {
+            Text(key).foregroundStyle(.secondary)
+            Spacer()
+            Text(value).textSelection(.enabled)
+        }
     }
 }

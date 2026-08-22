@@ -49,15 +49,36 @@ final class ScheduleViewModel: ObservableObject {
         }
     }
 
-    /// 指定周的课程，按 (星期, 节次) 可直接查格。
+    /// 指定周的课，按大节块过滤（有有效星期和节次码的）。
     func courses(inWeek week: Int) -> [Course] {
-        courses.filter { $0.week == week && $0.weekday != nil && $0.startSlot != nil }
+        courses.filter { $0.week == week && $0.weekday != nil && !$0.bigSlotIndices.isEmpty }
     }
 
-    /// 某天某节的课程（同一格可能多门，返回全部）。
+    /// 网格条目：起始大节 + 跨度（1-2 节 = 1 个大节；1-4 节 = 跨 2 个大节连成一块）。
+    struct GridEntry: Identifiable, Equatable {
+        let course: Course
+        let slot: Int      // 起始大节 0...5
+        let span: Int      // 占几个大节
+
+        var id: String { course.id }
+        static func == (lhs: GridEntry, rhs: GridEntry) -> Bool { lhs.id == rhs.id }
+    }
+
+    /// (星期, 大节) → 该格起始的课程块。同格冲突时后到的覆盖（与安卓一致）。
+    func gridEntries(week: Int) -> [Int: [Int: GridEntry]] {
+        var grid: [Int: [Int: GridEntry]] = [:]
+        for course in courses(inWeek: week) {
+            guard let weekday = course.weekday, let first = course.firstBigSlot else { continue }
+            let entry = GridEntry(course: course, slot: first, span: course.bigSlotSpan)
+            grid[weekday, default: [:]][first] = entry
+        }
+        return grid
+    }
+
+    /// 某天某大节的课程（同格多门时返回全部，供详情展示）。
     func courses(weekday: Int, slot: Int, inWeek week: Int) -> [Course] {
         courses(inWeek: week).filter {
-            $0.weekday == weekday && ($0.startSlot ?? 0) <= slot && slot <= ($0.endSlot ?? 0)
+            $0.weekday == weekday && $0.bigSlotIndices.contains(slot)
         }
     }
 

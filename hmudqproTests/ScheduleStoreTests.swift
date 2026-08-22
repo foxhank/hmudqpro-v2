@@ -34,8 +34,13 @@ final class ScheduleStoreTests: XCTestCase {
 
     func testEncodingDeterminism() throws {
         let courses = [Course(kcmc: "药理", zc: "3", xq: "5", ps: "1", pe: "4")]
-        let d1 = try JSONEncoder().encode(courses)
-        let d2 = try JSONEncoder().encode(courses)
-        XCTAssertEqual(d1, d2, "同一数据两次编码应字节一致")
+        let enc: () throws -> Data = {
+            let e = JSONEncoder()
+            e.outputFormatting = [.sortedKeys]
+            return try e.encode(courses)
+        }
+        let d1 = try enc()
+        let d2 = try enc()
+        XCTAssertEqual(d1, d2, "sortedKeys 编码同一数据应字节一致")
     }
 }

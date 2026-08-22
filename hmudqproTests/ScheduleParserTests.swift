@@ -12,7 +12,7 @@ final class ScheduleParserTests: XCTestCase {
         XCTAssertEqual(courses[0].kcmc, "系统解剖学")
         XCTAssertEqual(courses[0].week, 1)
         XCTAssertEqual(courses[0].weekday, 1)
-        XCTAssertEqual(courses[0].slotCount, 2)
+        XCTAssertEqual(courses[0].bigSlotIndices, [0]) // ps=1 pe=2 → 大节0
         XCTAssertEqual(courses[1].teaxms, "李四")
     }
 
@@ -55,5 +55,46 @@ final class ScheduleParserTests: XCTestCase {
         let data = try JSONEncoder().encode([course])
         let decoded = try JSONDecoder().decode([Course].self, from: data)
         XCTAssertEqual(decoded, [course])
+    }
+
+    // MARK: - 大节块识别（对齐安卓 getAllTimeSlotIndices）
+
+    func testBigSlotsFromJcdm() {
+        // 单大节：1-2 节
+        XCTAssertEqual(Course(kcmc: "x", zc: "1", xq: "1", jcdm: "0102").bigSlotIndices, [0])
+        // 3-4 节
+        XCTAssertEqual(Course(kcmc: "x", zc: "1", xq: "1", jcdm: "0304").bigSlotIndices, [1])
+        // 连堂 1-4 节：跨 2 个大节
+        let c = Course(kcmc: "x", zc: "1", xq: "1", jcdm: "01020304")
+        XCTAssertEqual(c.bigSlotIndices, [0, 1])
+        XCTAssertEqual(c.bigSlotSpan, 2)
+        // 非连续（1-2 + 5-6）
+        let d = Course(kcmc: "x", zc: "1", xq: "1", jcdm: "01020506")
+        XCTAssertEqual(d.bigSlotIndices, [0, 2])
+        // 11-12 节 → 最后一个
+        XCTAssertEqual(Course(kcmc: "x", zc: "1", xq: "1", jcdm: "1112").bigSlotIndices, [5])
+        // 越界忽略（ps/pe 置空避免触发兜底）
+        XCTAssertEqual(Course(kcmc: "x", zc: "1", xq: "1", ps: "", pe: "", jcdm: "1314").bigSlotIndices, [])
+    }
+
+    func testBigSlotsFallbackToPsPe() {
+        // 无 jcdm：ps=1 pe=4 → 大节 0,1
+        let c = Course(kcmc: "x", zc: "1", xq: "1", ps: "1", pe: "4")
+        XCTAssertEqual(c.bigSlotIndices, [0, 1])
+        // ps=3 pe=4 → 大节 1
+        XCTAssertEqual(Course(kcmc: "x", zc: "1", xq: "1", ps: "3", pe: "4").bigSlotIndices, [1])
+    }
+
+    // MARK: - 配色（稳定 hash）
+
+    func testPaletteStableAcrossCalls() {
+        // 同名课同色；不同主题不同结果
+        let a1 = CoursePalette.color(for: "系统解剖学", style: .default)
+        let a2 = CoursePalette.color(for: "系统解剖学", style: .default)
+        let b1 = CoursePalette.color(for: "生理学", style: .default)
+        let bright = CoursePalette.color(for: "系统解剖学", style: .bright)
+        XCTAssertEqual(a1.background.description, a2.background.description, "同名课两次取色应一致")
+        XCTAssertNotEqual(a1.background.description, b1.background.description, "不同课颜色应大概率不同")
+        XCTAssertNotEqual(a1.background.description, bright.background.description, "两套主题颜色应不同")
     }
 }
