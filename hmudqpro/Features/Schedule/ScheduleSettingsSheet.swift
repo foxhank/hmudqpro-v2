@@ -6,7 +6,7 @@ import PhotosUI
 struct ScheduleSettingsSheet: View {
     @Environment(\.dismiss) private var dismiss
 
-    @AppStorage("schedule.fontSize") private var fontSize = 11.0
+    @AppStorage("schedule.fontSize") private var fontSize = 12.0
     @AppStorage("schedule.colorStyle") private var colorStyleRaw = CourseColorStyle.default.rawValue
     @Binding var refreshTrigger: Int
 
@@ -17,7 +17,7 @@ struct ScheduleSettingsSheet: View {
     @AppStorage("schedule.backgroundVersion") private var backgroundVersion = 0
 
     private let fontSizeRange: ClosedRange<Double> = 9...16
-    private let defaultFontSize = 11.0
+    private let defaultFontSize = 12.0
 
     var body: some View {
         NavigationStack {

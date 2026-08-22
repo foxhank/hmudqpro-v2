@@ -9,6 +9,7 @@ final class ScheduleViewModel: ObservableObject {
     @Published var currentWeek: Int = 1
     @Published var isLoading = false
     @Published var errorMessage: String?
+    @Published var successMessage: String?
 
     private let service: ScheduleService
     private var calculator: SemesterCalculator?
@@ -38,11 +39,24 @@ final class ScheduleViewModel: ObservableObject {
             }.value
             apply(fetched)
             ScheduleStore.shared?.save(fetched)
-            showError(nil)
+            showSuccess(String(localized: "schedule.refresh.success"))
         } catch {
             // 取消不是错误，静默忽略（独立任务下基本不会发生，保险起见保留）
             if Self.isCancellation(error) { return }
             showError(error.localizedDescription)
+        }
+    }
+
+    /// 成功提示 toast，同样 3 秒自动消失。
+    private func showSuccess(_ message: String) {
+        withAnimation { errorMessage = nil; successMessage = message }
+        toastDismissTask?.cancel()
+        toastDismissTask = Task { [weak self] in
+            try? await Task.sleep(nanoseconds: 3_000_000_000)
+            guard !Task.isCancelled else { return }
+            await MainActor.run { [weak self] in
+                withAnimation { self?.successMessage = nil }
+            }
         }
     }
 
@@ -56,7 +70,10 @@ final class ScheduleViewModel: ObservableObject {
     /// 展示错误 toast，3 秒后自动消失；连续错误会重置计时。
     private var toastDismissTask: Task<Void, Never>?
     private func showError(_ message: String?) {
-        withAnimation { errorMessage = message }
+        withAnimation {
+            errorMessage = message
+            if message != nil { successMessage = nil }
+        }
         toastDismissTask?.cancel()
         guard let message else { return }
         toastDismissTask = Task { [weak self] in

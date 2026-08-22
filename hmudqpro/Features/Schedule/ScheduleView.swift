@@ -5,7 +5,7 @@ import SwiftUI
 struct ScheduleView: View {
     @StateObject private var viewModel = ScheduleViewModel()
     @AppStorage("schedule.colorStyle") private var colorStyleRaw = CourseColorStyle.default.rawValue
-    @AppStorage("schedule.fontSize") private var fontSize = 11.0
+    @AppStorage("schedule.fontSize") private var fontSize = 12.0
     @AppStorage("schedule.backgroundVersion") private var backgroundVersion = 0
 
     @State private var showSettings = false
@@ -163,6 +163,14 @@ struct ScheduleView: View {
             if let error = viewModel.errorMessage {
                 Text(error)
                     .font(.footnote)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .adaptiveGlass()
+                    .padding(.bottom, 8)
+            } else if let success = viewModel.successMessage {
+                Label(success, systemImage: "checkmark.circle.fill")
+                    .font(.footnote)
+                    .foregroundStyle(.green)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 6)
                     .adaptiveGlass()
