@@ -10,6 +10,8 @@ final class ScheduleViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var errorMessage: String?
     @Published var successMessage: String?
+    /// 课表变动提醒弹窗正文（非 nil 时显示）。
+    @Published var diffAlertMessage: String?
 
     private let service: ScheduleService
     private var calculator: SemesterCalculator?
@@ -29,6 +31,7 @@ final class ScheduleViewModel: ObservableObject {
     /// 强制从教务拉取。
     /// 网络请求跑在独立任务里：分页滑动手势会取消视图的 refreshable 任务，
     /// 若网络也挂在它上面就会出现"下拉即取消"的假失败。
+    /// 内容一致（SHA 指纹）→ 不动页面；不一致 → 刷新页面 + 弹课表变动提醒。
     func refresh() async {
         isLoading = true
         defer { isLoading = false }
@@ -37,9 +40,21 @@ final class ScheduleViewModel: ObservableObject {
             let fetched = try await Task.detached(priority: .userInitiated) {
                 try await service.fetchCourses()
             }.value
+            let old = courses
+            let unchanged = ScheduleStore.shared?.isSameAsCache(fetched) ?? false
             apply(fetched)
             ScheduleStore.shared?.save(fetched)
-            showSuccess(String(localized: "schedule.refresh.success"))
+            if unchanged {
+                showSuccess(String(localized: "schedule.refresh.unchanged"))
+            } else {
+                showSuccess(String(localized: "schedule.refresh.success"))
+                // 有变动且之前就有数据（首次加载不算"变动"）→ 弹提醒
+                if !old.isEmpty,
+                   case .changed = CourseDiffer.diff(old: old, new: fetched),
+                   let message = CourseDiffer.alertMessage(CourseDiffer.diff(old: old, new: fetched)) {
+                    diffAlertMessage = message
+                }
+            }
         } catch {
             // 取消不是错误，静默忽略（独立任务下基本不会发生，保险起见保留）
             if Self.isCancellation(error) { return }

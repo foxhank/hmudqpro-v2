@@ -52,6 +52,14 @@ struct ScheduleView: View {
             .sheet(isPresented: $showSettings) {
                 ScheduleSettingsSheet(refreshTrigger: $refreshTrigger)
             }
+            // 课表变动提醒（内容变化时）
+            .alert(String(localized: "course.change.title"),
+                   isPresented: Binding(get: { viewModel.diffAlertMessage != nil },
+                                        set: { if !$0 { viewModel.diffAlertMessage = nil } })) {
+                Button(String(localized: "course.change.ack"), role: .cancel) {}
+            } message: {
+                Text(viewModel.diffAlertMessage ?? "")
+            }
         }
     }
 

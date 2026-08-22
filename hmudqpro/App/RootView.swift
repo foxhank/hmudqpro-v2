@@ -21,7 +21,7 @@ struct MainTabView: View {
                 .tabItem { Label(String(localized: "tab.schedule"), systemImage: "calendar") }
             Text("工具")
                 .tabItem { Label(String(localized: "tab.tools"), systemImage: "square.grid.2x2") }
-            Text("我的")
+            ProfileView()
                 .tabItem { Label(String(localized: "tab.me"), systemImage: "person") }
         }
     }

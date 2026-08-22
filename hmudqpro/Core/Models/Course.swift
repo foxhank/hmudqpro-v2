@@ -15,6 +15,7 @@ struct Course: Codable, Hashable, Identifiable {
     let teaxms: String    // 教师姓名
     let jxcdmc: String    // 教学场地名称
     let jxbmc: String     // 教学班名称
+    let jxbdm: String     // 教学班代码（课表变更 diff 的分组键）
     let jxhjmc: String    // 教学环节名称
     let bgcolor: String   // 背景颜色（教务字段，安卓端未使用）
     let bz: String        // 备注
@@ -62,7 +63,7 @@ struct Course: Codable, Hashable, Identifiable {
         func s(_ key: CodingKeys) -> String { (try? c.decodeIfPresent(String.self, forKey: key)) ?? "" }
         kcmc = s(.kcmc); zc = s(.zc); xq = s(.xq); qsrq = s(.qsrq); jsrq = s(.jsrq)
         qssj = s(.qssj); jssj = s(.jssj); ps = s(.ps); pe = s(.pe)
-        teaxms = s(.teaxms); jxcdmc = s(.jxcdmc); jxbmc = s(.jxbmc)
+        teaxms = s(.teaxms); jxcdmc = s(.jxcdmc); jxbmc = s(.jxbmc); jxbdm = s(.jxbdm)
         jxhjmc = s(.jxhjmc); bgcolor = s(.bgcolor); bz = s(.bz); xqmc = s(.xqmc)
         jcdm = s(.jcdm)
     }
@@ -70,12 +71,42 @@ struct Course: Codable, Hashable, Identifiable {
     /// 供测试与预览直接构造。
     init(kcmc: String, zc: String, xq: String, qsrq: String = "", jsrq: String = "",
          qssj: String = "", jssj: String = "", ps: String = "1", pe: String = "2",
-         teaxms: String = "", jxcdmc: String = "", jxbmc: String = "", jxhjmc: String = "",
-         bgcolor: String = "", bz: String = "", xqmc: String = "", jcdm: String = "") {
+         teaxms: String = "", jxcdmc: String = "", jxbmc: String = "", jxbdm: String = "",
+         jxhjmc: String = "", bgcolor: String = "", bz: String = "", xqmc: String = "", jcdm: String = "") {
         self.kcmc = kcmc; self.zc = zc; self.xq = xq; self.qsrq = qsrq; self.jsrq = jsrq
         self.qssj = qssj; self.jssj = jssj; self.ps = ps; self.pe = pe
-        self.teaxms = teaxms; self.jxcdmc = jxcdmc; self.jxbmc = jxbmc
+        self.teaxms = teaxms; self.jxcdmc = jxcdmc; self.jxbmc = jxbmc; self.jxbdm = jxbdm
         self.jxhjmc = jxhjmc; self.bgcolor = bgcolor; self.bz = bz; self.xqmc = xqmc
         self.jcdm = jcdm
+    }
+
+    // MARK: - 排课描述（课表变更提醒用，格式对齐安卓 scheduleDescription）
+
+    /// 6 大节起止时间。
+    static let slotTimeRanges = [
+        ("8:00", "9:35"), ("9:55", "11:30"), ("13:30", "15:05"),
+        ("15:25", "17:00"), ("18:00", "19:30"), ("19:35", "21:10"),
+    ]
+
+    private static let dayLabels = ["一", "二", "三", "四", "五", "六", "日"]
+
+    /// 展示时间，如 "8:00-11:30"。
+    var displayTimeText: String {
+        let indices = bigSlotIndices
+        guard let first = indices.first, let last = indices.last,
+              first < Self.slotTimeRanges.count, last < Self.slotTimeRanges.count else { return jcdm }
+        return "\(Self.slotTimeRanges[first].0)-\(Self.slotTimeRanges[last].1)"
+    }
+
+    /// 排课描述："第3周 周四 8:00-11:30"。
+    var scheduleDescription: String {
+        let dayIndex = ((weekday ?? 1) - 1).clamped(to: 0...6)
+        return "第\(zc)周 周\(Self.dayLabels[dayIndex]) \(displayTimeText)"
+    }
+}
+
+extension Comparable {
+    func clamped(to range: ClosedRange<Self>) -> Self {
+        min(max(self, range.lowerBound), range.upperBound)
     }
 }
