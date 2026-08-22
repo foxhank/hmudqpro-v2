@@ -86,6 +86,21 @@ final class ScheduleViewModel: ObservableObject {
         calculator?.weekDateRange(for: week)
     }
 
+    /// 指定周 7 天（周一~周日）的日期，用于表头显示（如 8.30）。
+    func weekDates(_ week: Int) -> [Date?] {
+        guard let start = calculator?.semesterStartMonday else { return Array(repeating: nil, count: 7) }
+        let calendar = Calendar(identifier: .gregorian)
+        return (0..<7).map { offset in
+            calendar.date(byAdding: .day, value: offset, to: start
+                          .addingTimeInterval(TimeInterval((week - 1) * 7 * 86400)))
+        }
+    }
+
+    func changeWeek(by delta: Int) {
+        let new = min(max(1, selectedWeek + delta), SemesterCalculator.totalWeeks)
+        selectedWeek = new
+    }
+
     private static func date(_ s: String) -> Date? {
         let f = DateFormatter()
         f.dateFormat = "yyyy-MM-dd"

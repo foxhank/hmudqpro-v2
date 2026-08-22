@@ -25,15 +25,22 @@ final class ScheduleService {
         let range = dateRange ?? ScheduleParser.currentSemesterRange()
         do {
             let body = try await requestCalendar(start: range.start, end: range.end)
+            let courses: [Course]
             do {
-                return try ScheduleParser.parse(body)
+                courses = try ScheduleParser.parse(body)
             } catch ScheduleParser.ParseError.htmlResponse {
                 // 登录态失效 → 自动重登一次后重试
                 guard await SessionKeeper.shared.reloginIfPossible() else {
                     throw ScheduleError.sessionExpired
                 }
                 let retryBody = try await requestCalendar(start: range.start, end: range.end)
-                return try ScheduleParser.parse(retryBody)
+                courses = try ScheduleParser.parse(retryBody)
+            }
+            // 本地兜底过滤：只保留开始日期落在查询范围内的课程。
+            // 实测教务端对日期参数解析失败时会返回全部学期数据（大一到现在的课混在一起），
+            // 这里按 qsrq 过滤保证显示的总是当前查询学期。
+            return courses.filter { course in
+                course.qsrq >= range.start && course.qsrq <= range.end
             }
         } catch let e as ScheduleError {
             throw e
@@ -43,7 +50,9 @@ final class ScheduleService {
     }
 
     private func requestCalendar(start: String, end: String) async throws -> String {
-        let body = "d1=\(start)%2000:00:00&d2=\(end)%2000:00:00".data(using: .utf8)
+        // 注意：空格保持原样不编码（%20 会导致教务端解析失败、忽略日期过滤返回全部数据），
+        // 与 v1 行为一致；表单其余字段无特殊字符。
+        let body = "d1=\(start) 00:00:00&d2=\(end) 00:00:00".data(using: .utf8)
         let (data, _) = try await client.request(
             APIConfig.jwcCalendarURL, method: "POST", body: body,
             userAgent: APIConfig.webUserAgentShort,

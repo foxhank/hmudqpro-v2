@@ -8,6 +8,13 @@ final class ScheduleIntegrationTests: XCTestCase {
         _ = try await AuthService().login(studentID: "2316820123", password: "Hmudq@233617")
         let courses = try await ScheduleService().fetchCourses()
         XCTAssertFalse(courses.isEmpty, "当前学期应有课程数据")
+        // 学期过滤验证：所有课程的开始日期必须落在当前学期范围内
+        // （修复前教务端会返回全部学期数据，混入大一大二大三的课）
+        let range = ScheduleParser.currentSemesterRange()
+        for c in courses {
+            XCTAssertTrue(c.qsrq >= range.start && c.qsrq <= range.end,
+                          "课程 \(c.kcmc) 的日期 \(c.qsrq) 超出学期范围 \(range.start)~\(range.end)")
+        }
         // 验证字段合理性（真实数据存在 zc/xq 为空的行，如整学期备注，过滤后再验证）
         for c in courses {
             XCTAssertFalse(c.kcmc.isEmpty)

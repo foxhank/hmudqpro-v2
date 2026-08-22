@@ -53,11 +53,14 @@ struct ScheduleView: View {
         }
     }
 
-    // MARK: - 标题下的操作行：周切换 + 设置
+    // MARK: - 标题下的操作行：← 第x周 → + 设置
 
     private var headerRow: some View {
         HStack {
-            weekSelector
+            // 左侧占位与右侧齿轮对称，保证周次居中
+            Image(systemName: "gearshape").opacity(0)
+            Spacer()
+            weekSwitcher
             Spacer()
             Button {
                 showSettings = true
@@ -69,26 +72,47 @@ struct ScheduleView: View {
         .padding(.vertical, 8)
     }
 
-    private var weekSelector: some View {
-        Menu {
-            ForEach(1...SemesterCalculator.totalWeeks, id: \.self) { week in
-                Button {
-                    viewModel.selectedWeek = week
-                } label: {
-                    if week == viewModel.currentWeek {
-                        Text(String(localized: "schedule.week.current \(week)"))
-                    } else {
-                        Text(String(localized: "schedule.week \(week)"))
+    /// 居中的周次切换：← 第 x 周 →，点箭头切周。
+    private var weekSwitcher: some View {
+        HStack(spacing: 12) {
+            Button {
+                viewModel.changeWeek(by: -1)
+            } label: {
+                Image(systemName: "chevron.left")
+                    .font(.subheadline.weight(.semibold))
+                    .frame(width: 28, height: 28)
+                    .contentShape(Rectangle())
+            }
+            .disabled(viewModel.selectedWeek <= 1)
+            .foregroundStyle(viewModel.selectedWeek <= 1 ? .tertiary : .primary)
+
+            Menu {
+                ForEach(1...SemesterCalculator.totalWeeks, id: \.self) { week in
+                    Button {
+                        viewModel.selectedWeek = week
+                    } label: {
+                        if week == viewModel.currentWeek {
+                            Text(String(localized: "schedule.week.current \(week)"))
+                        } else {
+                            Text(String(localized: "schedule.week \(week)"))
+                        }
                     }
                 }
-            }
-        } label: {
-            HStack(spacing: 4) {
+            } label: {
                 Text(String(localized: "schedule.week \(viewModel.selectedWeek)"))
-                    .font(.subheadline.weight(.medium))
-                Image(systemName: "chevron.up.chevron.down")
-                    .font(.caption2)
+                    .font(.headline)
             }
+
+            Button {
+                viewModel.changeWeek(by: 1)
+            } label: {
+                Image(systemName: "chevron.right")
+                    .font(.subheadline.weight(.semibold))
+                    .frame(width: 28, height: 28)
+                    .contentShape(Rectangle())
+            }
+            .disabled(viewModel.selectedWeek >= SemesterCalculator.totalWeeks)
+            .foregroundStyle(viewModel.selectedWeek >= SemesterCalculator.totalWeeks ? .tertiary : .primary)
         }
     }
 
@@ -111,12 +135,14 @@ struct ScheduleView: View {
     private var scheduleGrid: some View {
         let entries = viewModel.gridEntries(week: viewModel.selectedWeek)
         let background = ScheduleBackground.load()
+        let weekDates = viewModel.weekDates(viewModel.selectedWeek)
+        let today = Date()
 
         return ScrollView(.vertical) {
             HStack(alignment: .top, spacing: gridSpacing) {
                 // 左侧节次/时间列
                 VStack(spacing: gridSpacing) {
-                    Text("").frame(height: 28)
+                    Text("").frame(height: 34)
                     ForEach(0..<Course.bigSlotsPerDay, id: \.self) { slot in
                         VStack(spacing: 2) {
                             Text("\(slot * 2 + 1)")
@@ -128,9 +154,11 @@ struct ScheduleView: View {
                         .frame(width: 30, height: slotHeight - gridSpacing)
                     }
                 }
-                // 7 天列
+                // 7 天列（表头带日期，如 8.30 四）
                 ForEach(weekdays, id: \.index) { day in
                     DayColumn(weekday: day.index, label: Text(day.key),
+                              date: weekDates[day.index - 1],
+                              isToday: weekDates[day.index - 1].map { Calendar.current.isDate($0, inSameDayAs: today) } ?? false,
                               entries: entries[day.index] ?? [:],
                               colorStyle: colorStyle,
                               fontSize: fontSize,
@@ -162,26 +190,52 @@ struct ScheduleView: View {
             }
         }
         .refreshable { await viewModel.refresh() }
+        // 左右滑动切周（与纵向滚动共存：位移明显偏向水平才触发）
+        .simultaneousGesture(swipeGesture)
+    }
+
+    private var swipeGesture: some Gesture {
+        DragGesture(minimumDistance: 30)
+            .onEnded { value in
+                let horizontal = value.translation.width
+                let vertical = value.translation.height
+                guard abs(horizontal) > abs(vertical) * 1.5, abs(horizontal) > 40 else { return }
+                viewModel.changeWeek(by: horizontal < 0 ? 1 : -1) // 左滑下周，右滑上周
+            }
     }
 }
 
-/// 单日列：6 个大节格，课程块与背景格严格对齐（跨块卡片高度含中间间隔）。
+/// 单日列：表头（日期+星期）+ 6 个大节格，课程块与背景格严格对齐。
 private struct DayColumn: View {
     let weekday: Int
     let label: Text
+    let date: Date?
+    let isToday: Bool
     let entries: [Int: ScheduleViewModel.GridEntry]
     let colorStyle: CourseColorStyle
     let fontSize: Double
     let slotHeight: CGFloat
     let gridSpacing: CGFloat
 
+    private var dateText: String? {
+        guard let date else { return nil }
+        let comps = Calendar.current.dateComponents([.month, .day], from: date)
+        return "\(comps.month ?? 0).\(comps.day ?? 0)"
+    }
+
     var body: some View {
         VStack(spacing: gridSpacing) {
-            label
-                .font(.caption.weight(.semibold))
-                .frame(maxWidth: .infinity)
-                .frame(height: 24)
-                .foregroundStyle(weekday == 6 || weekday == 7 ? Color.red.opacity(0.8) : .primary)
+            VStack(spacing: 1) {
+                Text(dateText ?? "")
+                    .font(.system(size: 9, weight: .medium).monospacedDigit())
+                    .foregroundStyle(.secondary)
+                label
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(textColor)
+            }
+            .frame(maxWidth: .infinity)
+            .frame(height: 30)
+            .background(isToday ? Color.accentColor.opacity(0.15) : Color.clear, in: .rect(cornerRadius: 6))
 
             ZStack(alignment: .top) {
                 // 空格背景（节界标线）
@@ -207,6 +261,12 @@ private struct DayColumn: View {
                 }
             }
         }
+    }
+
+    private var textColor: Color {
+        if isToday { return .accentColor }
+        if weekday == 6 || weekday == 7 { return .red.opacity(0.8) }
+        return .primary
     }
 }
 
