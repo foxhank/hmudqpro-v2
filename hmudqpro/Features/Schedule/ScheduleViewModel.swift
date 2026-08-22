@@ -33,9 +33,33 @@ final class ScheduleViewModel: ObservableObject {
             let fetched = try await service.fetchCourses()
             apply(fetched)
             ScheduleStore.shared?.save(fetched)
-            errorMessage = nil
+            showError(nil)
         } catch {
-            errorMessage = error.localizedDescription
+            // 用户滑走页面/切周导致的取消不是错误，静默忽略
+            if Self.isCancellation(error) { return }
+            showError(error.localizedDescription)
+        }
+    }
+
+    /// 是否为任务取消（refreshable 被新手势打断时 URLSession 抛 URLError.cancelled）。
+    nonisolated static func isCancellation(_ error: Error) -> Bool {
+        if error is CancellationError { return true }
+        if let urlError = error as? URLError, urlError.code == .cancelled { return true }
+        return false
+    }
+
+    /// 展示错误 toast，3 秒后自动消失；连续错误会重置计时。
+    private var toastDismissTask: Task<Void, Never>?
+    private func showError(_ message: String?) {
+        withAnimation { errorMessage = message }
+        toastDismissTask?.cancel()
+        guard let message else { return }
+        toastDismissTask = Task { [weak self] in
+            try? await Task.sleep(nanoseconds: 3_000_000_000)
+            guard !Task.isCancelled else { return }
+            await MainActor.run { [weak self] in
+                withAnimation { self?.errorMessage = nil }
+            }
         }
     }
 

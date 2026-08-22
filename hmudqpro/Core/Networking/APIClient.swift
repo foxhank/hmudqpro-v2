@@ -20,13 +20,49 @@ final class APIClient {
         }
     }
 
-    init(session: URLSession = .shared) {
+    /// 专用 session：硬超时 10s（教务系统会"卡死"——连接挂着完全不返回数据），
+    /// 配合 TimeoutGuard 的任务级超时形成双保险。
+    private static let defaultSession: URLSession = {
+        let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest = TimeInterval(TimeoutGuard.defaultLimit)
+        config.timeoutIntervalForResource = TimeInterval(TimeoutGuard.defaultLimit)
+        config.waitsForConnectivity = false
+        return URLSession(configuration: config)
+    }()
+
+    init(session: URLSession = APIClient.defaultSession) {
         self.session = session
     }
 
     /// 通用请求。默认带浏览器 UA（教务系统校验）。
+    /// 超时守卫（10s）+ 401/登录页失效时后台自动重登一次再重发（authRetry）。
     func request(_ url: URL, method: String = "GET", body: Data? = nil,
-                 userAgent: String? = nil, headers: [String: String] = [:]) async throws -> (Data, HTTPURLResponse) {
+                 userAgent: String? = nil, headers: [String: String] = [:],
+                 authRetry: Bool = true) async throws -> (Data, HTTPURLResponse) {
+        do {
+            return try await TimeoutGuard.withTimeout { [self] in
+                try await rawRequest(url, method: method, body: body, userAgent: userAgent, headers: headers)
+            }
+        } catch {
+            guard authRetry, Self.isAuthFailure(error) else { throw error }
+            // 会话失效（401/403）→ 后台静默重登（SessionKeeper 自带熔断）→ 重发一次
+            guard await SessionKeeper.shared.reloginIfPossible() else { throw error }
+            return try await TimeoutGuard.withTimeout { [self] in
+                try await rawRequest(url, method: method, body: body, userAgent: userAgent, headers: headers)
+            }
+        }
+    }
+
+    /// 判断错误是否为登录态失效（可重登重试）。401 明确；403/跳登录的 302 教务也用，谨慎起见只认 401/403。
+    private static func isAuthFailure(_ error: Error) -> Bool {
+        if case APIError.http(let status, _, _) = error {
+            return status == 401 || status == 403
+        }
+        return false
+    }
+
+    private func rawRequest(_ url: URL, method: String, body: Data?,
+                            userAgent: String?, headers: [String: String]) async throws -> (Data, HTTPURLResponse) {
         var req = URLRequest(url: url)
         req.httpMethod = method
         req.httpBody = body
