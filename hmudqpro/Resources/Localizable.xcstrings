@@ -85,6 +85,60 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Done" } }
       }
     },
+    "settings.title" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "课表设置" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Schedule Settings" } }
+      }
+    },
+    "settings.display" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "显示" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Display" } }
+      }
+    },
+    "settings.fontSize" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "字体大小" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Font Size" } }
+      }
+    },
+    "settings.colorStyle" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "配色主题" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Color Theme" } }
+      }
+    },
+    "settings.colorStyle.default" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "经典" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Classic" } }
+      }
+    },
+    "settings.colorStyle.bright" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "明亮" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Bright" } }
+      }
+    },
+    "settings.background.pick" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "选择背景图片" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Choose Background" } }
+      }
+    },
+    "settings.background.clear" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "清除背景图片" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove Background" } }
+      }
+    },
+    "settings.refresh" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "刷新课表" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Refresh Schedule" } }
+      }
+    },
     "login.error.emptyFields" : {
       "localizations" : {
         "en" : {
