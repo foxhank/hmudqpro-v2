@@ -46,8 +46,13 @@ struct ScheduleView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            // 大标题置顶，上滑后系统自动收起为居中小字（标准导航行为）
+            // 整个页面（周切换行 + 网格）跟手左右滑动，参考安卓端
+            .offset(x: dragOffset)
+            .opacity(1 - min(abs(dragOffset) / 600.0, 0.35))
+            .animation(.interactiveSpring(), value: dragOffset)
+            .simultaneousGesture(swipeGesture)
             .navigationTitle("schedule.title")
+            .navigationBarTitleDisplayMode(.inline)
             .task { await viewModel.loadIfNeeded() }
             .onChange(of: refreshTrigger) { _ in
                 Task { await viewModel.refresh() }
@@ -176,10 +181,6 @@ struct ScheduleView: View {
                 }
             }
             .padding(.horizontal, 4)
-            // 跟手：滑动时网格随手平移并渐隐，松手回弹/切周
-            .offset(x: dragOffset)
-            .opacity(1 - min(abs(dragOffset) / 600.0, 0.35))
-            .animation(.interactiveSpring(), value: dragOffset)
         }
         .background {
             // 用户设置的背景图（30% 透明度衬底，对齐安卓）
@@ -203,8 +204,6 @@ struct ScheduleView: View {
             }
         }
         .refreshable { await viewModel.refresh() }
-        // 左右滑动切周（与纵向滚动共存：位移明显偏向水平才接管）
-        .simultaneousGesture(swipeGesture)
     }
 
     private var swipeGesture: some Gesture {
