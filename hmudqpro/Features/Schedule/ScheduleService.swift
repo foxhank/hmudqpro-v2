@@ -45,6 +45,10 @@ final class ScheduleService {
         } catch let e as ScheduleError {
             throw e
         } catch {
+            // 取消错误原样透传（调用方静默处理），不包装成"获取失败"
+            if error is CancellationError || (error as? URLError)?.code == .cancelled {
+                throw error
+            }
             throw ScheduleError.fetchFailed(error.localizedDescription)
         }
     }

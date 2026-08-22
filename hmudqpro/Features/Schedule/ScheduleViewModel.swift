@@ -26,16 +26,21 @@ final class ScheduleViewModel: ObservableObject {
     }
 
     /// 强制从教务拉取。
+    /// 网络请求跑在独立任务里：分页滑动手势会取消视图的 refreshable 任务，
+    /// 若网络也挂在它上面就会出现"下拉即取消"的假失败。
     func refresh() async {
         isLoading = true
         defer { isLoading = false }
         do {
-            let fetched = try await service.fetchCourses()
+            let service = self.service
+            let fetched = try await Task.detached(priority: .userInitiated) {
+                try await service.fetchCourses()
+            }.value
             apply(fetched)
             ScheduleStore.shared?.save(fetched)
             showError(nil)
         } catch {
-            // 用户滑走页面/切周导致的取消不是错误，静默忽略
+            // 取消不是错误，静默忽略（独立任务下基本不会发生，保险起见保留）
             if Self.isCancellation(error) { return }
             showError(error.localizedDescription)
         }
