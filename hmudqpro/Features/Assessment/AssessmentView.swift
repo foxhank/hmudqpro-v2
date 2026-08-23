@@ -1,5 +1,6 @@
 import SwiftUI
 import WebKit
+import AVFoundation
 
 /// 智慧考核 Tab：WKWebView 承载 zhcp（webvpn SSO）。
 ///
@@ -43,6 +44,7 @@ private struct AssessmentWebView: UIViewRepresentable {
 
         let webView = WKWebView(frame: .zero, configuration: config)
         webView.navigationDelegate = context.coordinator
+        webView.uiDelegate = context.coordinator
         context.coordinator.webView = webView
 
         Task { await context.coordinator.load(url: url) }
@@ -58,7 +60,7 @@ private struct AssessmentWebView: UIViewRepresentable {
 
 // MARK: - 导航协调器（自动登录状态机）
 
-final class AssessmentCoordinator: NSObject, WKNavigationDelegate {
+final class AssessmentCoordinator: NSObject, WKNavigationDelegate, WKUIDelegate {
     let onHardFailure: () -> Void
     weak var webView: WKWebView?
     /// 重登重试只做一次，避免「失败→重载→又失败」死循环
@@ -115,6 +117,39 @@ final class AssessmentCoordinator: NSObject, WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         onHardFailure()
     }
+
+    // MARK: 摄像头/麦克风（扫码签到用 getUserMedia）
+
+    /// iOS 15+：网页请求 getUserMedia 时回调。
+    /// 对接系统级 AVCaptureDevice 授权：系统弹窗只出现一次，决定会被记住，
+    /// 之后按授权状态直接放行/拒绝，不再反复骚扰。
+    func webView(
+        _ webView: WKWebView,
+        requestMediaCapturePermissionFor origin: WKSecurityOrigin,
+        initiatedByFrame frame: WKFrameInfo,
+        type: WKMediaCaptureType,
+        decisionHandler: @escaping (WKPermissionDecision) -> Void
+    ) {
+        let mediaType: AVMediaType = type == .microphone ? .audio : .video
+        switch AVCaptureDevice.authorizationStatus(for: mediaType) {
+        case .authorized:
+            decisionHandler(.grant)
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: mediaType) { granted in
+                DispatchQueue.main.async {
+                    decisionHandler(granted ? .grant : .deny)
+                }
+            }
+        default:
+            decisionHandler(.deny)
+        }
+    }
+
+    // MARK: 文件上传
+
+    /// iOS 14+：网页 <input type="file"> 点开系统文件选择器由 WKWebView 原生处理，
+    /// 这里无需代理；相册/相机的用途描述在 Info.plist（NSPhotoLibraryUsageDescription 等）。
+
 
     private func isUnifiedLoginPage(_ url: URL) -> Bool {
         let s = url.absoluteString
