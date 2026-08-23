@@ -84,6 +84,15 @@ enum APIConfig {
     static var jwcSsoLoginURL: URL { join(jwcBase, jwcSsoLogin) }
     static var jwcGradesURL: URL { join(jwcBase, jwcGradesAction) }
     static var jwcExamGradesURL: URL { join(jwcBase, jwcExamGradesAction) }
+    static var jwcXsxkURL: URL { join(jwcBase, jwcXsxkBase) }
+    static var jwcXsxkSelectedURL: URL { join(jwcBase, jwcXsxkBase + "/yxkc") }
+    static var jwcXsxkAvailableURL: URL { join(jwcBase, jwcXsxkBase + "/kxkc") }
+    static var jwcXsxkAddURL: URL { join(jwcBase, jwcXsxkBase + "/add") }
+    static var jwcXsxkCancelURL: URL { join(jwcBase, jwcXsxkBase + "/cancel") }
+    static var jwcTeacherEvalPageURL: URL { join(jwcBase, "/new/student/teapj") }
+    static var jwcTeacherEvalListURL: URL { join(jwcBase, "/new/student/teapj/pjDatas") }
+    static var classroomURL: URL { join(backendBase, classroomPath) }
+    static var donateOverviewURL: URL { join(backendBase, donateOverviewPath) }
 
     // MARK: - SDK
     static var buglyAppID: String { value("bugly_app_id") }

@@ -1,103 +1,115 @@
 import SwiftUI
 
-/// 工具页：标准列表布局，分组对齐安卓端（考试信息已废弃移除）。
+/// 工具页：网格布局（对齐安卓 2.0 图标卡片）+ 赞助开发者单独一行。
+/// 快捷跳转走内置 WebView（Cookie 自动登录），不再跳系统浏览器。
 struct ToolsView: View {
+    private let columns = Array(repeating: GridItem(.flexible(), spacing: 4), count: 4)
+
     var body: some View {
         NavigationStack {
-            List {
-                Section(String(localized: "tools.group.query")) {
-                    NavigationLink { GradesView() } label: {
-                        ToolLabel(icon: "doc.text.fill", tint: .blue,
-                                  titleKey: "tool.grades", subtitleKey: "tool.grades.sub")
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: 16, pinnedViews: []) {
+                    toolSection("tools.group.query") {
+                        ToolCard(icon: "doc.text.fill", tint: .blue, titleKey: "tool.grades") { GradesView() }
+                        ToolCard(icon: "graduationcap.fill", tint: .orange, titleKey: "tool.examGrades") { ExamGradesView() }
+                        ToolCard(icon: "door.left.hand.open", tint: .gray, titleKey: "tool.emptyClassroom") { EmptyClassroomView() }
                     }
-                    NavigationLink { ExamGradesView() } label: {
-                        ToolLabel(icon: "graduationcap.fill", tint: .orange,
-                                  titleKey: "tool.examGrades", subtitleKey: "tool.examGrades.sub")
+                    toolSection("tools.group.business") {
+                        ToolCard(icon: "square.grid.2x2", tint: .blue, titleKey: "tool.courseSelect") { CourseSelectionScreen() }
+                        ToolCard(icon: "person.text.rectangle.fill", tint: .purple, titleKey: "tool.evaluation") { EvaluationView() }
                     }
-                    NavigationLink { ComingSoonView(titleKey: "tool.emptyClassroom") } label: {
-                        ToolLabel(icon: "door.left.hand.open", tint: .gray,
-                                  titleKey: "tool.emptyClassroom", subtitleKey: "tool.emptyClassroom.sub")
+                    toolSection("tools.group.convenience") {
+                        ToolCard(icon: "wrench.and.screwdriver.fill", tint: .orange, titleKey: "tool.dormRepair") {
+                            WebViewScreen(titleKey: "tool.dormRepair", url: APIConfig.mikecrmRepair)
+                        }
+                        ToolCard(icon: "book.fill", tint: .blue, titleKey: "tool.ebook") {
+                            WebViewScreen(titleKey: "tool.ebook", url: APIConfig.ebookURL)
+                        }
                     }
+                    toolSection("tools.group.links") {
+                        ToolCard(icon: "building.columns.fill", tint: .blue, titleKey: "tool.academicSystem") {
+                            WebViewScreen(titleKey: "tool.academicSystem", url: APIConfig.jwcDesktopURL)
+                        }
+                        ToolCard(icon: "globe.asia.australia.fill", tint: .green, titleKey: "tool.schoolPortal") {
+                            WebViewScreen(titleKey: "tool.schoolPortal", url: APIConfig.schoolHome)
+                        }
+                        ToolCard(icon: "books.vertical.fill", tint: .blue, titleKey: "tool.cnki") {
+                            WebViewScreen(titleKey: "tool.cnki", url: APIConfig.cnkiWebvpn)
+                        }
+                        ToolCard(icon: "books.vertical", tint: .orange, titleKey: "tool.wanfang") {
+                            WebViewScreen(titleKey: "tool.wanfang", url: APIConfig.wanfangWebvpn)
+                        }
+                    }
+                    // 赞助开发者：单独一行
+                    NavigationLink { SponsorView() } label: {
+                        HStack(spacing: 12) {
+                            Image(systemName: "heart.fill")
+                                .foregroundStyle(.pink)
+                            Text(String(localized: "tool.sponsor"))
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundStyle(.tertiary)
+                        }
+                        .padding()
+                        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 12))
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.horizontal)
                 }
-                Section(String(localized: "tools.group.convenience")) {
-                    Link(destination: APIConfig.mikecrmRepair) {
-                        ToolLabel(icon: "wrench.and.screwdriver.fill", tint: .orange,
-                                  titleKey: "tool.dormRepair", subtitleKey: "tool.dormRepair.sub")
-                    }
-                    Link(destination: APIConfig.ebookURL) {
-                        ToolLabel(icon: "book.fill", tint: .blue,
-                                  titleKey: "tool.ebook", subtitleKey: "tool.ebook.sub")
-                    }
-                }
-                Section(String(localized: "tools.group.business")) {
-                    NavigationLink { ComingSoonView(titleKey: "tool.courseSelect") } label: {
-                        ToolLabel(icon: "square.grid.2x2", tint: .blue,
-                                  titleKey: "tool.courseSelect", subtitleKey: "tool.courseSelect.sub")
-                    }
-                    NavigationLink { ComingSoonView(titleKey: "tool.evaluation") } label: {
-                        ToolLabel(icon: "person.text.rectangle.fill", tint: .purple,
-                                  titleKey: "tool.evaluation", subtitleKey: "tool.evaluation.sub")
-                    }
-                }
-                Section(String(localized: "tools.group.links")) {
-                    Link(destination: APIConfig.jwcDesktopURL) {
-                        ToolLabel(icon: "building.columns.fill", tint: .blue,
-                                  titleKey: "tool.academicSystem", subtitleKey: "tool.academicSystem.sub")
-                    }
-                    Link(destination: APIConfig.schoolHome) {
-                        ToolLabel(icon: "globe.asia.australia.fill", tint: .green,
-                                  titleKey: "tool.schoolPortal", subtitleKey: "tool.schoolPortal.sub")
-                    }
-                    Link(destination: APIConfig.cnkiWebvpn) {
-                        ToolLabel(icon: "books.vertical.fill", tint: .blue,
-                                  titleKey: "tool.cnki", subtitleKey: "tool.cnki.sub")
-                    }
-                    Link(destination: APIConfig.wanfangWebvpn) {
-                        ToolLabel(icon: "books.vertical", tint: .orange,
-                                  titleKey: "tool.wanfang", subtitleKey: "tool.wanfang.sub")
-                    }
-                }
+                .padding(.vertical)
             }
+            .background(Color(.systemGroupedBackground))
             .navigationTitle(String(localized: "tab.tools"))
         }
     }
-}
 
-/// 列表行：图标 + 标题 + 副标题。
-private struct ToolLabel: View {
-    let icon: String
-    let tint: Color
-    let titleKey: String
-    let subtitleKey: String
-
-    var body: some View {
-        Label {
-            VStack(alignment: .leading, spacing: 2) {
-                Text(NSLocalizedString(titleKey, comment: ""))
-                Text(NSLocalizedString(subtitleKey, comment: ""))
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+    @ViewBuilder
+    private func toolSection<Content: View>(_ titleKey: String, @ViewBuilder cards: () -> Content) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(NSLocalizedString(titleKey, comment: ""))
+                .font(.subheadline.bold())
+                .foregroundStyle(.secondary)
+                .padding(.horizontal)
+            LazyVGrid(columns: columns, spacing: 12) {
+                cards()
             }
-        } icon: {
-            Image(systemName: icon)
-                .foregroundStyle(tint)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 8)
+            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 12))
+            .padding(.horizontal)
         }
     }
 }
 
-/// 未移植功能占位页。
-struct ComingSoonView: View {
+/// 网格卡片（安卓 2.0 ToolCard 风格）：圆角浅色底图标 + 标题。
+private struct ToolCard<Destination: View>: View {
+    let icon: String
+    let tint: Color
     let titleKey: String
+    @ViewBuilder var destination: Destination
+
     var body: some View {
-        VStack(spacing: 12) {
-            Image(systemName: "hammer")
-                .font(.largeTitle)
-                .foregroundStyle(.secondary)
-            Text(String(localized: "tool.comingSoon"))
-                .foregroundStyle(.secondary)
+        NavigationLink {
+            destination
+        } label: {
+            VStack(spacing: 6) {
+                Image(systemName: icon)
+                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundStyle(tint)
+                    .frame(width: 44, height: 44)
+                    .background(tint.opacity(0.12), in: RoundedRectangle(cornerRadius: 10))
+                Text(NSLocalizedString(titleKey, comment: ""))
+                    .font(.caption)
+                    .foregroundStyle(.primary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 6)
+            .contentShape(Rectangle())
         }
-        .navigationTitle(NSLocalizedString(titleKey, comment: ""))
-        .navigationBarTitleDisplayMode(.inline)
+        .buttonStyle(.plain)
     }
 }
 
