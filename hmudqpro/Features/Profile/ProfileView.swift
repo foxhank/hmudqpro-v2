@@ -40,11 +40,6 @@ struct ProfileView: View {
                                 Text(auth.studentInfo?.studentID ?? "…")
                                     .font(.subheadline)
                                     .foregroundStyle(.secondary)
-                                if let college = auth.studentInfo?.college, !college.isEmpty {
-                                    Text(college)
-                                        .font(.caption)
-                                        .foregroundStyle(.tertiary)
-                                }
                             }
                             Spacer()
                             Image(systemName: "chevron.right")
@@ -240,7 +235,7 @@ private struct SettingLabel: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(NSLocalizedString(titleKey, comment: ""))
                 if let sub = subtitleKey {
-                    Text(sub).font(.caption).foregroundStyle(.secondary)
+                    Text(NSLocalizedString(sub, comment: "")).font(.caption).foregroundStyle(.secondary)
                 }
             }
         } icon: {
