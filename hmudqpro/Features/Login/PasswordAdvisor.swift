@@ -15,30 +15,33 @@ enum PasswordAdvisor {
     static func hint(for password: String) -> String? {
         guard !password.isEmpty, !looksLikeDefault(password) else { return nil }
 
-        // 1. 前缀 hmudq 只差大小写 → 「H 没大写？」
+        // 1. 全角 ＠（先于「少 @」检查，否则会被吞掉）
+        if password.contains("＠") {
+            return String(localized: "login.hint.fullwidth")
+        }
+
         let head = String(password.prefix(5))
+
+        // 2. 前缀 hmudq 只差大小写 → 「H 没大写？」
         if head.lowercased() == "hmudq", head != "Hmudq" {
-            let wrong = head
-            return String(format: NSLocalizedString("login.hint.case", comment: ""), wrong)
+            return String(format: NSLocalizedString("login.hint.case", comment: ""), head)
         }
 
-        // 2. 有 Hmudq 前缀但没有 @ → 「少了 @？」
-        if password.hasPrefix("Hmudq"), !password.contains("@") {
+        // 3. @ 前的部分与 Hmudq 差一步（错拼/换位，如 Humdq、Hmduq、Hmydq、Hmud）
+        if let at = password.firstIndex(of: "@") {
+            let typed = String(password[password.startIndex..<at])
+            if !typed.isEmpty, typed != "Hmudq", damerau(typed, "Hmudq") <= (typed.count > 4 ? 1 : 1) {
+                return String(format: NSLocalizedString("login.hint.typo", comment: ""), typed)
+            }
+        } else if password.hasPrefix("Hmudq") {
+            // 4. 有 Hmudq 前缀但没有 @ → 「少了 @？」
             return String(localized: "login.hint.atMissing")
-        }
-
-        // 3. 与 Hmudq 编辑距离 1 的前缀 → 「输成《xxx》了？」（如 Humdq / Hmydq / Hmduq / mudq）
-        if head.count == 5, editDistance(head, "Hmudq") == 1 {
+        } else if head.count == 5, damerau(head, "Hmudq") == 1 {
+            // 无 @ 且前缀差一步，也按错拼提示
             return String(format: NSLocalizedString("login.hint.typo", comment: ""), head)
         }
-        // 前面几个字母就错了（如 Humdq@123456 整体取前 7 位比对前缀）
-        let head7 = String(password.prefix(7))
-        if head7.contains("@"), editDistance(String(head7.dropLast()), "Hmudq") == 1 {
-            return String(format: NSLocalizedString("login.hint.typo", comment: ""),
-                          String(head7.dropLast()))
-        }
 
-        // 4. @ 后长度不对 → 「后六位是不是输多了/输少了？」
+        // 5. @ 后长度不是 6 → 「多输/少输了？」
         if let at = password.firstIndex(of: "@") {
             let suffix = password[password.index(after: at)...]
             if !suffix.isEmpty, suffix.count != 6 {
@@ -46,29 +49,27 @@ enum PasswordAdvisor {
             }
         }
 
-        // 5. 用了全角 ＠ 或全角字母
-        if password.contains("＠") {
-            return String(localized: "login.hint.fullwidth")
-        }
-
         return nil
     }
 
-    /// 通用编辑距离（小输入，O(mn) 足够）。
-    static func editDistance(_ a: String, _ b: String) -> Int {
+    /// Damerau-Levenshtein 距离（比普通编辑距离多识别相邻换位：
+    /// Humdq/Hmudq、Hmduq/Hmudq 互换两个字母在普通编辑距离里是 2，实际是一次手误）。
+    static func damerau(_ a: String, _ b: String) -> Int {
         let a = Array(a), b = Array(b)
         if a.isEmpty { return b.count }
         if b.isEmpty { return a.count }
-        var dp = Array(0...b.count)
+        var dp = Array(repeating: Array(repeating: 0, count: b.count + 1), count: a.count + 1)
+        for i in 0...a.count { dp[i][0] = i }
+        for j in 0...b.count { dp[0][j] = j }
         for i in 1...a.count {
-            var prev = dp[0]
-            dp[0] = i
             for j in 1...b.count {
-                let temp = dp[j]
-                dp[j] = a[i-1] == b[j-1] ? prev : min(prev, dp[j], dp[j-1]) + 1
-                prev = temp
+                let cost = a[i-1] == b[j-1] ? 0 : 1
+                dp[i][j] = min(dp[i-1][j] + 1, dp[i][j-1] + 1, dp[i-1][j-1] + cost)
+                if i > 1, j > 1, a[i-1] == b[j-2], a[i-2] == b[j-1] {
+                    dp[i][j] = min(dp[i][j], dp[i-2][j-2] + 1)   // 相邻换位
+                }
             }
         }
-        return dp[b.count]
+        return dp[a.count][b.count]
     }
 }
