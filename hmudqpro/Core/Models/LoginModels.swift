@@ -15,4 +15,6 @@ struct StudentInfo: Codable, Equatable {
     var major: String
     var className: String
     var grade: String
+    var birthday: String
+    var gender: String
 }

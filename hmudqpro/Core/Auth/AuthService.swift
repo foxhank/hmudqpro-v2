@@ -153,7 +153,9 @@ final class AuthService {
             college: field("院系") ?? field("学院") ?? "",
             major: field("专业") ?? "",
             className: field("班级") ?? "",
-            grade: field("年级") ?? ""
+            grade: field("年级") ?? "",
+            birthday: field("出生日期") ?? "",
+            gender: field("性别") ?? ""
         )
     }
 
