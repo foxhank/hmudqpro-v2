@@ -67,7 +67,9 @@ struct SemesterCalculator: Equatable {
         guard let start = semesterStartMonday else { return nil }
         let calendar = Calendar(identifier: .gregorian)
         let days = calendar.dateComponents([.day], from: start, to: date).day ?? 0
-        return days / 7 + 1
+        // Swift 的 Int 除法向零截断：-1/7 == 0，会让「开学前 1~6 天」被算成第 1 周
+        // （如周日 8-23 被当成 8-24 开学的第 1 周周日 → 显示 8-30 的课）。必须向下取整。
+        return days >= 0 ? days / 7 + 1 : (days - 6) / 7 + 1
     }
 
     /// 今天是第几周，钳到 1...totalWeeks（v1 getCurrentWeek 语义）。
