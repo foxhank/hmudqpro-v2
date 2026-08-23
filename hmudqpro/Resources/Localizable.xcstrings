@@ -2983,6 +2983,230 @@
           }
         }
       }
+    },
+    "login.passwordTip": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "默认为「Hmudq@身份证号后六位」"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Default: \"Hmudq@last 6 digits of your ID\""
+          }
+        }
+      }
+    },
+    "login.savePassword": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存密码（下次自动填充）"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save password (auto-fill next time)"
+          }
+        }
+      }
+    },
+    "login.agreementPrefix": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我已阅读并同意 "
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I have read and agree to the "
+          }
+        }
+      }
+    },
+    "login.and": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " 和 "
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " and "
+          }
+        }
+      }
+    },
+    "login.securityNotice": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "所有请求均请求于官方教务，百湖医大小助手 App 不会上传任何隐私数据"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All requests go to the official academic system. This app never uploads any private data"
+          }
+        }
+      }
+    },
+    "login.suggestAgreement": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "建议您阅读隐私政策和用户协议"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Please read the Privacy Policy and User Agreement first"
+          }
+        }
+      }
+    },
+    "login.passwordShow": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示密码"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show password"
+          }
+        }
+      }
+    },
+    "login.passwordHide": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隐藏密码"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hide password"
+          }
+        }
+      }
+    },
+    "login.failed.title": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录失败"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Login Failed"
+          }
+        }
+      }
+    },
+    "login.hint.case": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "密码是 Hmudq 开头——你是不是输成了《%@》，H 没大写？"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The password starts with \"Hmudq\" — did you type \"%@\" with a lowercase h?"
+          }
+        }
+      }
+    },
+    "login.hint.atMissing": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你是不是少了个 @？"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Are you missing the @?"
+          }
+        }
+      }
+    },
+    "login.hint.typo": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你是不是输成《%@》了？正确拼写是 Hmudq"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Did you mean \"Hmudq\" instead of \"%@\"?"
+          }
+        }
+      }
+    },
+    "login.hint.suffix": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "@ 后面应该是身份证号后六位，你是不是多输或少输了？"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "After @ should be exactly 6 digits (last 6 of your ID card)"
+          }
+        }
+      }
+    },
+    "login.hint.fullwidth": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你输入了全角字符＠，请改成英文半角 @"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You typed a full-width ＠; use the ASCII @"
+          }
+        }
+      }
     }
   },
   "version": "1.0"
