@@ -36,6 +36,13 @@ struct ProfileView: View {
             }
             .frame(maxWidth: .infinity)
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink { SettingsView() } label: {
+                        Image(systemName: "gearshape")
+                    }
+                }
+            }
         }
         .alert(String(localized: "debug.password.title"), isPresented: $showPasswordPrompt) {
             SecureField(String(localized: "login.password"), text: $debugPassword)

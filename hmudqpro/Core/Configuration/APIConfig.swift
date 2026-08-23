@@ -93,6 +93,8 @@ enum APIConfig {
     static var jwcTeacherEvalListURL: URL { join(jwcBase, "/new/student/teapj/pjDatas") }
     static var classroomURL: URL { join(backendBase, classroomPath) }
     static var donateOverviewURL: URL { join(backendBase, donateOverviewPath) }
+    static var privacyDocURL: URL { join(backendFileBase, "/" + privacyHTML) }
+    static var agreementDocURL: URL { join(backendFileBase, "/" + agreementHTML) }
 
     // MARK: - SDK
     static var buglyAppID: String { value("bugly_app_id") }
