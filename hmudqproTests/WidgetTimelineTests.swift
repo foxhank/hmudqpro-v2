@@ -51,6 +51,10 @@ final class WidgetTimelineTests: XCTestCase {
                       "周二无课")
         XCTAssertTrue(WidgetTimeline.dayPlan(for: date("2026-09-09"), courses: courses, calculator: calculator).courses.isEmpty,
                       "zc=1 的课不出现在第 2 周")
+        // 开学前（8-23 早于第 1 周周一 8-31）：不钳制成第 1 周，必须视为假期
+        let vacation = WidgetTimeline.dayPlan(for: date("2026-08-23"), courses: courses, calculator: calculator)
+        XCTAssertNil(vacation.weekNumber)
+        XCTAssertTrue(vacation.courses.isEmpty, "假期不得显示第 1 周的课")
     }
 
     func testSwitchPointsAtCourseBoundariesAndMidnight() {

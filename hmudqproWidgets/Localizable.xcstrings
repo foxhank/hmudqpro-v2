@@ -1,66 +1,182 @@
 {
-  "sourceLanguage" : "zh-Hans",
-  "strings" : {
-    "widget.today" : {
-      "localizations" : {
-        "en" : {"stringUnit" : {"state" : "translated", "value" : "Today"}},
-        "zh-Hans" : {"stringUnit" : {"state" : "translated", "value" : "今天"}}
+  "sourceLanguage": "zh-Hans",
+  "strings": {
+    "widget.today": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今天"
+          }
+        }
       }
     },
-    "widget.today.name" : {
-      "localizations" : {
-        "en" : {"stringUnit" : {"state" : "translated", "value" : "Today's Schedule"}},
-        "zh-Hans" : {"stringUnit" : {"state" : "translated", "value" : "今日课表"}}
+    "widget.today.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today's Schedule"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今日课表"
+          }
+        }
       }
     },
-    "widget.today.desc" : {
-      "localizations" : {
-        "en" : {"stringUnit" : {"state" : "translated", "value" : "Today's courses with live progress"}},
-        "zh-Hans" : {"stringUnit" : {"state" : "translated", "value" : "当天课程，按节次推进高亮"}}
+    "widget.today.desc": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today's courses with live progress"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当天课程，按节次推进高亮"
+          }
+        }
       }
     },
-    "widget.todayTomorrow.name" : {
-      "localizations" : {
-        "en" : {"stringUnit" : {"state" : "translated", "value" : "Today & Tomorrow"}},
-        "zh-Hans" : {"stringUnit" : {"state" : "translated", "value" : "今明两天"}}
+    "widget.todayTomorrow.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today & Tomorrow"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今明两天"
+          }
+        }
       }
     },
-    "widget.todayTomorrow.desc" : {
-      "localizations" : {
-        "en" : {"stringUnit" : {"state" : "translated", "value" : "Courses for today and tomorrow"}},
-        "zh-Hans" : {"stringUnit" : {"state" : "translated", "value" : "今天和明天的课程"}}
+    "widget.todayTomorrow.desc": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Courses for today and tomorrow"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今天和明天的课程"
+          }
+        }
       }
     },
-    "widget.tomorrow" : {
-      "localizations" : {
-        "en" : {"stringUnit" : {"state" : "translated", "value" : "Tomorrow"}},
-        "zh-Hans" : {"stringUnit" : {"state" : "translated", "value" : "明天"}}
+    "widget.tomorrow": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomorrow"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "明天"
+          }
+        }
       }
     },
-    "widget.weekLabel" : {
-      "localizations" : {
-        "en" : {"stringUnit" : {"state" : "translated", "value" : "Week %d"}},
-        "zh-Hans" : {"stringUnit" : {"state" : "translated", "value" : "第%d周"}}
+    "widget.weekLabel": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Week %d"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "第%d周"
+          }
+        }
       }
     },
-    "widget.noCourse" : {
-      "localizations" : {
-        "en" : {"stringUnit" : {"state" : "translated", "value" : "No classes today"}},
-        "zh-Hans" : {"stringUnit" : {"state" : "translated", "value" : "今天没有课"}}
+    "widget.noCourse": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No classes today"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今天没有课"
+          }
+        }
       }
     },
-    "widget.vacation" : {
-      "localizations" : {
-        "en" : {"stringUnit" : {"state" : "translated", "value" : "Vacation"}},
-        "zh-Hans" : {"stringUnit" : {"state" : "translated", "value" : "假期中"}}
+    "widget.vacation": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vacation"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "假期中"
+          }
+        }
       }
     },
-    "widget.inClass" : {
-      "localizations" : {
-        "en" : {"stringUnit" : {"state" : "translated", "value" : "NOW"}},
-        "zh-Hans" : {"stringUnit" : {"state" : "translated", "value" : "进行中"}}
+    "widget.inClass": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NOW"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "进行中"
+          }
+        }
+      }
+    },
+    "widget.moreCourses": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d more classes…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还有 %d 节…"
+          }
+        }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

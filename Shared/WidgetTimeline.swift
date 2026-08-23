@@ -36,14 +36,15 @@ enum WidgetTimeline {
 
     /// 某天的课程：周次 + 星期双匹配（教务一行 = 某周某天一节课）。
     static func dayPlan(for date: Date, courses: [Course], calculator: SemesterCalculator) -> DayPlan {
-        let week = calculator.weekNumber(for: date)
+        // 注意不能像 App 内 currentWeek 那样钳制到 1...20：
+        // 开学前 raw ≤ 0 一旦钳成 1，会把第 1 周的课错误地显示在假期里（如 8-23 显示 8-31 那周的课）。
+        let raw = calculator.weekNumber(for: date)
+        let week = raw.flatMap { (1...SemesterCalculator.totalWeeks).contains($0) ? $0 : nil }
         let weekday = academicWeekday(of: date)
         let dayCourses = courses
             .filter { $0.week == week && $0.weekday == weekday }
             .sorted { ($0.firstBigSlot ?? .max) < ($1.firstBigSlot ?? .max) }
-        return DayPlan(date: calendar.startOfDay(for: date),
-                       weekNumber: week.map { min(max($0, 1), SemesterCalculator.totalWeeks) },
-                       courses: dayCourses)
+        return DayPlan(date: calendar.startOfDay(for: date), weekNumber: week, courses: dayCourses)
     }
 
     // MARK: - 时间线生成

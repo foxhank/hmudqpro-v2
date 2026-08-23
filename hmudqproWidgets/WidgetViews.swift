@@ -16,6 +16,13 @@ struct TodayScheduleView: View {
                 ForEach(entry.plan.courses.prefix(rowLimit)) { course in
                     CourseRow(course: course, plan: entry.plan, at: entry.date)
                 }
+                // 小组件不支持滚动（WidgetKit 静态渲染），课多时截断 + 溢出提示
+                if entry.plan.courses.count > rowLimit {
+                    Text(String(format: NSLocalizedString("widget.moreCourses", comment: ""),
+                                entry.plan.courses.count - rowLimit))
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
             }
         }
         .padding(2)
