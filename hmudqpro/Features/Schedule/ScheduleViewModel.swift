@@ -45,10 +45,9 @@ final class ScheduleViewModel: ObservableObject {
             let unchanged = ScheduleStore.shared?.isSameAsCache(fetched) ?? false
             apply(fetched)
             ScheduleStore.shared?.save(fetched)
-            // 数据有变才通知小组件重算时间线（静默无变化时不动，省系统刷新预算）
-            if !unchanged {
-                WidgetCenter.shared.reloadAllTimelines()
-            }
+            // 每次刷新都重算小组件时间线：用户主动操作不心疼预算，
+            // 且 14 天预生成窗口能随刷新前移（哪怕数据没变）
+            WidgetCenter.shared.reloadAllTimelines()
             if unchanged {
                 showSuccess(String(localized: "schedule.refresh.unchanged"))
             } else {
