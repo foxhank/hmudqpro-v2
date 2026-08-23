@@ -21,6 +21,8 @@ struct MainTabView: View {
                 .tabItem { Label(String(localized: "tab.schedule"), systemImage: "calendar") }
             ToolsView()
                 .tabItem { Label(String(localized: "tab.tools"), systemImage: "square.grid.2x2") }
+            AssessmentView()
+                .tabItem { Label(String(localized: "tab.assessment"), systemImage: "checkmark.seal") }
             ProfileView()
                 .tabItem { Label(String(localized: "tab.me"), systemImage: "person") }
         }
