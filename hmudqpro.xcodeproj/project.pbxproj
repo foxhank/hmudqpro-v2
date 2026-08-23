@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		83C2D7AD303804EA00EFEA5C /* BigInt in Frameworks */ = {isa = PBXBuildFile; productRef = 83AA0002303749CB00EFEA5C /* BigInt */; };
+		83C2D8AE303749CC00EFEA5C /* hmudqproWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 83C2D8A3303749CC00EFEA5C /* hmudqproWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,13 +26,45 @@
 			remoteGlobalIDString = 83C2D6F4303749C700EFEA5C;
 			remoteInfo = hmudqpro;
 		};
+		83C2D8AB303749CC00EFEA5C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83C2D6ED303749C700EFEA5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83C2D8A4303749CC00EFEA5C;
+			remoteInfo = hmudqproWidgets;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		83C2D8AD303749CC00EFEA5C /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				83C2D8AE303749CC00EFEA5C /* hmudqproWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		83C2D6F5303749C700EFEA5C /* hmudqpro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hmudqpro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83C2D70A303749CB00EFEA5C /* hmudqproTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hmudqproTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83C2D714303749CB00EFEA5C /* hmudqproUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hmudqproUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		83C2D8A3303749CC00EFEA5C /* hmudqproWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = hmudqproWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		83C2D8A2303749CC00EFEA5C /* Exceptions for "hmudqproWidgets" folder in "hmudqproWidgets" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 83C2D8A4303749CC00EFEA5C /* hmudqproWidgets */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		83C2D6F7303749C700EFEA5C /* hmudqpro */ = {
@@ -47,6 +80,19 @@
 		83C2D717303749CB00EFEA5C /* hmudqproUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = hmudqproUITests;
+			sourceTree = "<group>";
+		};
+		83C2D8A0303749CC00EFEA5C /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		83C2D8A1303749CC00EFEA5C /* hmudqproWidgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				83C2D8A2303749CC00EFEA5C /* Exceptions for "hmudqproWidgets" folder in "hmudqproWidgets" target */,
+			);
+			path = hmudqproWidgets;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -74,6 +120,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		83C2D8A6303749CC00EFEA5C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -81,6 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				83C2D6F7303749C700EFEA5C /* hmudqpro */,
+				83C2D8A0303749CC00EFEA5C /* Shared */,
+				83C2D8A1303749CC00EFEA5C /* hmudqproWidgets */,
 				83C2D70D303749CB00EFEA5C /* hmudqproTests */,
 				83C2D717303749CB00EFEA5C /* hmudqproUITests */,
 				83C2D6F6303749C700EFEA5C /* Products */,
@@ -91,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				83C2D6F5303749C700EFEA5C /* hmudqpro.app */,
+				83C2D8A3303749CC00EFEA5C /* hmudqproWidgets.appex */,
 				83C2D70A303749CB00EFEA5C /* hmudqproTests.xctest */,
 				83C2D714303749CB00EFEA5C /* hmudqproUITests.xctest */,
 			);
@@ -107,13 +163,16 @@
 				83C2D6F1303749C700EFEA5C /* Sources */,
 				83C2D6F2303749C700EFEA5C /* Frameworks */,
 				83C2D6F3303749C700EFEA5C /* Resources */,
+				83C2D8AD303749CC00EFEA5C /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				83C2D8AC303749CC00EFEA5C /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				83C2D6F7303749C700EFEA5C /* hmudqpro */,
+				83C2D8A0303749CC00EFEA5C /* Shared */,
 			);
 			name = hmudqpro;
 			packageProductDependencies = (
@@ -169,6 +228,29 @@
 			productReference = 83C2D714303749CB00EFEA5C /* hmudqproUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		83C2D8A4303749CC00EFEA5C /* hmudqproWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83C2D8A8303749CC00EFEA5C /* Build configuration list for PBXNativeTarget "hmudqproWidgets" */;
+			buildPhases = (
+				83C2D8A5303749CC00EFEA5C /* Sources */,
+				83C2D8A6303749CC00EFEA5C /* Frameworks */,
+				83C2D8A7303749CC00EFEA5C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				83C2D8A0303749CC00EFEA5C /* Shared */,
+				83C2D8A1303749CC00EFEA5C /* hmudqproWidgets */,
+			);
+			name = hmudqproWidgets;
+			packageProductDependencies = (
+			);
+			productName = hmudqproWidgets;
+			productReference = 83C2D8A3303749CC00EFEA5C /* hmudqproWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -190,6 +272,9 @@
 						CreatedOnToolsVersion = 16.2;
 						TestTargetID = 83C2D6F4303749C700EFEA5C;
 					};
+					83C2D8A4303749CC00EFEA5C = {
+						CreatedOnToolsVersion = 16.2;
+					};
 				};
 			};
 			buildConfigurationList = 83C2D6F0303749C700EFEA5C /* Build configuration list for PBXProject "hmudqpro" */;
@@ -210,6 +295,7 @@
 			projectRoot = "";
 			targets = (
 				83C2D6F4303749C700EFEA5C /* hmudqpro */,
+				83C2D8A4303749CC00EFEA5C /* hmudqproWidgets */,
 				83C2D709303749CB00EFEA5C /* hmudqproTests */,
 				83C2D713303749CB00EFEA5C /* hmudqproUITests */,
 			);
@@ -232,6 +318,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		83C2D712303749CB00EFEA5C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83C2D8A7303749CC00EFEA5C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -262,6 +355,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		83C2D8A5303749CC00EFEA5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -274,6 +374,11 @@
 			isa = PBXTargetDependency;
 			target = 83C2D6F4303749C700EFEA5C /* hmudqpro */;
 			targetProxy = 83C2D715303749CB00EFEA5C /* PBXContainerItemProxy */;
+		};
+		83C2D8AC303749CC00EFEA5C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83C2D8A4303749CC00EFEA5C /* hmudqproWidgets */;
+			targetProxy = 83C2D8AB303749CC00EFEA5C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -402,6 +507,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = hmudqpro/hmudqpro.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"hmudqpro/Preview Content\"";
@@ -431,6 +537,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = hmudqpro/hmudqpro.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"hmudqpro/Preview Content\"";
@@ -527,6 +634,58 @@
 			};
 			name = Release;
 		};
+		83C2D8AA9303749CC00EFEA5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = hmudqproWidgets/hmudqproWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WNT524TUR2;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = hmudqproWidgets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.foxhank.hmudqpro.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		83C2D8AAA303749CC00EFEA5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = hmudqproWidgets/hmudqproWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WNT524TUR2;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = hmudqproWidgets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.foxhank.hmudqpro.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -562,6 +721,15 @@
 			buildConfigurations = (
 				83C2D725303749CB00EFEA5C /* Debug */,
 				83C2D726303749CB00EFEA5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83C2D8A8303749CC00EFEA5C /* Build configuration list for PBXNativeTarget "hmudqproWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83C2D8AA9303749CC00EFEA5C /* Debug */,
+				83C2D8AAA303749CC00EFEA5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

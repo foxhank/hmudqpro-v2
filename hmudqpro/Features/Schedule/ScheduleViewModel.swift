@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import WidgetKit
 
 /// 课表页 ViewModel：加载缓存 → 拉取最新 → 计算当前周。
 @MainActor
@@ -44,6 +45,10 @@ final class ScheduleViewModel: ObservableObject {
             let unchanged = ScheduleStore.shared?.isSameAsCache(fetched) ?? false
             apply(fetched)
             ScheduleStore.shared?.save(fetched)
+            // 数据有变才通知小组件重算时间线（静默无变化时不动，省系统刷新预算）
+            if !unchanged {
+                WidgetCenter.shared.reloadAllTimelines()
+            }
             if unchanged {
                 showSuccess(String(localized: "schedule.refresh.unchanged"))
             } else {
