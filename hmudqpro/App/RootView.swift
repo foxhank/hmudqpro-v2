@@ -19,7 +19,7 @@ struct MainTabView: View {
         TabView {
             ScheduleView()
                 .tabItem { Label(String(localized: "tab.schedule"), systemImage: "calendar") }
-            Text("工具")
+            ToolsView()
                 .tabItem { Label(String(localized: "tab.tools"), systemImage: "square.grid.2x2") }
             ProfileView()
                 .tabItem { Label(String(localized: "tab.me"), systemImage: "person") }

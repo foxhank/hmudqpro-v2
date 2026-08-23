@@ -63,6 +63,7 @@ enum APIConfig {
     static var feedbackURL: URL { URL(string: value("feedback_url"))! }
     static var beianURL: URL { URL(string: value("beian_url"))! }
     static var mikecrmRepair: URL { URL(string: value("mikecrm_repair"))! }
+    static var ebookURL: URL { URL(string: value("ebook_url"))! }
 
     // MARK: - 请求头
     static var webUserAgent: String { value("web_user_agent") }
@@ -81,6 +82,8 @@ enum APIConfig {
     static var jwcCalendarURL: URL { join(jwcBase, jwcCalendarAction) }
     static var jwcStudentInfoURL: URL { join(jwcBase, jwcStudentInfoAction) }
     static var jwcSsoLoginURL: URL { join(jwcBase, jwcSsoLogin) }
+    static var jwcGradesURL: URL { join(jwcBase, jwcGradesAction) }
+    static var jwcExamGradesURL: URL { join(jwcBase, jwcExamGradesAction) }
 
     // MARK: - SDK
     static var buglyAppID: String { value("bugly_app_id") }

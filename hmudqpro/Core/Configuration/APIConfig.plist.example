@@ -74,6 +74,8 @@
 	<string>/new/xsxk/xklx/02</string>
 	<key>jwc_xsxk_timecheck</key>
 	<string>/new/xsxk/</string>
+	<key>ebook_url</key>
+	<string>https://example.com/ebook</string>
 	<key>mikecrm_repair</key>
 	<string>https://sheguanhui101.mikecrm.com/A1urdFL</string>
 	<key>privacy_html</key>
