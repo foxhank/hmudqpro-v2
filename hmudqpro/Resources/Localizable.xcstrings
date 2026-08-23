@@ -1815,6 +1815,54 @@
           }
         }
       }
+    },
+    "assessment.cameraDenied.title": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "相机权限未开启"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera Access Disabled"
+          }
+        }
+      }
+    },
+    "assessment.cameraDenied.settings": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "去设置"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Settings"
+          }
+        }
+      }
+    },
+    "assessment.cameraDenied.message": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "扫码签到需要相机权限。请到 设置 > 隐私与安全性 > 相机 中允许“百湖医大小助手”。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign-in QR scanning needs camera access. Enable it in Settings > Privacy & Security > Camera."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

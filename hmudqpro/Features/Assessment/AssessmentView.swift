@@ -12,6 +12,7 @@ import AVFoundation
 /// 3. 仍失败：停在统一认证登录页时，自动帮用户填充学号/密码（不代点登录，防误触）。
 struct AssessmentView: View {
     @State private var loadFailed = false
+    @State private var cameraDenied = false
 
     var body: some View {
         NavigationStack {
@@ -19,14 +20,24 @@ struct AssessmentView: View {
                 if loadFailed {
                     ErrorRetryView { loadFailed = false }
                 } else {
-                    AssessmentWebView(url: APIConfig.zhcpBase) {
-                        loadFailed = true
-                    }
-                    .ignoresSafeArea(edges: .bottom)
+                    AssessmentWebView(url: APIConfig.zhcpBase,
+                                      onHardFailure: { loadFailed = true },
+                                      onCameraDenied: { cameraDenied = true })
+                        .ignoresSafeArea(edges: .bottom)
                 }
             }
             .navigationTitle(String(localized: "tab.assessment"))
             .navigationBarTitleDisplayMode(.inline)
+            .alert(String(localized: "assessment.cameraDenied.title"),
+                   isPresented: $cameraDenied) {
+                Button(String(localized: "assessment.cameraDenied.settings")) {
+                    let url = URL(string: UIApplication.openSettingsURLString)!
+                    UIApplication.shared.open(url)
+                }
+                Button(String(localized: "common.done"), role: .cancel) {}
+            } message: {
+                Text(String(localized: "assessment.cameraDenied.message"))
+            }
         }
     }
 }
@@ -36,6 +47,7 @@ struct AssessmentView: View {
 private struct AssessmentWebView: UIViewRepresentable {
     let url: URL
     let onHardFailure: () -> Void
+    let onCameraDenied: () -> Void
 
     func makeUIView(context: Context) -> WKWebView {
         let config = WKWebViewConfiguration()
@@ -54,7 +66,7 @@ private struct AssessmentWebView: UIViewRepresentable {
     func updateUIView(_ webView: WKWebView, context: Context) {}
 
     func makeCoordinator() -> AssessmentCoordinator {
-        AssessmentCoordinator(onHardFailure: onHardFailure)
+        AssessmentCoordinator(onHardFailure: onHardFailure, onCameraDenied: onCameraDenied)
     }
 }
 
@@ -62,13 +74,15 @@ private struct AssessmentWebView: UIViewRepresentable {
 
 final class AssessmentCoordinator: NSObject, WKNavigationDelegate, WKUIDelegate {
     let onHardFailure: () -> Void
+    let onCameraDenied: () -> Void
     weak var webView: WKWebView?
     /// 重登重试只做一次，避免「失败→重载→又失败」死循环
     private var retriedAfterRelogin = false
     private var filledCredentials = false
 
-    init(onHardFailure: @escaping () -> Void) {
+    init(onHardFailure: @escaping () -> Void, onCameraDenied: @escaping () -> Void) {
         self.onHardFailure = onHardFailure
+        self.onCameraDenied = onCameraDenied
     }
 
     func load(url: URL) async {
@@ -140,7 +154,11 @@ final class AssessmentCoordinator: NSObject, WKNavigationDelegate, WKUIDelegate 
                     decisionHandler(granted ? .grant : .deny)
                 }
             }
-        default:
+        case .denied, .restricted:
+            // 已被拒（含早期无用途描述版本被系统自动拒绝的存量状态）→ 引导去设置
+            DispatchQueue.main.async { self.onCameraDenied() }
+            decisionHandler(.deny)
+        @unknown default:
             decisionHandler(.deny)
         }
     }
