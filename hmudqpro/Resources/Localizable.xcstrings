@@ -1160,38 +1160,6 @@
         }
       }
     },
-    "tool.examInfo": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "考试信息"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Exam Info"
-          }
-        }
-      }
-    },
-    "tool.examInfo.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "查看考试安排和时间"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Exam schedule and times"
-          }
-        }
-      }
-    },
     "tool.emptyClassroom": {
       "localizations": {
         "zh-Hans": {
@@ -1476,22 +1444,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Chinese academic database"
-          }
-        }
-      }
-    },
-    "tool.labBadge": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "LAB"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "LAB"
           }
         }
       }

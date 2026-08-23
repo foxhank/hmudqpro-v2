@@ -31,12 +31,24 @@ struct GradesView: View {
             }
         }
         .navigationTitle(String(localized: "tool.grades"))
-        .task(id: auth.studentInfo?.grade) {
-            if let g = auth.studentInfo?.grade, let year = Int(g) {
+        .task(id: auth.studentInfo) {
+            // 学期列表起点 = 入学年份：优先学生信息的「年级」，兜底学号前两位（23xxxx → 2023）
+            if let year = Self.enrollmentYear(studentInfo: auth.studentInfo) {
                 vm.updateStartYear(year)
             }
             await vm.load()
         }
+    }
+
+    /// 入学年份。年级字段可能带「级」或为空，取其中的 4 位数字；兜底学号前两位。
+    static func enrollmentYear(studentInfo: StudentInfo?) -> Int? {
+        if let grade = studentInfo?.grade,
+           let m = grade.range(of: #"20\d{2}"#, options: .regularExpression) {
+            return Int(grade[m])
+        }
+        guard let id = KeychainStore.string(forKey: KeychainStore.Keys.studentID),
+              id.count >= 2, let yy = Int(id.prefix(2)) else { return nil }
+        return 2000 + yy
     }
 }
 
