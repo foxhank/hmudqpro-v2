@@ -3261,13 +3261,13 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "开发者年费支付凭证"
+            "value": "每年要交 688..."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Developer membership payment proof"
+            "value": "688 per year..."
           }
         }
       }
@@ -3412,6 +3412,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "Use Another Account"
+          }
+        }
+      }
+    },
+    "sponsor.desc.appleFee": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "由于苹果限制，开发软件每年要交 ¥688 的 Developer 会员费"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple requires a ¥688/year Developer membership"
+          }
+        }
+      }
+    },
+    "sponsor.desc.noProfit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "本软件没有任何盈利点，能不能看条广告给开发者回回血 0v0"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This app makes no money — watching an ad helps the developer 0v0"
+          }
+        }
+      }
+    },
+    "sponsor.desc.iterate": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "助力开发者更快迭代软件"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "It helps the app iterate faster"
           }
         }
       }

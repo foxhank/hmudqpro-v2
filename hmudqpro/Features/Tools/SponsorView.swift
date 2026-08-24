@@ -20,11 +20,14 @@ struct SponsorView: View {
                     Image(systemName: "heart.fill")
                         .font(.system(size: 48))
                         .foregroundStyle(pink)
-                    Text(String(localized: "sponsor.watchAd.title")).font(.title2.bold())
-                    Text(String(localized: "sponsor.watchAd.subtitle"))
-                        .font(.subheadline).foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
+                    Text(String(localized: "sponsor.desc.appleFee"))
+                    Text(String(localized: "sponsor.desc.noProfit"))
+                    Text(String(localized: "sponsor.desc.iterate"))
                 }
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
                 .padding(.top, 12)
 
                 // 看广告按钮

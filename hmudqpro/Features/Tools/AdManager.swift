@@ -94,18 +94,25 @@ final class AdManager: NSObject, ObservableObject {
 
 extension AdManager: BUNativeExpressRewardedVideoAdDelegate {
     nonisolated func nativeExpressRewardedVideoAdDidLoad(_ rewardedVideoAd: BUNativeExpressRewardedVideoAd) {
-        Task { @MainActor in self.isLoadingAd = false }
+        Task { @MainActor in
+            self.isLoadingAd = false
+            print("🛠 [Ad] 广告数据加载成功（等待素材下载）")
+        }
     }
 
     nonisolated func nativeExpressRewardedVideoAd(_ rewardedVideoAd: BUNativeExpressRewardedVideoAd, didFailWithError error: Error?) {
         Task { @MainActor in
             self.isLoadingAd = false
             self.isAdLoaded = false
+            print("🛠 [Ad] ❌ 广告加载失败: \(error.map(String.init(describing:)) ?? "nil")")
         }
     }
 
     nonisolated func nativeExpressRewardedVideoAdDidDownLoadVideo(_ rewardedVideoAd: BUNativeExpressRewardedVideoAd) {
-        Task { @MainActor in self.isAdLoaded = true }
+        Task { @MainActor in
+            self.isAdLoaded = true
+            print("🛠 [Ad] ✅ 素材就绪，可展示")
+        }
     }
 
     nonisolated func nativeExpressRewardedVideoAdDidVisible(_ rewardedVideoAd: BUNativeExpressRewardedVideoAd) {}
