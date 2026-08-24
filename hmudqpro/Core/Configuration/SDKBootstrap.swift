@@ -32,17 +32,17 @@ enum SDKBootstrap {
         guard !groMoreStarted else { return }
         groMoreStarted = true
         let config = BUAdSDKConfiguration.configuration()
-        config.appID = APIConfig.gromoreAppID
-        config.sdkdebug = true
-        // 隔离实验：Debug 直连穿山甲（不走 GroMore 聚合），用于定位 40006 归属
-        // - 直连也 40006 → App(5856020) 在穿山甲后台未过审/未创建 iOS 平台
-        // - 直连能加载   → GroMore 口袋工厂侧配置问题
+        // Debug 用穿山甲官方测试应用 5000546（配套 iOS 测试代码位，见 AdManager）；
+        // Release 用正式 App + GroMore 聚合。
         #if DEBUG
+        config.appID = "5000546"
         config.useMediation = false
         #else
+        config.appID = APIConfig.gromoreAppID
         config.useMediation = true
         #endif
-        print("🛠 [AdSDK] 开始初始化 BUAdSDK appID=\(APIConfig.gromoreAppID)")
+        config.sdkdebug = true
+        print("🛠 [AdSDK] 开始初始化 BUAdSDK appID=\(config.appID ?? "") mediation=\(config.useMediation)")
         BUAdSDKManager.start(asyncCompletionHandler: { success, error in
             print("🛠 [AdSDK] 初始化完成 success=\(success) error=\(error.map(String.init(describing:)) ?? "nil")")
             if success { AdManager.sdkDidStart() }
