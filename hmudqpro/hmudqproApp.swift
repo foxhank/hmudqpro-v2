@@ -5,9 +5,6 @@ import WidgetKit
 struct hmudqproApp: App {
     @StateObject private var auth = AuthViewModel.shared
 
-    init() {
-        SDKBootstrap.setupAll()
-    }
 
     var body: some Scene {
         WindowGroup {

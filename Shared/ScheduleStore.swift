@@ -31,6 +31,13 @@ final class ScheduleStore {
         defaults.set(Date().timeIntervalSince1970, forKey: Self.fetchedAtKey)
     }
 
+    /// 清空缓存（切换账号时用，避免新账号看到旧课表）。
+    func clear() {
+        defaults.removeObject(forKey: Self.coursesKey)
+        defaults.removeObject(forKey: Self.fingerprintKey)
+        defaults.removeObject(forKey: Self.fetchedAtKey)
+    }
+
     func load() -> [Course] {
         guard let data = defaults.data(forKey: Self.coursesKey) else { return [] }
         return (try? JSONDecoder().decode([Course].self, from: data)) ?? []

@@ -5,11 +5,16 @@ struct RootView: View {
     @EnvironmentObject var auth: AuthViewModel
 
     var body: some View {
-        if auth.isLoggedIn {
-            MainTabView()
-        } else {
-            LoginView()
+        Group {
+            if auth.isLoggedIn {
+                MainTabView()
+            } else {
+                LoginView()
+            }
         }
+        // SDK 在 UI 就绪后初始化（App.init 太早：穿山甲依赖 UIApplication，
+        // 过早启动会导致进赞助页创建广告对象时 ObjC 层崩溃）
+        .task { SDKBootstrap.setupAll() }
     }
 }
 

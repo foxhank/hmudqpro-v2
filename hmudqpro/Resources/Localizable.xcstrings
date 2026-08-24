@@ -3367,6 +3367,54 @@
           }
         }
       }
+    },
+    "account.savedCount": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已保存 %d 个账号"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d accounts saved"
+          }
+        }
+      }
+    },
+    "account.switch.hint": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点击切换账号（会清除当前会话并重新登录，课表与小组件自动更新）。左滑删除已保存账号。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap to switch (session resets and re-logs in; schedule and widgets refresh). Swipe to delete."
+          }
+        }
+      }
+    },
+    "account.useOther": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用其他账号"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use Another Account"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

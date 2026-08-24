@@ -7,6 +7,7 @@ struct ProfileView: View {
     @EnvironmentObject var auth: AuthViewModel
 
     @State private var showInfoSheet = false
+    @State private var showAccountSwitcher = false
     @State private var showScheduleSettings = false
     @State private var scheduleRefreshTrigger = 0
     @State private var showDebug = false
@@ -53,9 +54,15 @@ struct ProfileView: View {
 
                 // MARK: 账号管理
                 Section(String(localized: "settings.group.account")) {
-                    SettingRow(icon: "person.2.fill", tint: .blue,
-                               titleKey: "settings.switchAccount",
-                               subtitleKey: nil, action: { auth.logout() })
+                    Button {
+                        showAccountSwitcher = true
+                    } label: {
+                        SettingLabel(icon: "person.2.fill", tint: .blue,
+                                     titleKey: "settings.switchAccount",
+                                     subtitleKey: String(format: NSLocalizedString("account.savedCount", comment: ""),
+                                                         AccountStore.accounts.count))
+                    }
+                    .buttonStyle(.plain)
                     SettingRow(icon: "arrow.clockwise.circle.fill", tint: .blue,
                                titleKey: "settings.refreshSession",
                                subtitleKey: "settings.refreshSession.sub") {
@@ -145,6 +152,7 @@ struct ProfileView: View {
                 self.toast = nil
             }
             .sheet(isPresented: $showInfoSheet) { StudentInfoSheet(info: auth.studentInfo) }
+            .sheet(isPresented: $showAccountSwitcher) { AccountSwitcherSheet() }
             .sheet(isPresented: $showScheduleSettings) { ScheduleSettingsSheet(refreshTrigger: $scheduleRefreshTrigger) }
             .alert(String(localized: "update.found.title"), isPresented: Binding(
                 get: { updateInfo != nil }, set: { if !$0 { updateInfo = nil } })) {

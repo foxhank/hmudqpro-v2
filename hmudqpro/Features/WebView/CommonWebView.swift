@@ -53,6 +53,14 @@ final class WebViewCoordinator: NSObject, WKNavigationDelegate, WKUIDelegate {
         webView?.load(URLRequest(url: url))
     }
 
+    /// 清空 WKWebView 共享 cookie store（切换账号时清旧会话）。
+    static func purgeCookieStore() {
+        let store = WKWebsiteDataStore.default().httpCookieStore
+        store.getAllCookies { cookies in
+            cookies.forEach { store.delete($0) }
+        }
+    }
+
     /// 把 App 会话 Cookie（HTTPCookieStorage）灌进 WKWebView 的 cookie store。
     static func seedCookies() async {
         let store = WKWebsiteDataStore.default().httpCookieStore
