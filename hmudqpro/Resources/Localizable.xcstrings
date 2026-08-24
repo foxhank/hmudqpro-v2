@@ -1816,54 +1816,6 @@
         }
       }
     },
-    "sponsor.project": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "赞助项目"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Project"
-          }
-        }
-      }
-    },
-    "sponsor.proof": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "收款凭证"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Receipts"
-          }
-        }
-      }
-    },
-    "sponsor.hint": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "完整打赏功能（支付、榜单、留言）即将上线。"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Full donation features (payment, leaderboard, messages) coming soon."
-          }
-        }
-      }
-    },
     "classroom.date": {
       "localizations": {
         "zh-Hans": {
@@ -3208,156 +3160,44 @@
         }
       }
     },
-    "donation.title": {
+    "sponsor.watchAd.title": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "看广告献爱心"
+            "value": "看广告赞助开发者"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Watch Ads for Love"
+            "value": "Watch Ads to Support the Developer"
           }
         }
       }
     },
-    "donation.subtitle": {
+    "sponsor.watchAd.subtitle": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "每一次观看都是爱的传递"
+            "value": "苹果开发者账号每年要交 ¥688，看条广告帮开发者回点血"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Every view spreads the love"
+            "value": "The Apple developer account costs ¥688/year — watching an ad helps"
           }
         }
       }
     },
-    "donation.about": {
+    "sponsor.button.ready.title": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "关于这个项目"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "About This Project"
-          }
-        }
-      }
-    },
-    "donation.about.1": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "作者在开发过程中发现，接入广告可以获取一些收益来支持应用的持续维护和开发。"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ad revenue helps sustain development and maintenance."
-          }
-        }
-      }
-    },
-    "donation.about.2": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "与其将这部分收益用于个人消费，不如将这份温暖传递给更多需要帮助的人。"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rather than keeping it, the warmth is passed on to those in need."
-          }
-        }
-      }
-    },
-    "donation.about.3": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "所有广告收益在扣除必要的运营成本后，将全额捐赠给慈善项目，让爱心延续。"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "After essential costs, all ad revenue is donated to charity."
-          }
-        }
-      }
-    },
-    "donation.today": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "今日贡献"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Today"
-          }
-        }
-      }
-    },
-    "donation.total": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "历史总贡献"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Total"
-          }
-        }
-      }
-    },
-    "donation.times": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "次"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "times"
-          }
-        }
-      }
-    },
-    "donation.button.ready.title": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "看广告献爱心"
+            "value": "看广告赞助"
           }
         },
         "en": {
@@ -3368,55 +3208,23 @@
         }
       }
     },
-    "donation.button.ready": {
+    "sponsor.button.ready": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "观看完整广告即可贡献爱心"
+            "value": "观看完整广告即算一次支持"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Watch a full ad to contribute"
+            "value": "Watch a full ad to count as support"
           }
         }
       }
     },
-    "donation.button.loading": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "广告加载中…"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Loading ad…"
-          }
-        }
-      }
-    },
-    "donation.button.load": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "加载广告"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Load Ad"
-          }
-        }
-      }
-    },
-    "donation.button.wait": {
+    "sponsor.button.wait": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
@@ -3432,210 +3240,130 @@
         }
       }
     },
-    "donation.leaderboard": {
+    "sponsor.sessionCount": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "爱心排行榜"
+            "value": "今日已支持 %d 次，感谢！"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Leaderboard"
+            "value": "Supported %d times today, thanks!"
           }
         }
       }
     },
-    "donation.leaderboard.empty": {
+    "sponsor.qr.hint": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "暂无排行数据，成为第一个贡献爱心的人吧！"
+            "value": "开发者年费支付凭证"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No data yet — be the first!"
+            "value": "Developer membership payment proof"
           }
         }
       }
     },
-    "donation.refresh": {
+    "sponsor.recovery.title": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "刷新"
+            "value": "成本收回计划"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Refresh"
+            "value": "Cost Recovery"
           }
         }
       }
     },
-    "donation.setNickname": {
+    "sponsor.board.title": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "设置昵称"
+            "value": "支持榜"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Set Nickname"
+            "value": "Supporters"
           }
         }
       }
     },
-    "donation.nickname.placeholder": {
+    "sponsor.thanks.title": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "输入昵称"
+            "value": "感谢支持！"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Enter nickname"
+            "value": "Thanks for your support!"
           }
         }
       }
     },
-    "donation.nickname.hint": {
+    "sponsor.thanks.ok": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "昵称会显示在爱心排行榜上，不设置则匿名显示。"
+            "value": "不客气"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Shown on the leaderboard; anonymous if unset."
+            "value": "You're welcome"
           }
         }
       }
     },
-    "donation.anonymous": {
+    "sponsor.thanks.message": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "匿名爱心人士"
+            "value": "你已完整观看广告，为开发者贡献了一份力量。"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Anonymous"
+            "value": "You watched a full ad and supported the developer."
           }
         }
       }
     },
-    "donation.me": {
+    "sponsor.rewardName": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "这是我"
+            "value": "支持"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This is me"
-          }
-        }
-      }
-    },
-    "donation.thanks.title": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "感谢你的爱心"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Thank You!"
-          }
-        }
-      }
-    },
-    "donation.thanks.message": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "你的爱心已送达，广告收益将捐赠给慈善项目 ❤️"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your contribution will be donated to charity ❤️"
-          }
-        }
-      }
-    },
-    "donation.rewardName": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "爱心"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "love"
-          }
-        }
-      }
-    },
-    "donation.error.decode": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "响应解析失败"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Failed to parse response"
-          }
-        }
-      }
-    },
-    "donation.error.api": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "接口返回错误"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "API error"
+            "value": "support"
           }
         }
       }

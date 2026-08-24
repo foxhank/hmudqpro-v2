@@ -4,6 +4,7 @@ import SwiftUI
 /// 快捷跳转走内置 WebView（Cookie 自动登录），不再跳系统浏览器。
 struct ToolsView: View {
     private let columns = Array(repeating: GridItem(.flexible(), spacing: 4), count: 4)
+    private let pink = Color.pink
 
     var body: some View {
         NavigationStack {
@@ -40,16 +41,13 @@ struct ToolsView: View {
                             WebViewScreen(titleKey: "tool.wanfang", url: APIConfig.wanfangWebvpn)
                         }
                     }
-                    // 赞助开发者：单独一行
+                    // 赞助开发者：快捷跳转下面单独一行（v1 风格，左侧爱心）
                     NavigationLink { SponsorView() } label: {
                         HStack(spacing: 12) {
                             Image(systemName: "heart.fill")
-                                .foregroundStyle(.pink)
+                                .foregroundStyle(pink)
                             Text(String(localized: "tool.sponsor"))
                             Spacer()
-                            Image(systemName: "chevron.right")
-                                .font(.caption)
-                                .foregroundStyle(.tertiary)
                         }
                         .padding()
                         .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 12))

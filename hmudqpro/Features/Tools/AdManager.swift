@@ -37,7 +37,7 @@ final class AdManager: NSObject, ObservableObject {
         slot.position = .bottom
 
         let model = BURewardedVideoModel()
-        model.rewardName = String(localized: "donation.rewardName")
+        model.rewardName = String(localized: "sponsor.rewardName")
         model.rewardAmount = 1
 
         rewardedVideoAd = BUNativeExpressRewardedVideoAd(slot: slot, rewardedVideoModel: model)

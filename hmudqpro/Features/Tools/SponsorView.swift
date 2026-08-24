@@ -1,80 +1,52 @@
 import SwiftUI
 
-/// 打赏页（v1 DonationView 移植）：看广告献爱心。
-/// 黄色主题；项目简介 + 今日/历史贡献 + 激励广告按钮 + 爱心排行榜 + 昵称设置。
+/// 赞助开发者（v1 SponsorView 移植）：看激励广告支持开发者，回收苹果开发者年费。
+/// 纯广告变现，不涉及后端支付；展示年费支付凭证与成本收回进度。
 struct SponsorView: View {
     @StateObject private var adManager = AdManager.shared
-    @State private var nickname: String
-    @State private var rankings: [DonationService.DonationRanking] = []
-    @State private var me: DonationService.DonationRanking?
-    @State private var todayCount = 0
-    @State private var showNicknameEdit = false
     @State private var showThanks = false
-    @State private var toast: String?
     @State private var errorMessage: String?
-    @State private var isLoading = true
 
-    private let yellow = Color(red: 0.9, green: 0.7, blue: 0.0)
-    private let service = DonationService()
+    private let pink = Color.pink
 
-    init() {
-        _nickname = State(initialValue: UserDefaults.standard.string(forKey: "donation.nickname") ?? "")
-        _todayCount = State(initialValue: UserDefaults.standard.integer(forKey: "donation.today.\(Self.todayKey())"))
-    }
+    /// 成本收回计划（后端接口预留，暂 0/688 占位；单位：分，避免浮点）。
+    private let recoveredAmount = 0
+    private let totalCost = 68800
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 24) {
-                // 标题
-                VStack(spacing: 12) {
+            VStack(spacing: 20) {
+                VStack(spacing: 10) {
                     Image(systemName: "heart.fill")
-                        .font(.system(size: 56))
-                        .foregroundStyle(yellow)
-                    Text(String(localized: "donation.title")).font(.title.bold())
-                    Text(String(localized: "donation.subtitle"))
+                        .font(.system(size: 48))
+                        .foregroundStyle(pink)
+                    Text(String(localized: "sponsor.watchAd.title")).font(.title2.bold())
+                    Text(String(localized: "sponsor.watchAd.subtitle"))
                         .font(.subheadline).foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
                 }
-                .padding(.top, 16)
-
-                // 项目简介
-                VStack(alignment: .leading, spacing: 10) {
-                    Text(String(localized: "donation.about")).font(.headline)
-                    aboutBullet("lightbulb.fill", "donation.about.1")
-                    aboutBullet("heart.circle.fill", "donation.about.2")
-                    aboutBullet("hand.raised.fill", "donation.about.3")
-                }
-                .padding(16)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 12))
-                .padding(.horizontal)
-
-                // 统计
-                HStack(spacing: 12) {
-                    statCard(titleKey: "donation.today", value: todayCount, tint: yellow)
-                    statCard(titleKey: "donation.total", value: me?.donationCount ?? 0, tint: .blue)
-                }
-                .padding(.horizontal)
+                .padding(.top, 12)
 
                 // 看广告按钮
                 Button {
-                    watchAd()
+                    adManager.presentRewardedAd()
                 } label: {
                     HStack(spacing: 10) {
                         Image(systemName: "play.circle.fill").font(.title2)
                         VStack(spacing: 2) {
                             Text(buttonTitle).font(.headline)
                             Text(adManager.isAdLoaded
-                                 ? String(localized: "donation.button.ready")
-                                 : String(localized: "donation.button.wait"))
+                                 ? String(localized: "sponsor.button.ready")
+                                 : String(localized: "sponsor.button.wait"))
                                 .font(.caption)
                         }
                         Image(systemName: "heart.fill").font(.title2)
                     }
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 18)
-                    .background(adManager.isAdLoaded ? yellow : Color(.systemGray3),
-                                in: RoundedRectangle(cornerRadius: 16))
+                    .padding(.vertical, 16)
+                    .background(adManager.isAdLoaded ? pink : Color(.systemGray3),
+                                in: RoundedRectangle(cornerRadius: 14))
                 }
                 .disabled(!adManager.isAdLoaded)
                 .padding(.horizontal)
@@ -85,274 +57,64 @@ struct SponsorView: View {
                         .padding(.horizontal)
                 }
 
-                // 排行榜
-                VStack(spacing: 12) {
+                // 开发者年费支付凭证
+                VStack(spacing: 8) {
+                    Image("sponsor_qr")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: 220)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color(.systemGray4)))
+                    Text(String(localized: "sponsor.qr.hint"))
+                        .font(.caption).foregroundStyle(.secondary)
+                }
+                .padding(.top, 4)
+
+                // 成本收回计划
+                VStack(spacing: 8) {
                     HStack {
-                        Text(String(localized: "donation.leaderboard")).font(.headline)
+                        Text(String(localized: "sponsor.recovery.title"))
+                            .font(.subheadline.weight(.semibold))
                         Spacer()
-                        Button {
-                            Task { await load() }
-                        } label: {
-                            Label(String(localized: "donation.refresh"), systemImage: "arrow.clockwise")
-                                .font(.caption)
-                        }
-                        .foregroundStyle(yellow)
+                        Text(String(format: "¥%.2f / ¥%.0f",
+                                    Double(recoveredAmount) / 100, Double(totalCost) / 100))
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(pink)
                     }
-                    if isLoading {
-                        ProgressView().frame(maxWidth: .infinity).padding(.vertical, 24)
-                    } else if rankings.isEmpty {
-                        VStack(spacing: 8) {
-                            Image(systemName: "heart.text.square")
-                                .font(.system(size: 36)).foregroundStyle(.secondary)
-                            Text(String(localized: "donation.leaderboard.empty"))
-                                .font(.subheadline).foregroundStyle(.secondary)
-                        }
-                        .frame(maxWidth: .infinity).padding(.vertical, 24)
-                    } else {
-                        ForEach(Array(rankings.enumerated()), id: \.element.id) { index, row in
-                            RankingRow(rank: index + 1, row: row)
-                        }
-                        if let me, !rankings.contains(where: \.isCurrentUser) {
-                            RankingRow(rank: nil, row: me)
-                        }
-                    }
+                    ProgressView(value: progress)
+                        .tint(pink)
+                        .scaleEffect(y: 1.3)
                 }
                 .padding(16)
-                .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 12))
+                .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 14))
                 .padding(.horizontal)
-
-                // 昵称入口
-                Button {
-                    showNicknameEdit = true
-                } label: {
-                    Label(nickname.isEmpty ? String(localized: "donation.setNickname")
-                                           : nickname,
-                          systemImage: "person.circle")
-                        .font(.subheadline)
-                }
-                .foregroundStyle(yellow)
             }
-            .padding(.bottom, 32)
+            .padding(.bottom, 28)
         }
         .background(Color(.systemGroupedBackground))
         .navigationTitle(String(localized: "tool.sponsor"))
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    showNicknameEdit = true
-                } label: {
-                    Image(systemName: "person.circle")
-                }
-                .foregroundStyle(yellow)
-            }
-        }
-        .task { await load() }
-        .sheet(isPresented: $showNicknameEdit) {
-            NicknameEditSheet(nickname: nickname) { newName in
-                Task {
-                    do {
-                        let msg = try await service.rename(nickname: newName)
-                        nickname = newName
-                        UserDefaults.standard.set(newName, forKey: "donation.nickname")
-                        toast = msg
-                        await load()
-                    } catch {
-                        toast = error.localizedDescription
-                    }
-                }
-            }
-        }
-        .alert(String(localized: "donation.thanks.title"), isPresented: $showThanks) {
-            Button(String(localized: "common.done"), role: .cancel) {}
-        } message: {
-            Text(String(localized: "donation.thanks.message"))
-        }
-        .overlay(alignment: .bottom) {
-            if let toast {
-                Text(toast)
-                    .font(.footnote)
-                    .padding(.horizontal, 14).padding(.vertical, 8)
-                    .background(.thinMaterial, in: Capsule())
-                    .padding(.bottom, 12)
-            }
-        }
-        .task(id: toast) {
-            guard toast != nil else { return }
-            try? await Task.sleep(nanoseconds: 2_500_000_000)
-            self.toast = nil
-        }
         .onAppear {
-            adManager.onReward = {
-                Task { await submitDonation() }
-            }
+            adManager.onReward = { showThanks = true }
         }
+        .alert(String(localized: "sponsor.thanks.title"), isPresented: $showThanks) {
+            Button(String(localized: "sponsor.thanks.ok"), role: .cancel) {}
+        } message: {
+            Text(String(localized: "sponsor.thanks.message"))
+        }
+    }
+
+    private var progress: Double {
+        min(1.0, Double(recoveredAmount) / Double(totalCost))
     }
 
     private var buttonTitle: String {
-        if adManager.isAdLoaded { return String(localized: "donation.button.ready.title") }
-        if adManager.isLoadingAd { return String(localized: "donation.button.loading") }
-        return String(localized: "donation.button.load")
-    }
-
-    private func aboutBullet(_ icon: String, _ key: String) -> some View {
-        HStack(alignment: .top, spacing: 8) {
-            Image(systemName: icon).foregroundStyle(yellow).font(.subheadline).padding(.top, 2)
-            Text(NSLocalizedString(key, comment: ""))
-                .font(.subheadline).foregroundStyle(.secondary)
-        }
-    }
-
-    private func statCard(titleKey: String, value: Int, tint: Color) -> some View {
-        VStack(spacing: 6) {
-            Text(NSLocalizedString(titleKey, comment: ""))
-                .font(.caption).foregroundStyle(.secondary)
-            Text("\(value)")
-                .font(.system(size: 30, weight: .bold))
-                .foregroundStyle(tint)
-            Text(String(localized: "donation.times"))
-                .font(.caption).foregroundStyle(.secondary)
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 14)
-        .background(tint.opacity(0.08), in: RoundedRectangle(cornerRadius: 12))
-        .overlay(RoundedRectangle(cornerRadius: 12).stroke(tint.opacity(0.6)))
-    }
-
-    // MARK: - 动作
-
-    private func watchAd() {
-        adManager.presentRewardedAd()
-    }
-
-    private func submitDonation() async {
-        do {
-            _ = try await service.submitDonation(nickname: nickname)
-            todayCount += 1
-            UserDefaults.standard.set(todayCount, forKey: "donation.today.\(Self.todayKey())")
-            showThanks = true
-            await load()
-        } catch is CancellationError {
-        } catch {
-            errorMessage = error.localizedDescription
-        }
-    }
-
-    private func load() async {
-        isLoading = rankings.isEmpty
-        errorMessage = nil
-        defer { isLoading = false }
-        do {
-            let result = try await service.leaderboard()
-            rankings = result.list
-            me = result.me
-        } catch is CancellationError {
-        } catch {
-            errorMessage = error.localizedDescription
-        }
-    }
-
-    private static func todayKey() -> String {
-        let f = DateFormatter()
-        f.dateFormat = "yyyyMMdd"
-        return f.string(from: Date())
+        if adManager.isAdLoaded { return String(localized: "sponsor.button.ready.title") }
+        if adManager.isLoadingAd { return String(localized: "sponsor.button.loading") }
+        return String(localized: "sponsor.button.load")
     }
 }
 
-// MARK: - 排行行
-
-private struct RankingRow: View {
-    let rank: Int?          // nil = 榜外当前用户
-    let row: DonationService.DonationRanking
-
-    var body: some View {
-        HStack(spacing: 10) {
-            if let rank {
-                Text(rankBadge(rank))
-                    .font(.subheadline.bold())
-                    .foregroundStyle(badgeColor)
-                    .frame(width: 34)
-            } else {
-                Image(systemName: "person.crop.circle")
-                    .foregroundStyle(.secondary)
-                    .frame(width: 34)
-            }
-            VStack(alignment: .leading, spacing: 2) {
-                Text(row.nickname.isEmpty ? String(localized: "donation.anonymous") : row.nickname)
-                    .font(.subheadline)
-                    .foregroundStyle(.primary)
-                if row.isCurrentUser {
-                    Text(String(localized: "donation.me")).font(.caption2).foregroundStyle(yellow2)
-                }
-            }
-            Spacer()
-            Text("\(row.donationCount)")
-                .font(.subheadline.bold())
-                .monospacedDigit()
-            Text(String(localized: "donation.times"))
-                .font(.caption).foregroundStyle(.secondary)
-        }
-        .padding(.vertical, 6)
-        .background(row.isCurrentUser ? Color.yellow.opacity(0.12) : Color.clear)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
-    }
-
-    private var yellow2: Color { Color(red: 0.9, green: 0.7, blue: 0.0) }
-
-    private func rankBadge(_ rank: Int) -> String {
-        switch rank {
-        case 1: return "🥇"
-        case 2: return "🥈"
-        case 3: return "🥉"
-        default: return "\(rank)"
-        }
-    }
-
-    private var badgeColor: Color {
-        switch rank {
-        case 1, 2, 3: return yellow2
-        default: return .secondary
-        }
-    }
-}
-
-// MARK: - 昵称编辑
-
-private struct NicknameEditSheet: View {
-    @Environment(\.dismiss) var dismiss
-    @State private var text: String
-    let onSave: (String) -> Void
-
-    init(nickname: String, onSave: @escaping (String) -> Void) {
-        _text = State(initialValue: nickname)
-        self.onSave = onSave
-    }
-
-    var body: some View {
-        NavigationStack {
-            Form {
-                Section {
-                    TextField(String(localized: "donation.nickname.placeholder"), text: $text)
-                        .textInputAutocapitalization(.never)
-                } footer: {
-                    Text(String(localized: "donation.nickname.hint"))
-                }
-            }
-            .navigationTitle(String(localized: "donation.setNickname"))
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button(String(localized: "common.cancel")) { dismiss() }
-                }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button(String(localized: "common.done")) {
-                        onSave(text.trimmingCharacters(in: .whitespaces))
-                        dismiss()
-                    }
-                    .disabled(text.trimmingCharacters(in: .whitespaces).isEmpty)
-                }
-            }
-        }
-        .presentationDetents([.medium])
-    }
+#Preview {
+    NavigationStack { SponsorView() }
 }
