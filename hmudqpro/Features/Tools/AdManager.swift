@@ -50,6 +50,7 @@ final class AdManager: NSObject, ObservableObject {
         isLoadingAd = true
         isAdLoaded = false
 
+        print("🛠 [Ad] loadRewardedAd slot=\(APIConfig.gromoreRewardSlotID) sdkStarted=\(Self.isSDKStarted)")
         let slot = BUAdSlot()
         slot.id = APIConfig.gromoreRewardSlotID
         slot.adType = .rewardVideo

@@ -7,6 +7,7 @@ import BUAdSDK
 enum SDKBootstrap {
     /// app 启动时调用（didFinishLaunching 语义）。
     static func setupAll() {
+        CrashLog.install()   // 未捕获的 ObjC 异常打到 stderr，--console 可见
         setupBugly()
         setupBaiduStat()
         // 穿山甲不在启动链路初始化（启动即初始化会被系统 SIGKILL），
@@ -34,8 +35,25 @@ enum SDKBootstrap {
         config.appID = APIConfig.gromoreAppID
         config.sdkdebug = false
         config.useMediation = true   // GroMore 聚合
-        BUAdSDKManager.start(asyncCompletionHandler: { success, _ in
+        print("🛠 [AdSDK] 开始初始化 BUAdSDK appID=\(APIConfig.gromoreAppID)")
+        BUAdSDKManager.start(asyncCompletionHandler: { success, error in
+            print("🛠 [AdSDK] 初始化完成 success=\(success) error=\(error.map(String.init(describing:)) ?? "nil")")
             if success { AdManager.sdkDidStart() }
         })
+    }
+}
+
+
+/// 未捕获 ObjC 异常 → stderr（终端 --console 直接收得到）。
+enum CrashLog {
+    static func install() {
+        NSSetUncaughtExceptionHandler { exception in
+            let msg = """
+            💥 UNCAUGHT EXCEPTION \(exception.name.rawValue)
+            reason: \(exception.reason ?? "")
+            \(exception.callStackSymbols.joined(separator: "\n"))
+            """
+            FileHandle.standardError.write(Data((msg + "\n").utf8))
+        }
     }
 }
