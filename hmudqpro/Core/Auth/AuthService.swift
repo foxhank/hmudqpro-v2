@@ -137,25 +137,45 @@ final class AuthService {
         return String(matched[v]).replacingOccurrences(of: "value=\"", with: "").replacingOccurrences(of: "\"", with: "")
     }
 
-    /// 解析学生基本信息页面 HTML。
+    /// 解析学生基本信息页面 HTML（页面结构：`<td>姓名：</td><td>黄永康</td>` 表格，
+    /// 部分字段值在 `<input value="…">` 或 `<option selected>` 里）。
     static func parseStudentInfo(_ html: String) -> StudentInfo? {
-        func field(_ label: String) -> String? {
-            guard let r = html.range(of: "\(label)[^<]*</[^>]+>\\s*<[^>]+>([^<]+)", options: .regularExpression) else {
+        /// 取「label：」单元格后紧跟的值单元格内容（纯文本 / input value / selected option）。
+        func cell(_ label: String) -> String? {
+            // 锚定 ">标签："，避免匹配到「监护人姓名1：」「辅修专业：」这类包含关系
+            let pattern = "(?s)>[\\s]*\(label)[\\s]*：?[\\s]*</td>[\\s]*<td[^>]*>(.*?)</td>"
+            guard let r = html.range(of: pattern, options: [.regularExpression]) else {
                 return nil
             }
-            let s = String(html[r])
-            return s.split(separator: ">").last.map { String($0).trimmingCharacters(in: .whitespacesAndNewlines) }
+            // 去掉命中的开头标签段，留下值单元格内容
+            var value = String(html[r])
+            if let open = value.range(of: #"<td[^>]*>"#, options: .regularExpression) {
+                value = String(value[open.upperBound...])
+            }
+            // <input value="…">（出生日期等禁用输入框）
+            if let v = value.range(of: #"value="([^"]*)""#, options: .regularExpression) {
+                return String(value[v]).replacingOccurrences(of: "value=", with: "").trimmingCharacters(in: CharacterSet(charactersIn: "\""))
+            }
+            // <option selected>男</option>（性别等下拉）
+            if let s = value.range(of: "selected[^>]*>[^<]+", options: .regularExpression) {
+                return String(value[s]).split(separator: ">").last.map {
+                    String($0).trimmingCharacters(in: .whitespaces)
+                } ?? ""
+            }
+            // 纯文本，剥掉残余标签
+            return value.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression)
+                .trimmingCharacters(in: .whitespacesAndNewlines)
         }
-        guard let name = field("姓名"), !name.isEmpty else { return nil }
+        guard let name = cell("姓名"), !name.isEmpty else { return nil }
         return StudentInfo(
             name: name,
-            studentID: field("学号") ?? "",
-            college: field("院系") ?? field("学院") ?? "",
-            major: field("专业") ?? "",
-            className: field("班级") ?? "",
-            grade: field("年级") ?? "",
-            birthday: field("出生日期") ?? "",
-            gender: field("性别") ?? ""
+            studentID: cell("学号") ?? "",
+            college: cell("院系名称") ?? cell("院系") ?? cell("学院") ?? "",
+            major: cell("专业") ?? "",
+            className: cell("班级") ?? "",
+            grade: cell("所在年级") ?? cell("年级") ?? "",
+            birthday: cell("出生日期") ?? "",
+            gender: cell("性别") ?? ""
         )
     }
 
