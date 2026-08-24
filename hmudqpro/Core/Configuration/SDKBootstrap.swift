@@ -9,7 +9,8 @@ enum SDKBootstrap {
     static func setupAll() {
         setupBugly()
         setupBaiduStat()
-        setupGroMore()
+        // 穿山甲不在启动链路初始化（启动即初始化会被系统 SIGKILL），
+        // 改为首次进入赞助页时 setupGroMoreIfNeeded()
     }
 
     /// Bugly 崩溃上报。
@@ -22,9 +23,13 @@ enum SDKBootstrap {
         BaiduMobStat().start(withAppId: APIConfig.baiduStatAppID)
     }
 
-    /// 穿山甲 GroMore：启动只初始化 SDK。ATT 授权与广告加载延后到进入赞助页时
-    /// （不赞助的用户不该被跟踪授权弹窗打扰）。
-    static func setupGroMore() {
+    private static var groMoreStarted = false
+
+    /// 首次进入赞助页时调用：初始化 SDK → 就绪后自动加载激励视频。
+    /// ATT 也只在这里申请（不赞助的用户既不初始化广告也不弹跟踪授权）。
+    static func setupGroMoreIfNeeded() {
+        guard !groMoreStarted else { return }
+        groMoreStarted = true
         let config = BUAdSDKConfiguration.configuration()
         config.appID = APIConfig.gromoreAppID
         config.sdkdebug = false

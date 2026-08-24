@@ -96,7 +96,8 @@ struct SponsorView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             adManager.onReward = { showThanks = true }
-            // ATT 只在这里申请（系统全局只弹一次）；已授权/拒绝过则直接拉广告
+            // 广告 SDK + ATT 都只在使用场景（本页）初始化/申请
+            SDKBootstrap.setupGroMoreIfNeeded()
             adManager.requestATTThenLoadAd()
         }
         .alert(String(localized: "sponsor.thanks.title"), isPresented: $showThanks) {
