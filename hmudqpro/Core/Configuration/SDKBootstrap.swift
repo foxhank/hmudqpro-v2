@@ -32,15 +32,10 @@ enum SDKBootstrap {
         guard !groMoreStarted else { return }
         groMoreStarted = true
         let config = BUAdSDKConfiguration.configuration()
-        // Debug 用穿山甲官方测试应用 5000546（配套 iOS 测试代码位，见 AdManager）；
-        // Release 用正式 App + GroMore 聚合。
-        #if DEBUG
-        config.appID = "5000546"
-        config.useMediation = false
-        #else
+        // 当前：Debug 也用正式组合验证真实广告（AppID 5856012 + GroMore 聚合）。
+        // TODO: 验证通过后恢复 Debug=测试应用 5000546 + useMediation=false（见 git 历史）
         config.appID = APIConfig.gromoreAppID
         config.useMediation = true
-        #endif
         config.sdkdebug = true
         print("🛠 [AdSDK] 开始初始化 BUAdSDK appID=\(config.appID ?? "") mediation=\(config.useMediation)")
         BUAdSDKManager.start(asyncCompletionHandler: { success, error in

@@ -50,13 +50,9 @@ final class AdManager: NSObject, ObservableObject {
         isLoadingAd = true
         isAdLoaded = false
 
-        // Debug 用穿山甲官方 iOS 测试激励位（模板渲染·竖屏 945113162；
-        // 注意 945830371 是安卓测试位，iOS 用会 40006「广告位ID不合法」）
-        #if DEBUG
-        let slotID = "945113162"
-        #else
+        // 当前：Debug 也直接用正式 GroMore 广告位验证真实广告
+        // TODO: 验证通过后恢复 Debug=官方 iOS 测试位 945113162（配套测试应用 5000546）
         let slotID = APIConfig.gromoreRewardSlotID
-        #endif
         print("🛠 [Ad] loadRewardedAd slot=\(slotID) sdkStarted=\(Self.isSDKStarted)")
         let slot = BUAdSlot()
         slot.id = slotID
