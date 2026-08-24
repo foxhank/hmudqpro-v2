@@ -93,6 +93,9 @@ enum APIConfig {
     static var jwcTeacherEvalListURL: URL { join(jwcBase, "/new/student/teapj/pjDatas") }
     static var classroomURL: URL { join(backendBase, classroomPath) }
     static var donateOverviewURL: URL { join(backendBase, donateOverviewPath) }
+    static var donateURL: URL { join(backendBase, donatePath) }
+    static var donateLeaderboardURL: URL { join(backendBase, donateLeaderboardPath) }
+    static var donateRenameURL: URL { join(backendBase, donateRenamePath) }
     static var privacyDocURL: URL { join(backendFileBase, "/" + privacyHTML) }
     static var agreementDocURL: URL { join(backendFileBase, "/" + agreementHTML) }
 
@@ -100,5 +103,6 @@ enum APIConfig {
     static var buglyAppID: String { value("bugly_app_id") }
     static var baiduStatAppID: String { value("baidu_stat_app_id") }
     static var gromoreAppID: String { value("gromore_app_id") }
+    static var gromoreRewardSlotID: String { value("gromore_reward_slot") }
     static var appStoreID: String { value("app_store_id") }
 }

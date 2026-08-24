@@ -26,7 +26,7 @@ final class AuthViewModel: ObservableObject {
             studentInfo = try? await authService.fetchStudentInfo()
         }
     }
-
+    
     func login(studentID: String, password: String) async {
         guard !studentID.isEmpty, !password.isEmpty else {
             errorMessage = String(localized: "login.error.emptyFields")
