@@ -50,9 +50,15 @@ final class AdManager: NSObject, ObservableObject {
         isLoadingAd = true
         isAdLoaded = false
 
-        print("🛠 [Ad] loadRewardedAd slot=\(APIConfig.gromoreRewardSlotID) sdkStarted=\(Self.isSDKStarted)")
+        // Debug 用穿山甲官方测试激励位（正式位需在口袋工厂配置/审批通过，否则 40006「广告位ID不合法」）
+        #if DEBUG
+        let slotID = "945830371"
+        #else
+        let slotID = APIConfig.gromoreRewardSlotID
+        #endif
+        print("🛠 [Ad] loadRewardedAd slot=\(slotID) sdkStarted=\(Self.isSDKStarted)")
         let slot = BUAdSlot()
-        slot.id = APIConfig.gromoreRewardSlotID
+        slot.id = slotID
         slot.adType = .rewardVideo
         slot.position = .bottom
 

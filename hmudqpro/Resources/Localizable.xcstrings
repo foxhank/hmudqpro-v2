@@ -3463,6 +3463,38 @@
           }
         }
       }
+    },
+    "sponsor.button.load": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加载广告"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Load Ad"
+          }
+        }
+      }
+    },
+    "sponsor.button.loading": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "广告加载中…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading ad…"
+          }
+        }
+      }
     }
   },
   "version": "1.0"
