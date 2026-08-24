@@ -29,6 +29,8 @@ enum SDKBootstrap {
         config.appID = APIConfig.gromoreAppID
         config.sdkdebug = false
         config.useMediation = true   // GroMore 聚合
-        BUAdSDKManager.start(asyncCompletionHandler: { _, _ in })
+        BUAdSDKManager.start(asyncCompletionHandler: { success, _ in
+            if success { AdManager.sdkDidStart() }
+        })
     }
 }

@@ -14,8 +14,23 @@ final class AdManager: NSObject, ObservableObject {
 
     private var rewardedVideoAd: BUNativeExpressRewardedVideoAd?
 
+    /// BUAdSDK 是异步启动的：未就绪就创建广告对象会抛 ObjC 异常闪退。
+    /// SDKBootstrap 启动完成回调里调 sdkDidStart()，之前进来的加载请求先挂起。
+    private static var isSDKStarted = false
+    private var pendingLoad = false
+
     /// 奖励发放成功回调（服务端校验通过后触发）。
     var onReward: (() -> Void)?
+
+    nonisolated static func sdkDidStart() {
+        Task { @MainActor in
+            Self.isSDKStarted = true
+            if shared.pendingLoad {
+                shared.pendingLoad = false
+                shared.loadRewardedAd()
+            }
+        }
+    }
 
     /// ATT 授权后预加载（SDKBootstrap 启动链路里调用）。
     func requestATTThenLoadAd() {
@@ -28,6 +43,10 @@ final class AdManager: NSObject, ObservableObject {
 
     func loadRewardedAd() {
         guard !isLoadingAd else { return }
+        guard Self.isSDKStarted else {
+            pendingLoad = true   // SDK 还没起来，等就绪后自动加载
+            return
+        }
         isLoadingAd = true
         isAdLoaded = false
 

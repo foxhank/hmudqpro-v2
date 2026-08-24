@@ -250,6 +250,8 @@ private struct SettingLabel: View {
             Image(systemName: icon)
                 .foregroundStyle(tint)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .contentShape(Rectangle())
     }
 }
 
