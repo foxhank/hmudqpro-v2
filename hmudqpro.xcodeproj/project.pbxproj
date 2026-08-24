@@ -658,6 +658,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "扫码签到与拍摄上传需要使用摄像头";
+				INFOPLIST_FILE = AdSupport-Info.plist;
 				SWIFT_OBJC_BRIDGING_HEADER = hmudqpro/hmudqpro-Bridging-Header.h;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "考核中的音视频录制需要使用麦克风";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "上传作业或照片需要访问相册";
@@ -693,6 +694,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "扫码签到与拍摄上传需要使用摄像头";
+				INFOPLIST_FILE = AdSupport-Info.plist;
 				SWIFT_OBJC_BRIDGING_HEADER = hmudqpro/hmudqpro-Bridging-Header.h;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "考核中的音视频录制需要使用麦克风";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "上传作业或照片需要访问相册";
