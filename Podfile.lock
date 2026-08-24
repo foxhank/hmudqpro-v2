@@ -1,12 +1,17 @@
 PODS:
-  - Ads-CN-Beta (7.8.0.0):
-    - Ads-CN-Beta/BUAdLive-Framework (= 7.8.0.0)
-    - Ads-CN-Beta/BUAdSDK (= 7.8.0.0)
-  - Ads-CN-Beta/BUAdLive (7.8.0.0)
-  - Ads-CN-Beta/BUAdLive-Framework (7.8.0.0):
+  - Ads-CN-Beta (7.8.0.1):
+    - Ads-CN-Beta/BUAdLive-Framework (= 7.8.0.1)
+    - Ads-CN-Beta/BUAdSDK (= 7.8.0.1)
+  - Ads-CN-Beta/BUAdLive (7.8.0.1)
+  - Ads-CN-Beta/BUAdLive-Framework (7.8.0.1):
     - Ads-CN-Beta/BUAdLive
     - BUTTSDKFramework/LivePull-Lite (= 1.48.2.3-premium)
-  - Ads-CN-Beta/BUAdSDK (7.8.0.0)
+  - Ads-CN-Beta/BUAdSDK (7.8.0.1)
+  - Ads-CN-Beta/CSJMediation (7.8.0.1):
+    - Ads-CN-Beta/BUAdLive-Framework
+    - Ads-CN-Beta/CSJMediation-Only
+  - Ads-CN-Beta/CSJMediation-Only (7.8.0.1):
+    - Ads-CN-Beta/BUAdSDK
   - BaiduMobStatCodeless (5.3.6)
   - Bugly (2.6.1)
   - BUTTSDKFramework/Core (1.48.2.3-premium)
@@ -43,6 +48,7 @@ PODS:
 
 DEPENDENCIES:
   - Ads-CN-Beta
+  - Ads-CN-Beta/CSJMediation
   - BaiduMobStatCodeless
   - Bugly
 
@@ -54,11 +60,11 @@ SPEC REPOS:
     - BUTTSDKFramework
 
 SPEC CHECKSUMS:
-  Ads-CN-Beta: 46322f8851914dbcf611028cee861633c63f5983
+  Ads-CN-Beta: 8b8dfcee95d2fee936a624071b459e9da5a84da4
   BaiduMobStatCodeless: b1029b96b02d54802049d280f2b1abb0c76f0e9e
   Bugly: 217ac2ce5f0f2626d43dbaa4f70764c953a26a31
   BUTTSDKFramework: 34f8f8d541da07e79e9c479eb71336d1e4d90fdd
 
-PODFILE CHECKSUM: 31943e2ce16cd594d6801f46bd73f1b516348d0a
+PODFILE CHECKSUM: 168551e32e780b6a7b479869807a1df4311012f9
 
 COCOAPODS: 1.16.2

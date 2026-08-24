@@ -35,6 +35,8 @@ enum SDKBootstrap {
         // 当前：Debug 也用正式组合验证真实广告（AppID 5856012 + GroMore 聚合）。
         // TODO: 验证通过后恢复 Debug=测试应用 5000546 + useMediation=false（见 git 历史）
         config.appID = APIConfig.gromoreAppID
+        // 真相：聚合能力 = CSJMediation 基础库（Podfile 子组件）+ useMediation，缺一不可。
+        // 之前没引 CSJMediation，useMediation=true 空转 → GroMore 位被当单体位请求 → 40006。
         config.useMediation = true
         config.sdkdebug = true
         print("🛠 [AdSDK] 开始初始化 BUAdSDK appID=\(config.appID ?? "") mediation=\(config.useMediation)")
