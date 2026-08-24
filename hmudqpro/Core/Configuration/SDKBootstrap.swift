@@ -22,15 +22,13 @@ enum SDKBootstrap {
         BaiduMobStat().start(withAppId: APIConfig.baiduStatAppID)
     }
 
-    /// 穿山甲 GroMore：SDK 起来后请求 ATT，再预加载激励视频（打赏页用）。
+    /// 穿山甲 GroMore：启动只初始化 SDK。ATT 授权与广告加载延后到进入赞助页时
+    /// （不赞助的用户不该被跟踪授权弹窗打扰）。
     static func setupGroMore() {
         let config = BUAdSDKConfiguration.configuration()
         config.appID = APIConfig.gromoreAppID
         config.sdkdebug = false
         config.useMediation = true   // GroMore 聚合
-
-        BUAdSDKManager.start(asyncCompletionHandler: { _, _ in
-            AdManager.shared.requestATTThenLoadAd()
-        })
+        BUAdSDKManager.start(asyncCompletionHandler: { _, _ in })
     }
 }

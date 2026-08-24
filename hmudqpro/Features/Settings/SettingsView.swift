@@ -46,9 +46,11 @@ struct AboutView: View {
         List {
             Section {
                 VStack(spacing: 8) {
-                    Image(systemName: "cross.case.fill")
-                        .font(.system(size: 48))
-                        .foregroundStyle(.tint)
+                    Image("AppLogo")
+                        .resizable()
+                        .frame(width: 72, height: 72)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .shadow(radius: 2, y: 1)
                     Text(String(localized: "app.name")).font(.title3.bold())
                     Text("v\(UpdateService.currentVersion) (\(UpdateService.currentVersionCode))")
                         .font(.caption).foregroundStyle(.secondary)
