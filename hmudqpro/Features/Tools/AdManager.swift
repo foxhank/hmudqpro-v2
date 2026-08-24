@@ -50,9 +50,10 @@ final class AdManager: NSObject, ObservableObject {
         isLoadingAd = true
         isAdLoaded = false
 
-        // Debug 用穿山甲官方测试激励位（正式位需在口袋工厂配置/审批通过，否则 40006「广告位ID不合法」）
+        // Debug 用穿山甲官方 iOS 测试激励位（模板渲染·竖屏 945113162；
+        // 注意 945830371 是安卓测试位，iOS 用会 40006「广告位ID不合法」）
         #if DEBUG
-        let slotID = "945830371"
+        let slotID = "945113162"
         #else
         let slotID = APIConfig.gromoreRewardSlotID
         #endif
