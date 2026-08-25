@@ -7,6 +7,8 @@ struct ScheduleView: View {
     @AppStorage("schedule.colorStyle") private var colorStyleRaw = CourseColorStyle.default.rawValue
     @AppStorage("schedule.fontSize") private var fontSize = 12.0
     @AppStorage("schedule.backgroundVersion") private var backgroundVersion = 0
+    @AppStorage("schedule.weekStartsSunday") private var weekStartsSunday = false
+    @AppStorage("schedule.backgroundImmersive") private var backgroundImmersive = true
 
     @State private var showSettings = false
     @State private var refreshTrigger = 0
@@ -18,10 +20,14 @@ struct ScheduleView: View {
     /// 大节起止时间（共 6 大节）。
     private let slotStartTimes = ["8:00", "9:55", "13:30", "15:25", "18:00", "19:35"]
     private let slotEndTimes = ["9:35", "11:30", "15:05", "17:00", "19:30", "21:10"]
-    private let weekdays: [(index: Int, key: LocalizedStringKey)] = [
-        (1, "weekday.mon"), (2, "weekday.tue"), (3, "weekday.wed"),
-        (4, "weekday.thu"), (5, "weekday.fri"), (6, "weekday.sat"), (7, "weekday.sun"),
-    ]
+    /// 列顺序随设置变化：默认周一开始，可切换周日开始（weekday 1=周一…7=周日）。
+    private var weekdays: [(index: Int, key: LocalizedStringKey)] {
+        let monFirst: [(index: Int, key: LocalizedStringKey)] = [
+            (1, "weekday.mon"), (2, "weekday.tue"), (3, "weekday.wed"),
+            (4, "weekday.thu"), (5, "weekday.fri"), (6, "weekday.sat"), (7, "weekday.sun"),
+        ]
+        return weekStartsSunday ? [monFirst[6]] + monFirst[0...5] : monFirst
+    }
 
     private let slotHeight: CGFloat = 88
     private let gridSpacing: CGFloat = 4
@@ -43,8 +49,24 @@ struct ScheduleView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             // 整页（周切换行 + pager）参考安卓端左右翻页切换周
+            .background {
+                // 背景图画在整个 VStack 的最底层（沉浸式：全屏穿透安全区域；
+                // 仅课表区域：导航栏/标签栏/周次栏各自的不透明遮罩盖住对应区域）
+                if let background = ScheduleBackground.load() {
+                    Image(uiImage: background)
+                        .resizable()
+                        .scaledToFill()
+                        .ignoresSafeArea()
+                        .opacity(0.3)
+                        .id(backgroundVersion) // 背景更换后强制刷新
+                }
+            }
             .navigationTitle("schedule.title")
             .navigationBarTitleDisplayMode(.inline)
+            // 仅课表区域：导航栏/标签栏保持不透明玻璃，遮住背后的背景图；
+            // 沉浸式：automatic，背景图穿过两个栏
+            .toolbarBackground(backgroundImmersive ? .automatic : .visible, for: .navigationBar)
+            .toolbarBackground(backgroundImmersive ? .automatic : .visible, for: .tabBar)
             .task { await viewModel.loadIfNeeded() }
             .onChange(of: refreshTrigger) { _ in
                 Task { await viewModel.refresh() }
@@ -80,6 +102,8 @@ struct ScheduleView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 8)
+        // 仅课表区域：周次栏铺不透明底，不透出背景图
+        .background(backgroundImmersive ? Color.clear : Color(.systemBackground))
     }
 
     /// 居中的周次切换：← 第 x 周 →，点箭头切周。
@@ -147,26 +171,19 @@ struct ScheduleView: View {
     }
 
     private var scheduleGrid: some View {
-        let background = ScheduleBackground.load()
-
-        return TabView(selection: weekSelection) {
+        let pager = TabView(selection: weekSelection) {
             ForEach(1...SemesterCalculator.totalWeeks, id: \.self) { week in
                 weekPage(week)
                     .tag(week)
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
-        .background {
-            // 用户设置的背景图（30% 透明度衬底，对齐安卓）
-            if let background {
-                Image(uiImage: background)
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
-                    .opacity(0.3)
-                    .id(backgroundVersion) // 背景更换后强制刷新
-            }
-        }
+
+        // 背景图（30% 透明度衬底，对齐安卓）。
+        // 注意挂在 pager 上时它会画在周次栏（VStack 前面的兄弟）之上，
+        // 遮罩盖不住——所以背景由 body 里的 VStack 统一画在最底层。
+
+        return pager
         .overlay(alignment: .bottom) {
             if let error = viewModel.errorMessage {
                 Text(error)
@@ -233,6 +250,7 @@ struct ScheduleView: View {
 
 /// 单日列：表头（日期+星期）+ 6 个大节格，课程块与背景格严格对齐。
 private struct DayColumn: View {
+    @AppStorage("schedule.backgroundImmersive") private var backgroundImmersive = true
     let weekday: Int
     let label: Text
     let date: Date?
@@ -262,13 +280,16 @@ private struct DayColumn: View {
             .frame(maxWidth: .infinity)
             .frame(height: 30)
             .background(isToday ? Color.accentColor.opacity(0.15) : Color.clear, in: .rect(cornerRadius: 6))
+            // 仅课表区域：星期表头行铺不透明底，不透出背景图（今天的高亮画在它上面）
+            .background(backgroundImmersive ? Color.clear : Color(.systemBackground))
 
             ZStack(alignment: .top) {
-                // 空格背景（节界标线）
+                // 空格背景（节界标线）；今天整列加底色高亮（对齐安卓）
                 VStack(spacing: gridSpacing) {
                     ForEach(0..<Course.bigSlotsPerDay, id: \.self) { _ in
                         RoundedRectangle(cornerRadius: 8)
-                            .fill(.quaternary.opacity(0.25))
+                            .fill(isToday ? Color.accentColor.opacity(0.10)
+                                  : Color.secondary.opacity(0.10))
                             .frame(height: slotHeight - gridSpacing)
                     }
                 }

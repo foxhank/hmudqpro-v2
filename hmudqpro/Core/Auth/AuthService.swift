@@ -6,7 +6,7 @@ import Foundation
 /// v2 只保留登录职责：拿 CAS 会话 → SSO 进教务 → 验证可访问性。
 /// 课表/成绩等由各自的 Service 负责。
 final class AuthService {
-    enum AuthError: Error, LocalizedError {
+    enum AuthError: Error, LocalizedError, Equatable {
         case webvpnUnreachable
         case pubKeyUnavailable
         case pubKeyParseFailed
@@ -18,16 +18,19 @@ final class AuthService {
 
         var errorDescription: String? {
             switch self {
-            case .webvpnUnreachable: return "无法访问 WebVPN，请检查网络连接"
-            case .pubKeyUnavailable: return "无法获取登录公钥"
-            case .pubKeyParseFailed: return "登录公钥解析失败"
-            case .loginPageUnavailable: return "无法访问登录页面"
-            case .executionMissing: return "无法获取登录参数（可能已有登录态）"
-            case .badCredentials: return "用户名或密码错误"
-            case .casRejected(let s): return "CAS 登录失败，状态码：\(s)"
-            case .ssoFailed(let m): return "教务系统 SSO 登录失败：\(m)"
+            case .webvpnUnreachable: return String(localized: "login.error.webvpnUnreachable")
+            case .pubKeyUnavailable: return String(localized: "login.error.pubKeyUnavailable")
+            case .pubKeyParseFailed: return String(localized: "login.error.pubKeyParseFailed")
+            case .loginPageUnavailable: return String(localized: "login.error.loginPageUnavailable")
+            case .executionMissing: return String(localized: "login.error.executionMissing")
+            case .badCredentials: return String(localized: "login.error.badCredentials")
+            case .casRejected(let s): return String(localized: "login.error.casRejected \(s)")
+            case .ssoFailed(let m): return String(localized: "login.error.ssoFailed \(m)")
             }
         }
+
+        /// 是否用户自身原因（账密错）——其余错误都可能是教务端故障，附安抚提示。
+        var isCredentialError: Bool { self == .badCredentials }
     }
 
     private let client: APIClient
@@ -163,8 +166,11 @@ final class AuthService {
                 } ?? ""
             }
             // 纯文本，剥掉残余标签
-            return value.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression)
+            let text = value.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression)
                 .trimmingCharacters(in: .whitespacesAndNewlines)
+            // 教务有时对敏感字段脱敏成 ***：视为无值，避免把星号当数据存下来
+            if text.allSatisfy({ $0 == "*" }) { return nil }
+            return text
         }
         guard let name = cell("姓名"), !name.isEmpty else { return nil }
         return StudentInfo(

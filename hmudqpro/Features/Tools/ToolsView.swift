@@ -18,13 +18,16 @@ struct ToolsView: View {
                     toolSection("tools.group.business") {
                         ToolCard(icon: "square.grid.2x2", tint: .blue, titleKey: "tool.courseSelect") { CourseSelectionScreen() }
                         ToolCard(icon: "person.text.rectangle.fill", tint: .purple, titleKey: "tool.evaluation") { EvaluationView() }
-                    }
-                    toolSection("tools.group.convenience") {
                         ToolCard(icon: "wrench.and.screwdriver.fill", tint: .orange, titleKey: "tool.dormRepair") {
                             WebViewScreen(titleKey: "tool.dormRepair", url: APIConfig.mikecrmRepair)
                         }
+                    }
+                    toolSection("tools.group.convenience") {
                         ToolCard(icon: "book.fill", tint: .blue, titleKey: "tool.ebook") {
                             WebViewScreen(titleKey: "tool.ebook", url: APIConfig.ebookURL)
+                        }
+                        ToolCard(icon: "square.stack.3d.up.fill", tint: .purple, titleKey: "tool.shuati") {
+                            WebViewScreen(titleKey: "tool.shuati", url: APIConfig.shuatiURL)
                         }
                     }
                     toolSection("tools.group.links") {

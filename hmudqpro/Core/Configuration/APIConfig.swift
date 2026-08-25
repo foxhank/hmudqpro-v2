@@ -64,6 +64,14 @@ enum APIConfig {
     static var beianURL: URL { URL(string: value("beian_url"))! }
     static var mikecrmRepair: URL { URL(string: value("mikecrm_repair"))! }
     static var ebookURL: URL { URL(string: value("ebook_url"))! }
+    static var shuatiBase: URL { URL(string: value("shuati_base"))! }
+
+    /// 复习刷题：以当前学号 base64 作为免登参数。
+    static var shuatiURL: URL {
+        let login = Data((AccountStore.currentID ?? "").utf8).base64EncodedString()
+        let encoded = login.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? login
+        return URL(string: shuatiBase.absoluteString + "?login=" + encoded)!
+    }
 
     // MARK: - 请求头
     static var webUserAgent: String { value("web_user_agent") }

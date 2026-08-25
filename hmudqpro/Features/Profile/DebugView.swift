@@ -7,9 +7,76 @@ struct DebugView: View {
     @State private var resultText: String?
     @State private var running = false
 
+    // 调试：课程调换（两个 Picker 选课名）
+    @State private var swapA = ""
+    @State private var swapB = ""
+    // 调试：伪造更新
+    @State private var fakeVersion = "9.9.9"
+    @State private var fakeForce = false
+    @State private var fakeUpdateOn = false
+    // 调试：开屏彩蛋
+    @State private var forceHoliday = DebugStore.forceHoliday
+    @State private var forceBirthday = DebugStore.forceBirthday
+
+    private var courseNames: [String] {
+        Array(Set((ScheduleStore.shared?.load() ?? []).map(\.kcmc))).sorted()
+    }
+
     var body: some View {
         NavigationStack {
             List {
+                Section("debug.section.simulate") {
+                    // MARK: 课程调换（重启后课表刷新 → 弹「课表变动」提醒）
+                    Picker("debug.sim.swapA", selection: $swapA) {
+                        Text("common.none").tag("")
+                        ForEach(courseNames, id: \.self) { Text($0).tag($0) }
+                    }
+                    Picker("debug.sim.swapB", selection: $swapB) {
+                        Text("common.none").tag("")
+                        ForEach(courseNames, id: \.self) { Text($0).tag($0) }
+                    }
+                    Button("debug.sim.applySwap") {
+                        DebugStore.setCourseSwap([swapA, swapB])
+                        resultText = "已设置调换：\(swapA) ⇄ \(swapB)（重启生效，课表页刷新后弹变动提醒）"
+                    }
+                    .disabled(swapA.isEmpty || swapB.isEmpty || swapA == swapB)
+                    Button("debug.sim.clearSwap", role: .destructive) {
+                        DebugStore.setCourseSwap(nil)
+                        resultText = "已清除课程调换"
+                    }
+                    .disabled(DebugStore.courseSwap.isEmpty)
+                }
+
+                // MARK: 开屏彩蛋（重启生效）
+                Section("debug.section.splash") {
+                    Toggle("debug.sim.holiday", isOn: $forceHoliday)
+                        .onChange(of: forceHoliday) { DebugStore.forceHoliday = $0 }
+                    Toggle("debug.sim.birthday", isOn: $forceBirthday)
+                        .onChange(of: forceBirthday) { DebugStore.forceBirthday = $0 }
+                }
+
+                // MARK: 伪造更新（重启生效）
+                Section("debug.section.fakeUpdate") {
+                    TextField("debug.sim.version", text: $fakeVersion)
+                        .keyboardType(.decimalPad)
+                    Toggle("debug.sim.force", isOn: $fakeForce)
+                    Toggle("debug.sim.fakeOn", isOn: $fakeUpdateOn)
+                        .onChange(of: fakeUpdateOn) { on in
+                            if on {
+                                DebugStore.setFakeUpdate(UpdateInfo(
+                                    version: fakeVersion,
+                                    versionCode: 9999,
+                                    forceUpdate: fakeForce,
+                                    updateLog: "【调试】伪造的更新日志：用于测试更新弹窗。",
+                                    downloadLink: "https://apps.apple.com/app/id\(APIConfig.appStoreID)"))
+                                resultText = "已启用伪造更新 v\(fakeVersion)（重启生效，课表页弹更新框）"
+                            } else {
+                                DebugStore.setFakeUpdate(nil)
+                                resultText = "已关闭伪造更新"
+                            }
+                        }
+                }
+
                 Section("debug.section.test") {
                     Button {
                         run("更新检查") { try await testUpdateCheck() }
@@ -47,6 +114,12 @@ struct DebugView: View {
                 }
             }
             .navigationTitle("debug.title")
+            .onAppear {
+                fakeUpdateOn = DebugStore.fakeUpdate != nil
+                if let f = DebugStore.fakeUpdate { fakeVersion = f.version; fakeForce = f.forceUpdate }
+                forceHoliday = DebugStore.forceHoliday
+                forceBirthday = DebugStore.forceBirthday
+            }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {

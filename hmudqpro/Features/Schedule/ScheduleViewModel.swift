@@ -25,7 +25,9 @@ final class ScheduleViewModel: ObservableObject {
     func loadIfNeeded() async {
         guard courses.isEmpty else { return }
         let cached = ScheduleStore.shared?.load() ?? []
-        apply(cached)
+        // 调试：课程调换只改内存里的缓存数据，随后 refresh 与教务真实数据
+        // diff 出「移动」即可测试课表变动提醒（重启后生效）
+        apply(DebugStore.applySwap(cached))
         await refresh()
     }
 

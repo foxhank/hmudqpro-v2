@@ -5,6 +5,7 @@ import SwiftUI
 struct SponsorView: View {
     @StateObject private var adManager = AdManager.shared
     @State private var showThanks = false
+    @State private var showIncomplete = false
     @State private var errorMessage: String?
 
     private let pink = Color.pink
@@ -98,7 +99,21 @@ struct SponsorView: View {
         .navigationTitle(String(localized: "tool.sponsor"))
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
-            adManager.onReward = { showThanks = true }
+            adManager.onAdClose = { rewarded in
+                print("🛠 [Sponsor] onAdClose 回调触发 rewarded=\(rewarded)")
+                // 延迟显示 alert，确保广告窗口完全关闭
+                Task { @MainActor in
+                    try? await Task.sleep(nanoseconds: 500_000_000)  // 0.5 秒
+                    print("🛠 [Sponsor] 准备显示 alert rewarded=\(rewarded), showThanks=\(showThanks), showIncomplete=\(showIncomplete)")
+                    if rewarded {
+                        showThanks = true
+                        print("🛠 [Sponsor] 设置 showThanks=true")
+                    } else {
+                        showIncomplete = true
+                        print("🛠 [Sponsor] 设置 showIncomplete=true")
+                    }
+                }
+            }
             // 广告 SDK + ATT 都只在使用场景（本页）初始化/申请
             SDKBootstrap.setupGroMoreIfNeeded()
             adManager.requestATTThenLoadAd()
@@ -107,6 +122,11 @@ struct SponsorView: View {
             Button(String(localized: "sponsor.thanks.ok"), role: .cancel) {}
         } message: {
             Text(String(localized: "sponsor.thanks.message"))
+        }
+        .alert(String(localized: "sponsor.incomplete.title"), isPresented: $showIncomplete) {
+            Button(String(localized: "sponsor.incomplete.ok"), role: .cancel) {}
+        } message: {
+            Text(String(localized: "sponsor.incomplete.message"))
         }
     }
 

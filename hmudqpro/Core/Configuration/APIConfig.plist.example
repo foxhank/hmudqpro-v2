@@ -76,6 +76,8 @@
 	<string>/new/xsxk/</string>
 	<key>ebook_url</key>
 	<string>https://example.com/ebook</string>
+	<key>shuati_base</key>
+	<string>https://shuati.foxhank.cn/</string>
 	<key>mikecrm_repair</key>
 	<string>https://sheguanhui101.mikecrm.com/A1urdFL</string>
 	<key>privacy_html</key>

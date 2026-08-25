@@ -32,7 +32,7 @@ enum SDKBootstrap {
         guard !groMoreStarted else { return }
         groMoreStarted = true
         let config = BUAdSDKConfiguration.configuration()
-        // 当前：Debug 也用正式组合验证真实广告（AppID 5856012 + GroMore 聚合）。
+        // 当前：Debug 也用正式组合验证真实广告（AppID 5856020 + GroMore 聚合）。
         // TODO: 验证通过后恢复 Debug=测试应用 5000546 + useMediation=false（见 git 历史）
         config.appID = APIConfig.gromoreAppID
         // 真相：聚合能力 = CSJMediation 基础库（Podfile 子组件）+ useMediation，缺一不可。

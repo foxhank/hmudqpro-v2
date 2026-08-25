@@ -197,6 +197,54 @@
         }
       }
     },
+    "settings.weekStart": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每周开始于"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Week Starts On"
+          }
+        }
+      }
+    },
+    "settings.weekStart.monday": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "周一"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monday"
+          }
+        }
+      }
+    },
+    "settings.weekStart.sunday": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "周日"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunday"
+          }
+        }
+      }
+    },
     "settings.colorStyle": {
       "localizations": {
         "zh-Hans": {
@@ -307,6 +355,222 @@
             "value": "Reset"
           }
         }
+      }
+    },
+    "login.error.webvpnUnreachable": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "无法访问 WebVPN，请检查网络连接" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Cannot reach WebVPN, check your network" } }
+      }
+    },
+    "login.error.pubKeyUnavailable": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "无法获取登录公钥" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Failed to get login public key" } }
+      }
+    },
+    "login.error.pubKeyParseFailed": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "登录公钥解析失败" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Failed to parse login public key" } }
+      }
+    },
+    "login.error.loginPageUnavailable": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "无法访问登录页面" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Cannot reach the login page" } }
+      }
+    },
+    "login.error.executionMissing": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "无法获取登录参数（可能已有登录态）" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Missing login parameter (session may exist)" } }
+      }
+    },
+    "login.error.badCredentials": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "用户名或密码错误" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Incorrect username or password" } }
+      }
+    },
+    "login.error.casRejected %lld": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "CAS 登录失败，状态码：%lld" } },
+        "en": { "stringUnit": { "state": "translated", "value": "CAS login failed, status: %lld" } }
+      }
+    },
+    "login.error.ssoFailed %@": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "教务系统 SSO 登录失败：%@" } },
+        "en": { "stringUnit": { "state": "translated", "value": "JWC SSO login failed: %@" } }
+      }
+    },
+    "login.error.jwcDownHint": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "这个问题可能是教务炸掉了，请稍后再试试吧。" } },
+        "en": { "stringUnit": { "state": "translated", "value": "The JWC server may be down, please try again later." } }
+      }
+    },
+    "splash.skip %lld": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "跳过 %lld" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Skip %lld" } }
+      }
+    },
+    "splash.happyBirthday %@": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "生日快乐，%@！" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Happy Birthday, %@!" } }
+      }
+    },
+    "splash.birthdayWish": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "祝新的一岁万事顺意 🎂" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Wishing you a wonderful year ahead 🎂" } }
+      }
+    },
+    "share.text": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "百湖医大小助手 - 专为哈医大大庆校区学子打造的校园助手。%@" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Baihu Medical Assistant - The campus helper for HMUDQ students. %@" } }
+      }
+    },
+    "about.intro.title": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "关于本软件" } },
+        "en": { "stringUnit": { "state": "translated", "value": "About This App" } }
+      }
+    },
+    "about.intro.content": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "这是一款由医大在读学生们开发出来的软件。软件开发、测试全为本校学生，如有 bug 敬请谅解（同时欢迎反馈！）\n\n软件的原理就是套壳教务系统，当你点击登录时候，软件后台会同步向教务发送请求，同时将教务返回的信息美观、直接地展示在你眼前。正因为如此，这个软件能做的范围完全取决于教务系统，他不能（也没有能力）入侵系统或者做别的事情。同时，由于软件引入了缓存机制，在教务系统崩溃期间仍然可以看上一次加载的课程表，极大方便了同学的日常使用。" } },
+        "en": { "stringUnit": { "state": "translated", "value": "This app is developed by students of HMUDQ. All development and testing are done by fellow students — please forgive any bugs (and feel free to report them!).\n\nThe app is essentially a client for the university's academic system. When you tap login, it sends requests to the system on your behalf and presents the responses in a clean, readable way. Because of this, what the app can do is entirely limited by the academic system itself — it cannot (and has no ability to) hack into the system or anything else. With built-in caching, you can still view the last loaded schedule even when the academic system is down." } }
+      }
+    },
+    "about.ack.title": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "鸣谢" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Acknowledgments" } }
+      }
+    },
+    "about.ack.content": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "在此特别鸣谢以下同学对本软件的贡献支持（排名不分先后）：\n\n翟在家同学\n感谢你在荣耀X20等特定机型上进行的详细测试，帮助发现并解决了多个显示适配问题。\n\n满俊豪同学、田东民同学、王中睿同学、刘同学\n感谢你们对应用进行的全面测试，修复了无数潜在的BUG。\n\n小张Bob同学\n感谢你对应用信息准确性提出的宝贵意见，让应用内容更加准确可靠。\n\n本应用能够不断完善和适配更多设备，离不开各位测试同学的辛勤付出。正是你们的反馈和测试，才让这个应用变得更好。" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Special thanks to the following students for their contributions (in no particular order):\n\nZhai Zaijia — for detailed testing on Honor X20 and similar devices, helping find and fix multiple display issues.\n\nMan Junhao, Tian Dongmin, Wang Zhongrui and Liu — for comprehensive testing that fixed countless potential bugs.\n\nXiao Zhang Bob — for valuable feedback on information accuracy.\n\nThe app's continuous improvement would not be possible without every tester's hard work." } }
+      }
+    },
+    "debug.section.simulate": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "模拟课表变动（重启生效）" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Simulate Schedule Change (restart to apply)" } }
+      }
+    },
+    "debug.sim.swapA": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "课程 A" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Course A" } }
+      }
+    },
+    "debug.sim.swapB": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "课程 B" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Course B" } }
+      }
+    },
+    "debug.sim.applySwap": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "调换两门课" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Swap Courses" } }
+      }
+    },
+    "debug.sim.clearSwap": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "清除调换" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Clear Swap" } }
+      }
+    },
+    "debug.section.splash": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "开屏彩蛋（重启生效）" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Splash Easter Eggs (restart to apply)" } }
+      }
+    },
+    "debug.sim.holiday": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "手动触发节日彩蛋" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Trigger Holiday Egg" } }
+      }
+    },
+    "debug.sim.birthday": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "手动触发生日彩蛋" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Trigger Birthday Egg" } }
+      }
+    },
+    "debug.section.fakeUpdate": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "伪造更新（重启生效）" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Fake Update (restart to apply)" } }
+      }
+    },
+    "debug.sim.version": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "版本号" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Version" } }
+      }
+    },
+    "debug.sim.force": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "强制更新" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Force Update" } }
+      }
+    },
+    "debug.sim.fakeOn": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "启用伪造更新" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Enable Fake Update" } }
+      }
+    },
+    "settings.background.scope": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "背景覆盖范围" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Background Scope" } }
+      }
+    },
+    "settings.background.scope.grid": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "仅课表区域" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Grid Only" } }
+      }
+    },
+    "settings.background.scope.immersive": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "沉浸式" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Immersive" } }
+      }
+    },
+    "update.title": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "发现新版本" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Update Available" } }
+      }
+    },
+    "update.now": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "立即更新" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Update Now" } }
+      }
+    },
+    "update.later": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "稍后再说" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Later" } }
+      }
+    },
+    "update.ignore": {
+      "localizations": {
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "忽略此版本" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Ignore This Version" } }
       }
     },
     "login.error.emptyFields": {
@@ -1172,6 +1436,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Find free classrooms"
+          }
+        }
+      }
+    },
+    "tool.shuati": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复习刷题"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Practice"
           }
         }
       }
@@ -3341,13 +3621,61 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "你已完整观看广告，为开发者贡献了一份力量。"
+            "value": "你已完整观看广告，为开发者贡献了一份力量！(ﾉ>ω<)ﾉ"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "You watched a full ad and supported the developer."
+            "value": "You watched a full ad and supported the developer! (ﾉ>ω<)ﾉ"
+          }
+        }
+      }
+    },
+    "sponsor.incomplete.title": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "广告未完整观看"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ad not fully watched"
+          }
+        }
+      }
+    },
+    "sponsor.incomplete.ok": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "知道了"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Got it"
+          }
+        }
+      }
+    },
+    "sponsor.incomplete.message": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "由于您未完整观看视频，开发者无法收到奖励，求求把视频看完嘛qwq"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Since you didn't watch the full video, the developer won't receive any reward. Please watch it completely next time (｡•́︿•̀｡)"
           }
         }
       }

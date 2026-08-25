@@ -25,20 +25,23 @@ struct ProfileView: View {
         URL(string: "https://apps.apple.com/app/id\(APIConfig.appStoreID)")!
     }
 
+    /// 分享文案与安卓 share_text 同步（宣传语 + 下载链接整体作为文本分享）。
+    private var shareText: String {
+        String(format: NSLocalizedString("share.text", comment: ""), shareURL.absoluteString)
+    }
+
     var body: some View {
         NavigationStack {
             List {
-                // MARK: 用户卡片
+                // MARK: 用户卡片（点一下进个人信息；调试入口在顶部标题 6 连击）
                 Section {
                     Button { showInfoSheet = true } label: {
                         HStack {
                             VStack(alignment: .leading, spacing: 3) {
-                                Text(auth.studentInfo?.name ?? "…")
+                                Text(displayName)
                                     .font(.title3.bold())
                                     .foregroundStyle(.primary)
-                                    .contentShape(Rectangle())
-                                    .onTapGesture { onNameTap() }
-                                Text(auth.studentInfo?.studentID ?? "…")
+                                Text(displayStudentID)
                                     .font(.subheadline)
                                     .foregroundStyle(.secondary)
                             }
@@ -53,7 +56,7 @@ struct ProfileView: View {
                 }
 
                 // MARK: 账号管理
-                Section(String(localized: "settings.group.account")) {
+                Section("settings.group.account") {
                     Button {
                         showAccountSwitcher = true
                     } label: {
@@ -78,7 +81,7 @@ struct ProfileView: View {
                 }
 
                 // MARK: 应用功能
-                Section(String(localized: "settings.group.features")) {
+                Section("settings.group.features") {
                     NavigationLink {
                         WidgetGuideView()
                     } label: {
@@ -107,7 +110,7 @@ struct ProfileView: View {
                                      titleKey: "settings.feedback",
                                      subtitleKey: "settings.feedback.sub")
                     }
-                    ShareLink(item: shareURL) {
+                    ShareLink(item: shareText) {
                         SettingLabel(icon: "square.and.arrow.up.fill", tint: .blue,
                                      titleKey: "settings.share",
                                      subtitleKey: "settings.share.sub")
@@ -115,7 +118,7 @@ struct ProfileView: View {
                 }
 
                 // MARK: 更多
-                Section(String(localized: "settings.group.more")) {
+                Section("settings.group.more") {
                     NavigationLink {
                         WebViewScreen(titleKey: "settings.homepage", url: APIConfig.homepageURL)
                     } label: {
@@ -137,6 +140,15 @@ struct ProfileView: View {
             }
             .navigationTitle(String(localized: "tab.me"))
             .navigationBarTitleDisplayMode(.inline)
+            // 自定义标题占据 principal 位（可点击）：6 连击 → 调试密码框
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(String(localized: "tab.me"))
+                        .font(.headline)
+                        .contentShape(Rectangle())
+                        .onTapGesture { onTitleTap() }
+                }
+            }
             .overlay(alignment: .bottom) {
                 if let toast {
                     Text(toast)
@@ -211,17 +223,31 @@ struct ProfileView: View {
         }
     }
 
-    /// 5 连击（1.5 秒内），超时重置。
-    private func onNameTap() {
+    /// 学生信息可能被教务脱敏成 ***：无效时退回学号，不让用户看到星号。
+    private var displayName: String {
+        let name = auth.studentInfo?.name ?? ""
+        return Self.isValid(name) ? name : (AccountStore.currentID ?? "…")
+    }
+
+    private var displayStudentID: String {
+        auth.studentInfo?.studentID ?? AccountStore.currentID ?? "…"
+    }
+
+    static func isValid(_ value: String) -> Bool {
+        !value.isEmpty && !value.allSatisfy { $0 == "*" }
+    }
+
+    /// 标题 6 连击（3 秒内），超时重置。
+    private func onTitleTap() {
         debugTapCount += 1
         debugTapTask?.cancel()
-        if debugTapCount >= 5 {
+        if debugTapCount >= 6 {
             debugTapCount = 0
             showPasswordPrompt = true
             return
         }
         debugTapTask = Task {
-            try? await Task.sleep(nanoseconds: 1_500_000_000)
+            try? await Task.sleep(nanoseconds: 3_000_000_000)
             if !Task.isCancelled { debugTapCount = 0 }
         }
     }

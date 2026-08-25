@@ -8,6 +8,8 @@ struct ScheduleSettingsSheet: View {
 
     @AppStorage("schedule.fontSize") private var fontSize = 12.0
     @AppStorage("schedule.colorStyle") private var colorStyleRaw = CourseColorStyle.default.rawValue
+    @AppStorage("schedule.weekStartsSunday") private var weekStartsSunday = false
+    @AppStorage("schedule.backgroundImmersive") private var backgroundImmersive = true
     @Binding var refreshTrigger: Int
 
     @State private var photoPickerItem: PhotosPickerItem?
@@ -41,10 +43,24 @@ struct ScheduleSettingsSheet: View {
                         Slider(value: $fontSize, in: fontSizeRange, step: 1)
                     }
 
+                    // MARK: 每周开始
+                    Picker("settings.weekStart", selection: $weekStartsSunday) {
+                        Text("settings.weekStart.monday").tag(false)
+                        Text("settings.weekStart.sunday").tag(true)
+                    }
+
                     // MARK: 配色主题
                     Picker("settings.colorStyle", selection: $colorStyleRaw) {
                         Text("settings.colorStyle.default").tag(CourseColorStyle.default.rawValue)
                         Text("settings.colorStyle.bright").tag(CourseColorStyle.bright.rawValue)
+                    }
+
+                    // MARK: 背景覆盖范围（只在设置了背景图时才有意义）
+                    if hasBackground {
+                        Picker("settings.background.scope", selection: $backgroundImmersive) {
+                            Text("settings.background.scope.grid").tag(false)
+                            Text("settings.background.scope.immersive").tag(true)
+                        }
                     }
 
                     // MARK: 背景图片
