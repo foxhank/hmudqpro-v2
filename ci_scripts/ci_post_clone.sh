@@ -12,3 +12,9 @@ if [ -z "$BUILD_NUMBER" ]; then
 fi
 echo "ci_post_clone: 固化 Identity 构建号 $BUILD_NUMBER"
 sed -i '' "s/CURRENT_PROJECT_VERSION = [0-9][0-9]*/CURRENT_PROJECT_VERSION = $BUILD_NUMBER/" "$PBXPROJ"
+
+# Pods 目录不入库（.gitignore），云端克隆后需要安装依赖。
+# Xcode Cloud 的 macOS 镜像自带 CocoaPods；Podfile.lock 已入库，版本可复现。
+cd "$CI_PRIMARY_REPOSITORY_PATH" || exit 1
+echo "ci_post_clone: pod install"
+pod install || exit 1
