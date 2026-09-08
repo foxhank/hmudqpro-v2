@@ -29,8 +29,21 @@ struct ScheduleView: View {
         return weekStartsSunday ? [monFirst[6]] + monFirst[0...5] : monFirst
     }
 
-    private let slotHeight: CGFloat = 88
+    /// 大节格高下限：小屏（如 SE）保持原尺寸；大屏按课表区剩余高度均分撑满（见 dynamicSlotHeight）。
+    private let minSlotHeight: CGFloat = 88
+    /// 第六节在屏幕底部露出的高度（第六节很少排课，露出一角提示可继续下滑）。
+    private let lastSlotPeekHeight: CGFloat = 24
+    /// 星期表头行高（时间列表头 34 = 此值 + gridSpacing，两列严格对齐）。
+    private let columnHeaderHeight: CGFloat = 30
     private let gridSpacing: CGFloat = 4
+
+    /// 按课表区可用高度动态计算大节格高：前 5 大节 + 第六节露出一角正好一屏，小屏保底不缩。
+    /// 网格总高 = columnHeaderHeight + 6 × slotHeight（格间距已含在格内）。
+    private func dynamicSlotHeight(for viewportHeight: CGFloat) -> CGFloat {
+        let fullSlots = CGFloat(Course.bigSlotsPerDay - 1)   // 第六节只露 lastSlotPeekHeight
+        let perSlot = (viewportHeight - columnHeaderHeight - lastSlotPeekHeight) / fullSlots
+        return max(minSlotHeight, perSlot)
+    }
 
     var body: some View {
         NavigationStack {
@@ -171,41 +184,45 @@ struct ScheduleView: View {
     }
 
     private var scheduleGrid: some View {
-        let pager = TabView(selection: weekSelection) {
-            ForEach(1...SemesterCalculator.totalWeeks, id: \.self) { week in
-                weekPage(week)
-                    .tag(week)
+        // 量出课表区实际可用高度，动态算出格高：大屏撑满整屏，小屏不低于 88
+        GeometryReader { proxy in
+            let slotHeight = dynamicSlotHeight(for: proxy.size.height)
+            let pager = TabView(selection: weekSelection) {
+                ForEach(1...SemesterCalculator.totalWeeks, id: \.self) { week in
+                    weekPage(week, slotHeight: slotHeight)
+                        .tag(week)
+                }
             }
-        }
-        .tabViewStyle(.page(indexDisplayMode: .never))
+            .tabViewStyle(.page(indexDisplayMode: .never))
 
-        // 背景图（30% 透明度衬底，对齐安卓）。
-        // 注意挂在 pager 上时它会画在周次栏（VStack 前面的兄弟）之上，
-        // 遮罩盖不住——所以背景由 body 里的 VStack 统一画在最底层。
+            // 背景图（30% 透明度衬底，对齐安卓）。
+            // 注意挂在 pager 上时它会画在周次栏（VStack 前面的兄弟）之上，
+            // 遮罩盖不住——所以背景由 body 里的 VStack 统一画在最底层。
 
-        return pager
-        .overlay(alignment: .bottom) {
-            if let error = viewModel.errorMessage {
-                Text(error)
-                    .font(.footnote)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .adaptiveGlass()
-                    .padding(.bottom, 8)
-            } else if let success = viewModel.successMessage {
-                Label(success, systemImage: "checkmark.circle.fill")
-                    .font(.footnote)
-                    .foregroundStyle(.green)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .adaptiveGlass()
-                    .padding(.bottom, 8)
-            }
+            return pager
+                .overlay(alignment: .bottom) {
+                    if let error = viewModel.errorMessage {
+                        Text(error)
+                            .font(.footnote)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 6)
+                            .adaptiveGlass()
+                            .padding(.bottom, 8)
+                    } else if let success = viewModel.successMessage {
+                        Label(success, systemImage: "checkmark.circle.fill")
+                            .font(.footnote)
+                            .foregroundStyle(.green)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 6)
+                            .adaptiveGlass()
+                            .padding(.bottom, 8)
+                    }
+                }
         }
     }
 
     /// 单周页面：时间列 + 7 天网格，可纵向滚动/下拉刷新。
-    private func weekPage(_ week: Int) -> some View {
+    private func weekPage(_ week: Int, slotHeight: CGFloat) -> some View {
         let entries = viewModel.gridEntries(week: week)
         let weekDates = viewModel.weekDates(week)
         let today = Date()
@@ -214,7 +231,7 @@ struct ScheduleView: View {
             HStack(alignment: .top, spacing: gridSpacing) {
                 // 左侧时间列：节次对 + 起止时间（7-8 / 15:25 / - / 17:00）
                 VStack(spacing: gridSpacing) {
-                    Text("").frame(height: 34)
+                    Text("").frame(height: columnHeaderHeight + gridSpacing)
                     ForEach(0..<Course.bigSlotsPerDay, id: \.self) { slot in
                         VStack(spacing: 1) {
                             Text("\(slot * 2 + 1)-\(slot * 2 + 2)")
@@ -238,6 +255,7 @@ struct ScheduleView: View {
                               entries: entries[day.index] ?? [:],
                               colorStyle: colorStyle,
                               fontSize: fontSize,
+                              columnHeaderHeight: columnHeaderHeight,
                               slotHeight: slotHeight,
                               gridSpacing: gridSpacing)
                 }
@@ -258,6 +276,7 @@ private struct DayColumn: View {
     let entries: [Int: ScheduleViewModel.GridEntry]
     let colorStyle: CourseColorStyle
     let fontSize: Double
+    let columnHeaderHeight: CGFloat
     let slotHeight: CGFloat
     let gridSpacing: CGFloat
 
@@ -278,7 +297,7 @@ private struct DayColumn: View {
                     .foregroundStyle(textColor)
             }
             .frame(maxWidth: .infinity)
-            .frame(height: 30)
+            .frame(height: columnHeaderHeight)
             .background(isToday ? Color.accentColor.opacity(0.15) : Color.clear, in: .rect(cornerRadius: 6))
             // 仅课表区域：星期表头行铺不透明底，不透出背景图（今天的高亮画在它上面）
             .background(backgroundImmersive ? Color.clear : Color(.systemBackground))

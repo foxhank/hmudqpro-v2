@@ -14,6 +14,8 @@ struct DebugView: View {
     @State private var fakeVersion = "9.9.9"
     @State private var fakeForce = false
     @State private var fakeUpdateOn = false
+    // 调试：模拟教务故障（0 = 关闭）
+    @State private var jwcFault = DebugStore.jwcFailureStatus ?? 0
     // 调试：开屏彩蛋
     @State private var forceHoliday = DebugStore.forceHoliday
     @State private var forceBirthday = DebugStore.forceBirthday
@@ -45,6 +47,28 @@ struct DebugView: View {
                         resultText = "已清除课程调换"
                     }
                     .disabled(DebugStore.courseSwap.isEmpty)
+                }
+
+                // MARK: 模拟教务故障（立即生效）
+                Section("debug.section.jwcFault") {
+                    Picker("debug.sim.jwcFaultCode", selection: $jwcFault) {
+                        Text("common.none").tag(0)
+                        Text("弱网：慢 4 秒").tag(-4)
+                        Text("极弱网：慢 8 秒").tag(-8)
+                        Text("挂起（不响应）").tag(-1)
+                        Text("404").tag(404)
+                        Text("500").tag(500)
+                        Text("502").tag(502)
+                        Text("503").tag(503)
+                    }
+                    .onChange(of: jwcFault) { code in
+                        DebugStore.setJwcFailureStatus(code == 0 ? nil : code)
+                        resultText = code == 0 ? "已关闭教务故障模拟，后续请求恢复正常"
+                                               : "已开启模拟教务故障：\(code == -1 ? "挂起（不响应）" : code < 0 ? "延迟 \(abs(code)) 秒弱网" : "返回 HTTP \(code)")"
+                    }
+                    Text("立即生效。登录/课表/成绩等所有教务请求都会收到该状态码，后端与内置网页不受影响。退出登录后重新登录，可测试登录报错与「看缓存课表」入口。选「挂起」模拟连接挂死：请求 10 秒无响应被强制终止并提示超时，整条登录链 15 秒兜底。弱网档延迟后转发真实请求（响应是真的，只是慢）：单步 10 秒内能过，登录链总时长超 15 秒会被总闸截断。")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
 
                 // MARK: 开屏彩蛋（重启生效）

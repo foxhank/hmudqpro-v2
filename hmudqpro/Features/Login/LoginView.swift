@@ -138,6 +138,28 @@ struct LoginView: View {
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 24)
                 }
+
+                // 教务故障兜底：仅在教务/网络侧报错时展示——之前登录过（有缓存）可跳过登录看缓存课表
+                if auth.isServerSideError, auth.hasCachedSession {
+                    Button {
+                        auth.enterWithCachedSession()
+                    } label: {
+                        Text(String(localized: "login.cachedEntry"))
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                            .underline()
+                            .multilineTextAlignment(.center)
+                    }
+                    .padding(.horizontal, 32)
+                    // 缓存属于上次使用的账号（单槽缓存），明确告知用户进的是哪个号
+                    if let last = AccountStore.accounts.first {
+                        Text(last.name == last.studentID
+                             ? "上次账号：\(last.studentID)"
+                             : "上次账号：\(last.name)（\(last.studentID)）")
+                            .font(.caption2)
+                            .foregroundStyle(.tertiary)
+                    }
+                }
             }
             .padding(.bottom, 32)
         }
@@ -146,6 +168,8 @@ struct LoginView: View {
         .onAppear {
             // 回填上次学号（密码在 Keychain，自动登录由 SessionKeeper 处理）
             studentID = KeychainStore.string(forKey: KeychainStore.Keys.studentID) ?? ""
+            // 清掉残留报错（如调试完教务故障返回登录页），避免旧错误误导
+            auth.clearError()
         }
         .sheet(isPresented: $showAgreement) { docSheet(key: "about.agreement", url: APIConfig.agreementDocURL) }
         .sheet(isPresented: $showPrivacy) { docSheet(key: "about.privacy", url: APIConfig.privacyDocURL) }

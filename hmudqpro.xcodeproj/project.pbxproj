@@ -381,9 +381,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-hmudqpro/Pods-hmudqpro-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-hmudqpro/Pods-hmudqpro-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -420,9 +424,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-hmudqpro/Pods-hmudqpro-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-hmudqpro/Pods-hmudqpro-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -657,9 +665,8 @@
 				DEVELOPMENT_TEAM = WNT524TUR2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AdSupport-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "扫码签到与拍摄上传需要使用摄像头";
-				INFOPLIST_FILE = AdSupport-Info.plist;
-				SWIFT_OBJC_BRIDGING_HEADER = hmudqpro/hmudqpro-Bridging-Header.h;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "考核中的音视频录制需要使用麦克风";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "上传作业或照片需要访问相册";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -675,6 +682,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cn.foxhank.hmudqpro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "hmudqpro/hmudqpro-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -693,9 +701,8 @@
 				DEVELOPMENT_TEAM = WNT524TUR2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AdSupport-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "扫码签到与拍摄上传需要使用摄像头";
-				INFOPLIST_FILE = AdSupport-Info.plist;
-				SWIFT_OBJC_BRIDGING_HEADER = hmudqpro/hmudqpro-Bridging-Header.h;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "考核中的音视频录制需要使用麦克风";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "上传作业或照片需要访问相册";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -711,6 +718,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cn.foxhank.hmudqpro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "hmudqpro/hmudqpro-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -1,9 +1,13 @@
 import Foundation
-import Bugly
 import BUAdSDK
+#if !targetEnvironment(simulator)
+import Bugly
+#endif
 
 /// 第三方 SDK 统一引导（Bugly 崩溃上报 / 百度统计 MTJ / 穿山甲 GroMore 广告）。
 /// 所有 ID 来自 APIConfig（缺配置会 fail loud），App 启动时调用一次。
+/// 注：Bugly / 百度统计只有真机二进制，模拟器构建不链接（见 Podfile post_install），
+/// 模拟器上两个 setup 静默跳过。
 enum SDKBootstrap {
     /// app 启动时调用（didFinishLaunching 语义）。
     static func setupAll() {
@@ -14,6 +18,7 @@ enum SDKBootstrap {
         // 改为首次进入赞助页时 setupGroMoreIfNeeded()
     }
 
+#if !targetEnvironment(simulator)
     /// Bugly 崩溃上报。
     static func setupBugly() {
         Bugly.start(withAppId: APIConfig.buglyAppID)
@@ -23,6 +28,17 @@ enum SDKBootstrap {
     static func setupBaiduStat() {
         BaiduMobStat().start(withAppId: APIConfig.baiduStatAppID)
     }
+#else
+    /// 模拟器：Bugly 无模拟器切片，不初始化。
+    static func setupBugly() {
+        print("📱 [Simulator] 跳过 Bugly 初始化")
+    }
+
+    /// 模拟器：百度统计无模拟器切片，不初始化。
+    static func setupBaiduStat() {
+        print("📱 [Simulator] 跳过百度统计初始化")
+    }
+#endif
 
     private static var groMoreStarted = false
 

@@ -1,3829 +1,4448 @@
 {
-  "sourceLanguage": "zh-Hans",
-  "strings": {
-    "": {},
-    "%lld": {},
-    "app.name": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "百湖医大小助手"
+  "sourceLanguage" : "zh-Hans",
+  "strings" : {
+    "" : {
+
+    },
+    "-" : {
+
+    },
+    "%@\n\n%@" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@\n\n%2$@"
+          }
+        }
+      }
+    },
+    "%@ · %@" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ · %2$@"
+          }
+        }
+      }
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%@ %@ · %@ · %@" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@ · %3$@ · %4$@"
+          }
+        }
+      }
+    },
+    "%@ %@ · %@ %@" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@ · %3$@ %4$@"
+          }
+        }
+      }
+    },
+    "%@ ~ %@" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ ~ %2$@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
+    "%lld-%lld" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld-%2$lld"
           }
+        }
+      }
+    },
+    "404" : {
+
+    },
+    "500" : {
+
+    },
+    "502" : {
+
+    },
+    "503" : {
+
+    },
+    "about.ack.content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Special thanks to the following students for their contributions (in no particular order):\n\nZhai Zaijia — for detailed testing on Honor X20 and similar devices, helping find and fix multiple display issues.\n\nMan Junhao, Tian Dongmin, Wang Zhongrui and Liu — for comprehensive testing that fixed countless potential bugs.\n\nXiao Zhang Bob — for valuable feedback on information accuracy.\n\nThe app's continuous improvement would not be possible without every tester's hard work."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在此特别鸣谢以下同学对本软件的贡献支持（排名不分先后）：\n\n翟在家同学\n感谢你在荣耀X20等特定机型上进行的详细测试，帮助发现并解决了多个显示适配问题。\n\n满俊豪同学、田东民同学、王中睿同学、刘同学\n感谢你们对应用进行的全面测试，修复了无数潜在的BUG。\n\n小张Bob同学\n感谢你对应用信息准确性提出的宝贵意见，让应用内容更加准确可靠。\n\n本应用能够不断完善和适配更多设备，离不开各位测试同学的辛勤付出。正是你们的反馈和测试，才让这个应用变得更好。"
+          }
+        }
+      }
+    },
+    "about.ack.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acknowledgments"
+          }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "HmuDq Helper"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "鸣谢"
           }
         }
       }
     },
-    "login.error": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sign-in failed: %@"
+    "about.agreement" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User Agreement"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "登录失败：%@"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用户协议"
           }
         }
       }
     },
-    "login.error %@": {},
-    "course.name": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "课程"
+    "about.intro.content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app is developed by students of HMUDQ. All development and testing are done by fellow students — please forgive any bugs (and feel free to report them!).\n\nThe app is essentially a client for the university's academic system. When you tap login, it sends requests to the system on your behalf and presents the responses in a clean, readable way. Because of this, what the app can do is entirely limited by the academic system itself — it cannot (and has no ability to) hack into the system or anything else. With built-in caching, you can still view the last loaded schedule even when the academic system is down."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Course"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这是一款由医大在读学生们开发出来的软件。软件开发、测试全为本校学生，如有 bug 敬请谅解（同时欢迎反馈！）\n\n软件的原理就是套壳教务系统，当你点击登录时候，软件后台会同步向教务发送请求，同时将教务返回的信息美观、直接地展示在你眼前。正因为如此，这个软件能做的范围完全取决于教务系统，他不能（也没有能力）入侵系统或者做别的事情。同时，由于软件引入了缓存机制，在教务系统崩溃期间仍然可以看上一次加载的课程表，极大方便了同学的日常使用。"
           }
         }
       }
     },
-    "course.teacher": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "教师"
+    "about.intro.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About This App"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Teacher"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于本软件"
           }
         }
       }
     },
-    "course.location": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "地点"
+    "about.privacy" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Location"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隐私政策"
           }
         }
       }
     },
-    "course.week": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "周次"
+    "account.savedCount" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d accounts saved"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Week"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已保存 %d 个账号"
           }
         }
       }
     },
-    "course.week.value %@": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "第 %@ 周"
+    "account.switch.hint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap to switch (session resets and re-logs in; schedule and widgets refresh). Swipe to delete."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Week %@"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点击切换账号（会清除当前会话并重新登录，课表与小组件自动更新）。左滑删除已保存账号。"
           }
         }
       }
     },
-    "course.type": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "性质"
+    "account.useOther" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Another Account"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Type"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用其他账号"
           }
         }
       }
     },
-    "common.done": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "完成"
+    "app.name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HmuDq Helper"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Done"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "百湖医大小助手"
           }
         }
       }
     },
-    "settings.title": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "设置"
+    "assessment.cameraDenied.message" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign-in QR scanning needs camera access. Enable it in Settings > Privacy & Security > Camera."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Settings"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "扫码签到需要相机权限。请到 设置 > 隐私与安全性 > 相机 中允许“百湖医大小助手”。"
           }
         }
       }
     },
-    "settings.display": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "显示"
+    "assessment.cameraDenied.settings" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Settings"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Display"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "去设置"
           }
         }
       }
     },
-    "settings.fontSize": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "字体大小"
+    "assessment.cameraDenied.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camera Access Disabled"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Font Size"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "相机权限未开启"
           }
         }
       }
     },
-    "settings.weekStart": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "每周开始于"
+    "assessment.loadFailed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to load. Check your network and retry."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Week Starts On"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "页面加载失败，请检查网络后重试"
           }
         }
       }
     },
-    "settings.weekStart.monday": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "周一"
+    "classroom.allBuildings" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Monday"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全部"
           }
         }
       }
     },
-    "settings.weekStart.sunday": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "周日"
+    "classroom.allFree" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free all day"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sunday"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全天空闲"
           }
         }
       }
     },
-    "settings.colorStyle": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "配色主题"
+    "classroom.building" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Building"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Color Theme"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "教学楼"
           }
         }
       }
     },
-    "settings.colorStyle.default": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "经典"
+    "classroom.date" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Classic"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日期"
           }
         }
       }
     },
-    "settings.colorStyle.bright": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "明亮"
+    "classroom.empty" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No schedule data for this day"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bright"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当天没有排课数据"
           }
         }
       }
     },
-    "settings.background.pick": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "选择背景图片"
+    "common.cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose Background"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消"
           }
         }
       }
     },
-    "settings.background.clear": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "清除背景图片"
+    "common.done" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Remove Background"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成"
           }
         }
       }
     },
-    "settings.refresh": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "刷新课表"
+    "common.none" : {
+
+    },
+    "common.retry" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retry"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重试"
+          }
+        }
+      }
+    },
+    "course.change.ack" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Got it"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Refresh Schedule"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我知道了"
           }
         }
       }
     },
-    "settings.fontSize.reset": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "恢复默认"
+    "course.change.added %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Added: %@"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新增：%@"
           }
         }
       }
     },
-    "login.error.webvpnUnreachable": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "无法访问 WebVPN，请检查网络连接" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Cannot reach WebVPN, check your network" } }
+    "course.change.hint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please adjust your plans accordingly"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请注意调整个人安排"
+          }
+        }
+      }
+    },
+    "course.change.more %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…and %lld more"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…及其他 %lld 项"
+          }
+        }
       }
     },
-    "login.error.pubKeyUnavailable": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "无法获取登录公钥" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Failed to get login public key" } }
+    "course.change.moved %@ %@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Note: %@ moved from %@ to %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "注意：%@ 由 %@ 移至 %@"
+          }
+        }
       }
     },
-    "login.error.pubKeyParseFailed": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "登录公钥解析失败" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Failed to parse login public key" } }
+    "course.change.removed %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Removed: %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移除：%@"
+          }
+        }
       }
     },
-    "login.error.loginPageUnavailable": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "无法访问登录页面" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Cannot reach the login page" } }
+    "course.change.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schedule Changes"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "课表变动提醒"
+          }
+        }
       }
     },
-    "login.error.executionMissing": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "无法获取登录参数（可能已有登录态）" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Missing login parameter (session may exist)" } }
+    "course.location" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "地点"
+          }
+        }
       }
     },
-    "login.error.badCredentials": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "用户名或密码错误" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Incorrect username or password" } }
+    "course.name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Course"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "课程"
+          }
+        }
       }
     },
-    "login.error.casRejected %lld": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "CAS 登录失败，状态码：%lld" } },
-        "en": { "stringUnit": { "state": "translated", "value": "CAS login failed, status: %lld" } }
+    "course.teacher" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teacher"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "教师"
+          }
+        }
       }
     },
-    "login.error.ssoFailed %@": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "教务系统 SSO 登录失败：%@" } },
-        "en": { "stringUnit": { "state": "translated", "value": "JWC SSO login failed: %@" } }
+    "course.type" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "性质"
+          }
+        }
       }
     },
-    "login.error.jwcDownHint": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "这个问题可能是教务炸掉了，请稍后再试试吧。" } },
-        "en": { "stringUnit": { "state": "translated", "value": "The JWC server may be down, please try again later." } }
+    "course.week" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Week"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "周次"
+          }
+        }
       }
     },
-    "splash.skip %lld": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "跳过 %lld" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Skip %lld" } }
+    "course.week.value %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Week %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "第 %@ 周"
+          }
+        }
       }
     },
-    "splash.happyBirthday %@": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "生日快乐，%@！" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Happy Birthday, %@!" } }
+    "debug.data.clearCache" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear Schedule Cache"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清空课表缓存"
+          }
+        }
       }
     },
-    "splash.birthdayWish": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "祝新的一岁万事顺意 🎂" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Wishing you a wonderful year ahead 🎂" } }
+    "debug.password.message" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter debug password"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请输入调试密码"
+          }
+        }
       }
     },
-    "share.text": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "百湖医大小助手 - 专为哈医大大庆校区学子打造的校园助手。%@" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Baihu Medical Assistant - The campus helper for HMUDQ students. %@" } }
+    "debug.password.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debug Mode"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "调试模式"
+          }
+        }
       }
     },
-    "about.intro.title": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "关于本软件" } },
-        "en": { "stringUnit": { "state": "translated", "value": "About This App" } }
+    "debug.running" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Running…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "执行中…"
+          }
+        }
       }
     },
-    "about.intro.content": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "这是一款由医大在读学生们开发出来的软件。软件开发、测试全为本校学生，如有 bug 敬请谅解（同时欢迎反馈！）\n\n软件的原理就是套壳教务系统，当你点击登录时候，软件后台会同步向教务发送请求，同时将教务返回的信息美观、直接地展示在你眼前。正因为如此，这个软件能做的范围完全取决于教务系统，他不能（也没有能力）入侵系统或者做别的事情。同时，由于软件引入了缓存机制，在教务系统崩溃期间仍然可以看上一次加载的课程表，极大方便了同学的日常使用。" } },
-        "en": { "stringUnit": { "state": "translated", "value": "This app is developed by students of HMUDQ. All development and testing are done by fellow students — please forgive any bugs (and feel free to report them!).\n\nThe app is essentially a client for the university's academic system. When you tap login, it sends requests to the system on your behalf and presents the responses in a clean, readable way. Because of this, what the app can do is entirely limited by the academic system itself — it cannot (and has no ability to) hack into the system or anything else. With built-in caching, you can still view the last loaded schedule even when the academic system is down." } }
+    "debug.section.data" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "数据操作"
+          }
+        }
       }
     },
-    "about.ack.title": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "鸣谢" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Acknowledgments" } }
+    "debug.section.fakeUpdate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fake Update (restart to apply)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "伪造更新（重启生效）"
+          }
+        }
       }
     },
-    "about.ack.content": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "在此特别鸣谢以下同学对本软件的贡献支持（排名不分先后）：\n\n翟在家同学\n感谢你在荣耀X20等特定机型上进行的详细测试，帮助发现并解决了多个显示适配问题。\n\n满俊豪同学、田东民同学、王中睿同学、刘同学\n感谢你们对应用进行的全面测试，修复了无数潜在的BUG。\n\n小张Bob同学\n感谢你对应用信息准确性提出的宝贵意见，让应用内容更加准确可靠。\n\n本应用能够不断完善和适配更多设备，离不开各位测试同学的辛勤付出。正是你们的反馈和测试，才让这个应用变得更好。" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Special thanks to the following students for their contributions (in no particular order):\n\nZhai Zaijia — for detailed testing on Honor X20 and similar devices, helping find and fix multiple display issues.\n\nMan Junhao, Tian Dongmin, Wang Zhongrui and Liu — for comprehensive testing that fixed countless potential bugs.\n\nXiao Zhang Bob — for valuable feedback on information accuracy.\n\nThe app's continuous improvement would not be possible without every tester's hard work." } }
+    "debug.section.jwcFault" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulate JWC Outage (applies immediately)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "模拟教务故障（立即生效）"
+          }
+        }
       }
     },
-    "debug.section.simulate": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "模拟课表变动（重启生效）" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Simulate Schedule Change (restart to apply)" } }
+    "debug.section.result" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Result"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "结果"
+          }
+        }
       }
     },
-    "debug.sim.swapA": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "课程 A" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Course A" } }
+    "debug.section.simulate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulate Schedule Change (restart to apply)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "模拟课表变动（重启生效）"
+          }
+        }
       }
     },
-    "debug.sim.swapB": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "课程 B" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Course B" } }
+    "debug.section.splash" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Splash Easter Eggs (restart to apply)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开屏彩蛋（重启生效）"
+          }
+        }
       }
     },
-    "debug.sim.applySwap": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "调换两门课" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Swap Courses" } }
+    "debug.section.test" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feature Tests"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "功能测试"
+          }
+        }
       }
     },
-    "debug.sim.clearSwap": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "清除调换" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Clear Swap" } }
+    "debug.sim.applySwap" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swap Courses"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "调换两门课"
+          }
+        }
       }
     },
-    "debug.section.splash": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "开屏彩蛋（重启生效）" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Splash Easter Eggs (restart to apply)" } }
+    "debug.sim.birthday" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trigger Birthday Egg"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "手动触发生日彩蛋"
+          }
+        }
       }
     },
-    "debug.sim.holiday": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "手动触发节日彩蛋" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Trigger Holiday Egg" } }
+    "debug.sim.clearSwap" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear Swap"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清除调换"
+          }
+        }
       }
     },
-    "debug.sim.birthday": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "手动触发生日彩蛋" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Trigger Birthday Egg" } }
+    "debug.sim.fakeOn" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable Fake Update"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "启用伪造更新"
+          }
+        }
       }
     },
-    "debug.section.fakeUpdate": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "伪造更新（重启生效）" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Fake Update (restart to apply)" } }
+    "debug.sim.force" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force Update"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "强制更新"
+          }
+        }
       }
     },
-    "debug.sim.version": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "版本号" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Version" } }
+    "debug.sim.holiday" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trigger Holiday Egg"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "手动触发节日彩蛋"
+          }
+        }
       }
     },
-    "debug.sim.force": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "强制更新" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Force Update" } }
+    "debug.sim.jwcFaultCode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HTTP Status Code"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "返回状态码"
+          }
+        }
       }
     },
-    "debug.sim.fakeOn": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "启用伪造更新" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Enable Fake Update" } }
+    "debug.sim.swapA" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Course A"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "课程 A"
+          }
+        }
       }
     },
-    "settings.background.scope": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "背景覆盖范围" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Background Scope" } }
+    "debug.sim.swapB" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Course B"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "课程 B"
+          }
+        }
       }
     },
-    "settings.background.scope.grid": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "仅课表区域" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Grid Only" } }
+    "debug.sim.version" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本号"
+          }
+        }
       }
     },
-    "settings.background.scope.immersive": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "沉浸式" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Immersive" } }
+    "debug.test.schedule" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test Schedule Refresh"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "测试课表刷新"
+          }
+        }
       }
     },
-    "update.title": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "发现新版本" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Update Available" } }
+    "debug.test.session" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test Session"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "测试登录状态"
+          }
+        }
       }
     },
-    "update.now": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "立即更新" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Update Now" } }
+    "debug.test.update" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test Update Check"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "测试更新检查"
+          }
+        }
       }
     },
-    "update.later": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "稍后再说" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Later" } }
+    "debug.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debug Panel"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "调试面板"
+          }
+        }
       }
     },
-    "update.ignore": {
-      "localizations": {
-        "zh-Hans": { "stringUnit": { "state": "translated", "value": "忽略此版本" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Ignore This Version" } }
+    "error.sessionExpired" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Session expired, please sign in again"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登录已失效，请重新登录"
+          }
+        }
       }
     },
-    "login.error.emptyFields": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Please enter student ID and password"
+    "eval.done" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "请输入学号和密码"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已评价"
           }
         }
       }
     },
-    "login.password": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Password"
+    "eval.empty" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No evaluations"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "密码"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂无评教任务"
           }
         }
       }
     },
-    "login.studentId": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Student ID"
+    "eval.pending" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pending"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "学号"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "待评价"
           }
         }
       }
     },
-    "login.submit": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sign In"
+    "eval.teacher" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teacher: %@"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "登录"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "教师：%@"
           }
         }
       }
     },
-    "login.title": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sign In"
+    "grades.credits" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credits"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "登录"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学分"
           }
         }
       }
     },
-    "schedule.empty.message": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pull down or tap refresh to load from the academic system"
+    "grades.detail.category" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "下拉或点击刷新从教务获取课表"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "课程分类"
           }
         }
       }
     },
-    "schedule.empty.title": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No Schedule"
+    "grades.detail.class" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Class"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "暂无课表"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "教学班"
           }
         }
       }
     },
-    "schedule.loading": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Loading schedule…"
+    "grades.detail.classLevel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "加载课表中…"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "课程大类"
           }
         }
       }
     },
-    "schedule.refresh": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Refresh"
+    "grades.detail.credits" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credits"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "刷新"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学分"
           }
         }
       }
     },
-    "schedule.title": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schedule"
+    "grades.detail.department" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Department"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "课表"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开课部门"
           }
         }
       }
     },
-    "schedule.week %lld": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Week %lld"
+    "grades.detail.examType" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exam Type"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "第 %lld 周"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "考试性质"
           }
         }
       }
     },
-    "schedule.week.current %lld": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Week %lld (Current)"
+    "grades.detail.flag" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flag"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "第 %lld 周（本周）"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "成绩标志"
           }
         }
       }
     },
-    "tab.me": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Me"
+    "grades.detail.gpa" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPA"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "我的"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "绩点"
           }
         }
       }
     },
-    "tab.schedule": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schedule"
+    "grades.detail.method" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Method"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "课表"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "成绩方式"
           }
         }
       }
     },
-    "tab.tools": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tools"
+    "grades.detail.note" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Note"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "工具"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "备注"
           }
         }
       }
     },
-    "weekday.fri": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fri"
+    "grades.detail.score" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Score"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "五"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "成绩"
           }
         }
       }
     },
-    "weekday.mon": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mon"
+    "grades.detail.teacher" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teacher"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "一"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "教师"
           }
         }
       }
     },
-    "weekday.sat": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sat"
+    "grades.empty" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No grades yet"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "六"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂无成绩数据"
           }
         }
       }
     },
-    "weekday.sun": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sun"
+    "grades.gpa" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPA"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "日"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "绩点"
           }
         }
       }
     },
-    "weekday.thu": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Thu"
+    "grades.semester" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Semester"
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "四"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学期"
           }
         }
       }
     },
-    "weekday.tue": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tue"
+    "login.agreementPrefix" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I have read and agree to the "
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "二"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我已阅读并同意 "
           }
         }
       }
     },
-    "weekday.wed": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wed"
+    "login.and" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " and "
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "三"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " 和 "
           }
         }
       }
     },
-    "工具": {},
-    "我的": {},
-    "schedule.refresh.success": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "课表已更新"
+    "login.cachedEntry" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logged in before? Tap here to view your previously cached timetable."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schedule updated"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果你之前登录过这个软件，点击这里可以看之前缓存下来的课表"
           }
         }
       }
     },
-    "schedule.refresh.unchanged": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "课表无变化"
+    "login.error" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign-in failed: %@"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schedule is up to date"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登录失败：%@"
           }
         }
       }
     },
-    "course.change.title": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "课表变动提醒"
+    "login.error.badCredentials" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incorrect username or password"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schedule Changes"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用户名或密码错误"
           }
         }
       }
     },
-    "course.change.added %@": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "新增：%@"
+    "login.error.casRejected %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CAS login failed, status: %lld"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Added: %@"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CAS 登录失败，状态码：%lld"
           }
         }
       }
     },
-    "course.change.removed %@": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "移除：%@"
+    "login.error.emptyFields" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please enter student ID and password"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Removed: %@"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请输入学号和密码"
           }
         }
       }
     },
-    "course.change.moved %@ %@ %@": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "注意：%@ 由 %@ 移至 %@"
+    "login.error.executionMissing" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Missing login parameter (session may exist)"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Note: %@ moved from %@ to %@"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法获取登录参数（可能已有登录态）"
           }
         }
       }
     },
-    "course.change.more %lld": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "…及其他 %lld 项"
+    "login.error.jwcDownHint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This error means the JWC system itself failed. All of the app's requests go straight to the JWC server, so when it's down we can't get in either.\nThat said, the JWC acts up often — try again in a little while?"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "…and %lld more"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这个报错是因为教务系统本身出错了。百湖医大小助手所有请求都直接请求教务系统，所以教务崩溃咱们也用不了。\n不过教务经常抽风，等一会儿试试呢？"
           }
         }
       }
     },
-    "course.change.hint": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "请注意调整个人安排"
+    "login.error.loginPageUnavailable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cannot reach the login page"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Please adjust your plans accordingly"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法访问登录页面"
           }
         }
       }
     },
-    "course.change.ack": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "我知道了"
+    "login.error.pubKeyParseFailed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to parse login public key"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Got it"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登录公钥解析失败"
           }
         }
       }
     },
-    "debug.password.title": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "调试模式"
+    "login.error.pubKeyUnavailable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to get login public key"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Debug Mode"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法获取登录公钥"
           }
         }
       }
     },
-    "debug.password.message": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "请输入调试密码"
+    "login.error.ssoFailed %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JWC SSO login failed: %@"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enter debug password"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "教务系统 SSO 登录失败：%@"
           }
         }
       }
     },
-    "debug.title": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "调试面板"
+    "login.error.webvpnUnreachable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cannot reach WebVPN, check your network"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Debug Panel"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法访问 WebVPN，请检查网络连接"
           }
         }
       }
     },
-    "debug.section.test": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "功能测试"
+    "login.failed.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login Failed"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Feature Tests"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登录失败"
           }
         }
       }
     },
-    "debug.section.data": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "数据操作"
+    "login.hint.atMissing" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you missing the @?"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Data"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你是不是少了个 @？"
           }
         }
       }
     },
-    "debug.section.result": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "结果"
+    "login.hint.case" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The password starts with \"Hmudq\" — did you type \"%@\" with a lowercase h?"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Result"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "密码是 Hmudq 开头——你是不是输成了《%@》，H 没大写？"
           }
         }
       }
     },
-    "debug.test.update": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "测试更新检查"
+    "login.hint.fullwidth" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You typed a full-width ＠; use the ASCII @"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Test Update Check"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你输入了全角字符＠，请改成英文半角 @"
           }
         }
       }
     },
-    "debug.test.schedule": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "测试课表刷新"
+    "login.hint.suffix" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "After @ should be exactly 6 digits (last 6 of your ID card)"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Test Schedule Refresh"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "@ 后面应该是身份证号后六位，你是不是多输或少输了？"
           }
         }
       }
     },
-    "debug.test.session": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "测试登录状态"
+    "login.hint.typo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Did you mean \"Hmudq\" instead of \"%@\"?"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Test Session"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你是不是输成《%@》了？正确拼写是 Hmudq"
           }
         }
       }
     },
-    "debug.data.clearCache": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "清空课表缓存"
+    "login.password" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Clear Schedule Cache"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "密码"
           }
         }
       }
     },
-    "debug.running": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "执行中…"
+    "login.passwordHide" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide password"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Running…"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隐藏密码"
           }
         }
       }
     },
-    "common.cancel": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "取消"
+    "login.passwordShow" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show password"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cancel"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示密码"
           }
         }
       }
     },
-    "error.sessionExpired": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "登录已失效，请重新登录"
+    "login.passwordTip" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default: \"Hmudq@last 6 digits of your ID\""
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Session expired, please sign in again"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "默认为「Hmudq@身份证号后六位」"
           }
         }
       }
     },
-    "tools.group.query": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "信息查询"
+    "login.savePassword" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save password (auto-fill next time)"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Queries"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存密码（下次自动填充）"
           }
         }
       }
     },
-    "tools.group.convenience": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "便捷功能"
+    "login.securityNotice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All requests go to the official academic system. This app never uploads any private data"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Convenience"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有请求均请求于官方教务，百湖医大小助手 App 不会上传任何隐私数据"
           }
         }
       }
     },
-    "tools.group.business": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "业务办理"
+    "login.studentId" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Student ID"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Services"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学号"
           }
         }
       }
     },
-    "tools.group.links": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "快捷跳转"
+    "login.submit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign In"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quick Links"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登录"
           }
         }
       }
     },
-    "tool.grades": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "成绩查询"
+    "login.suggestAgreement" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please read the Privacy Policy and User Agreement first"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Grades"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "建议您阅读隐私政策和用户协议"
           }
         }
       }
     },
-    "tool.grades.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "按学期查看课程成绩和绩点"
+    "login.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign In"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Course grades and GPA by semester"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登录"
           }
         }
       }
     },
-    "tool.examGrades": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "考级查询"
+    "profile.birthday" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Birthday"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Exam Grades"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "出生日期"
           }
         }
       }
     },
-    "tool.examGrades.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "查询等级考试成绩"
+    "profile.className" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Class"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Standardized test scores"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "班级"
           }
         }
       }
     },
-    "tool.emptyClassroom": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "空教室"
+    "profile.college" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "College"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Empty Classrooms"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "院系"
           }
         }
       }
     },
-    "tool.emptyClassroom.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "查询空闲教室"
+    "profile.gender" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gender"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Find free classrooms"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "性别"
           }
         }
       }
     },
-    "tool.shuati": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "复习刷题"
+    "profile.grade" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grade"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Practice"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "年级"
           }
         }
       }
     },
-    "tool.dormRepair": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "寝室报修"
+    "profile.info" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Student Info"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dorm Repair"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学生信息"
           }
         }
       }
     },
-    "tool.dormRepair.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "在线提交寝室维修申请"
+    "profile.major" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Major"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Submit a repair request"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "专业"
           }
         }
       }
     },
-    "tool.ebook": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "电子课本"
+    "profile.name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "E-books"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "姓名"
           }
         }
       }
     },
-    "tool.ebook.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "在线阅读电子教材"
+    "profile.quickLinks" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Links"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Read digital textbooks"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "快捷入口"
           }
         }
       }
     },
-    "tool.courseSelect": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "在线选课"
+    "profile.studentID" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Student ID"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Course Selection"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学号"
           }
         }
       }
     },
-    "tool.courseSelect.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "选择本学期课程"
+    "schedule.empty.message" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pull down or tap refresh to load from the academic system"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pick this semester's courses"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下拉或点击刷新从教务获取课表"
           }
         }
       }
     },
-    "tool.evaluation": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "教师评价"
+    "schedule.empty.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Schedule"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Evaluation"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂无课表"
           }
         }
       }
     },
-    "tool.evaluation.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "对本学期教师进行评价"
+    "schedule.loading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading schedule…"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rate this semester's teachers"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加载课表中…"
           }
         }
       }
     },
-    "tool.academicSystem": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "教务系统"
+    "schedule.refresh" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refresh"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Academic System"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "刷新"
           }
         }
       }
     },
-    "tool.academicSystem.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "访问教务管理平台"
+    "schedule.refresh.success" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schedule updated"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Academic affairs platform"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "课表已更新"
           }
         }
       }
     },
-    "tool.schoolPortal": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "哈医大庆"
+    "schedule.refresh.unchanged" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schedule is up to date"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "School Portal"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "课表无变化"
           }
         }
       }
     },
-    "tool.schoolPortal.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "学校服务门户"
+    "schedule.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schedule"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "School services portal"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "课表"
           }
         }
       }
     },
-    "tool.cnki": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "中国知网"
+    "schedule.week %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Week %lld"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "CNKI"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "第 %lld 周"
           }
         }
       }
     },
-    "tool.cnki.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "学术论文数据库"
+    "schedule.week.current %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Week %lld (Current)"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Academic paper database"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "第 %lld 周（本周）"
           }
         }
       }
     },
-    "tool.wanfang": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "万方数据库"
+    "select.batch" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select (%d)"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wanfang"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "批量选课(%d)"
           }
         }
       }
     },
-    "tool.wanfang.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "中文学术数据库"
+    "select.cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drop"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chinese academic database"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "退课"
           }
         }
       }
     },
-    "tool.comingSoon": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "功能移植中，敬请期待"
+    "select.capacity" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cap %d"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Coming soon"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "容量 %d"
           }
         }
       }
     },
-    "grades.semester": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "学期"
+    "select.chosen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chosen"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Semester"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已选"
           }
         }
       }
     },
-    "grades.empty": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "暂无成绩数据"
+    "select.counter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d of %d selected"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No grades yet"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已选 %d / 限选 %d 门"
           }
         }
       }
     },
-    "grades.credits": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "学分"
+    "select.empty" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No courses available"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Credits"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂无可选课程"
           }
         }
       }
     },
-    "grades.gpa": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "绩点"
+    "select.pick" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GPA"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选课"
           }
         }
       }
     },
-    "grades.detail.score": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "成绩"
+    "settings.about" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Score"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于"
           }
         }
       }
     },
-    "grades.detail.gpa": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "绩点"
+    "settings.about.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version and developer info"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GPA"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "应用版本和开发信息"
           }
         }
       }
     },
-    "grades.detail.credits": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "学分"
+    "settings.account" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Credits"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "账号"
           }
         }
       }
     },
-    "grades.detail.method": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "成绩方式"
+    "settings.addWidget" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Widgets"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Method"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加小组件"
           }
         }
       }
     },
-    "grades.detail.category": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "课程分类"
+    "settings.addWidget.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Put the schedule on your Home Screen"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Category"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将课程表添加到桌面"
           }
         }
       }
     },
-    "grades.detail.classLevel": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "课程大类"
+    "settings.app" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Level"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "应用"
           }
         }
       }
     },
-    "grades.detail.class": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "教学班"
+    "settings.background.clear" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove Background"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Class"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清除背景图片"
           }
         }
       }
     },
-    "grades.detail.teacher": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "教师"
+    "settings.background.pick" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Background"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Teacher"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择背景图片"
           }
         }
       }
     },
-    "grades.detail.department": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "开课部门"
+    "settings.background.scope" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Background Scope"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Department"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "背景覆盖范围"
           }
         }
       }
     },
-    "grades.detail.examType": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "考试性质"
+    "settings.background.scope.grid" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grid Only"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Exam Type"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "仅课表区域"
           }
         }
       }
     },
-    "grades.detail.flag": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "成绩标志"
+    "settings.background.scope.immersive" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Immersive"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Flag"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沉浸式"
           }
         }
       }
     },
-    "grades.detail.note": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "备注"
+    "settings.checkUpdate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check for Updates"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Note"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "检查更新"
           }
         }
       }
     },
-    "tab.assessment": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "智慧考核"
+    "settings.checkUpdate.sub" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current version v%@"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Assessment"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当前版本 v%@"
           }
         }
       }
     },
-    "assessment.loadFailed": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "页面加载失败，请检查网络后重试"
+    "settings.colorStyle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color Theme"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Failed to load. Check your network and retry."
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "配色主题"
           }
         }
       }
     },
-    "common.retry": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "重试"
+    "settings.colorStyle.bright" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bright"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Retry"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "明亮"
           }
         }
       }
     },
-    "assessment.cameraDenied.title": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "相机权限未开启"
+    "settings.colorStyle.default" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Classic"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Camera Access Disabled"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "经典"
           }
         }
       }
     },
-    "assessment.cameraDenied.settings": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "去设置"
+    "settings.display" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Display"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open Settings"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示"
           }
         }
       }
     },
-    "assessment.cameraDenied.message": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "扫码签到需要相机权限。请到 设置 > 隐私与安全性 > 相机 中允许“百湖医大小助手”。"
+    "settings.feedback" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sign-in QR scanning needs camera access. Enable it in Settings > Privacy & Security > Camera."
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "问题反馈"
           }
         }
       }
     },
-    "tool.sponsor": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "赞助开发者"
+    "settings.feedback.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Report issues or suggestions"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sponsor"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "向开发者反馈问题或建议"
           }
         }
       }
     },
-    "classroom.date": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "日期"
+    "settings.fontSize" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Font Size"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Date"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "字体大小"
           }
         }
       }
     },
-    "classroom.building": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "教学楼"
+    "settings.fontSize.reset" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Building"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "恢复默认"
           }
         }
       }
     },
-    "classroom.allBuildings": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "全部"
+    "settings.group.account" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "All"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "账号管理"
           }
         }
       }
     },
-    "classroom.empty": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "当天没有排课数据"
+    "settings.group.features" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Features"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No schedule data for this day"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "应用功能"
           }
         }
       }
     },
-    "classroom.allFree": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "全天空闲"
+    "settings.group.more" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Free all day"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更多"
           }
         }
       }
     },
-    "select.counter": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "已选 %d / 限选 %d 门"
+    "settings.homepage" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Website"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%d of %d selected"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打开主页"
           }
         }
       }
     },
-    "select.batch": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "批量选课(%d)"
+    "settings.homepage.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visit the project homepage"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Select (%d)"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "访问项目主页"
           }
         }
       }
     },
-    "select.chosen": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "已选"
+    "settings.links" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Links"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chosen"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "链接"
           }
         }
       }
     },
-    "select.pick": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "选课"
+    "settings.logout" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign Out"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Select"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "退出登录"
           }
         }
       }
     },
-    "select.cancel": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "退课"
+    "settings.logout.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear data and sign out"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Drop"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清除数据并返回登录页"
           }
         }
       }
     },
-    "select.empty": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "暂无可选课程"
+    "settings.refresh" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refresh Schedule"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No courses available"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "刷新课表"
           }
         }
       }
     },
-    "select.capacity": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "容量 %d"
+    "settings.refreshSession" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refresh Session"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cap %d"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "刷新登录态"
           }
         }
       }
     },
-    "eval.empty": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "暂无评教任务"
+    "settings.refreshSession.fail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refresh failed, try later"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No evaluations"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "刷新失败，请稍后重试"
           }
         }
       }
     },
-    "eval.done": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "已评价"
+    "settings.refreshSession.ok" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Session refreshed"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Done"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登录态已刷新"
           }
         }
       }
     },
-    "eval.pending": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "待评价"
+    "settings.refreshSession.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Re-login keeping saved credentials"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pending"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新登录但保留账号密码"
           }
         }
       }
     },
-    "eval.teacher": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "教师：%@"
+    "settings.scheduleDisplay" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schedule Display"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Teacher: %@"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "课表设置"
           }
         }
       }
     },
-    "settings.account": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "账号"
+    "settings.scheduleDisplay.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Font size, course colors, background"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Account"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "字体大小、课程配色、背景图片"
           }
         }
       }
     },
-    "settings.switchAccount": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "切换账号"
+    "settings.share" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share App"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Switch Account"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "分享应用"
           }
         }
       }
     },
-    "settings.refreshSession": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "刷新登录态"
+    "settings.share.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share with classmates and friends"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Refresh Session"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "分享给同学和朋友"
           }
         }
       }
     },
-    "settings.refreshSession.ok": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "登录态已刷新"
+    "settings.source" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Code"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Session refreshed"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "源码地址"
           }
         }
       }
     },
-    "settings.refreshSession.fail": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "刷新失败，请稍后重试"
+    "settings.source.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View the source code"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Refresh failed, try later"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查看项目源代码"
           }
         }
       }
     },
-    "settings.logout": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "退出登录"
+    "settings.switchAccount" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Switch Account"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sign Out"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "切换账号"
           }
         }
       }
     },
-    "settings.widget": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "小组件"
+    "settings.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Widgets"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置"
           }
         }
       }
     },
-    "settings.addWidget": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "添加小组件"
+    "settings.weekStart" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Week Starts On"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add Widgets"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每周开始于"
           }
         }
       }
     },
-    "settings.widget.footer": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "在桌面长按空白处 → 左上角 + → 搜索「百湖医大小助手」选择添加。"
+    "settings.weekStart.monday" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monday"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Long-press the Home Screen → tap + → search “HmuDq” to add."
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "周一"
           }
         }
       }
     },
-    "settings.app": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "应用"
+    "settings.weekStart.sunday" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sunday"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "周日"
           }
         }
       }
     },
-    "settings.checkUpdate": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "检查更新"
+    "settings.widget" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widgets"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Check for Updates"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "小组件"
           }
         }
       }
     },
-    "settings.feedback": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "问题反馈"
+    "settings.widget.footer" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Long-press the Home Screen → tap + → search “HmuDq” to add."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Feedback"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在桌面长按空白处 → 左上角 + → 搜索「百湖医大小助手」选择添加。"
           }
         }
       }
     },
-    "settings.share": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "分享应用"
+    "share.text" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baihu Medical Assistant - The campus helper for HMUDQ students. %@"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Share App"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "百湖医大小助手 - 专为哈医大大庆校区学子打造的校园助手。%@"
           }
         }
       }
     },
-    "settings.links": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "链接"
+    "splash.birthdayWish" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wishing you a wonderful year ahead 🎂"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Links"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "祝新的一岁万事顺意 🎂"
           }
         }
       }
     },
-    "settings.homepage": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "打开主页"
+    "splash.happyBirthday %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Happy Birthday, %@!"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Website"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "生日快乐，%@！"
           }
         }
       }
     },
-    "settings.source": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "源码地址"
+    "splash.skip %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip %lld"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Source Code"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跳过 %lld"
           }
         }
       }
     },
-    "settings.about": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "关于"
+    "sponsor.board.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supporters"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "About"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "支持榜"
           }
         }
       }
     },
-    "update.currentVersion": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "当前版本"
+    "sponsor.button.load" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Load Ad"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Current version"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加载广告"
           }
         }
       }
     },
-    "update.check": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "检查"
+    "sponsor.button.loading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading ad…"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Check"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "广告加载中…"
           }
         }
       }
     },
-    "update.upToDate": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "已是最新版本"
+    "sponsor.button.ready" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Watch a full ad to count as support"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Up to date"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "观看完整广告即算一次支持"
           }
         }
       }
     },
-    "update.newVersion": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "发现新版本 v%@"
+    "sponsor.button.ready.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Watch Ad"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "New version v%@"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "看广告赞助"
           }
         }
       }
     },
-    "update.download": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "去更新"
+    "sponsor.button.wait" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please wait…"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Update"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请稍候…"
           }
         }
       }
     },
-    "about.privacy": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "隐私政策"
+    "sponsor.desc.appleFee" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple requires a ¥688/year Developer membership"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Privacy Policy"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "由于苹果限制，开发软件每年要交 ¥688 的 Developer 会员费"
           }
         }
       }
     },
-    "about.agreement": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "用户协议"
+    "sponsor.desc.iterate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It helps the app iterate faster"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "User Agreement"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "助力开发者更快迭代软件"
           }
         }
       }
     },
-    "widget.guide.preview": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "预览"
+    "sponsor.desc.noProfit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app makes no money — watching an ad helps the developer 0v0"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Preview"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本软件没有任何盈利点，能不能看条广告给开发者回回血 0v0"
           }
         }
       }
     },
-    "widget.guide.steps": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "添加步骤"
+    "sponsor.incomplete.message" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Since you didn't watch the full video, the developer won't receive any reward. Please watch it completely next time (｡•́︿•̀｡)"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Steps"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "由于您未完整观看视频，开发者无法收到奖励，求求把视频看完嘛qwq"
           }
         }
       }
     },
-    "widget.guide.step1": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "回到手机桌面，长按空白区域进入编辑模式"
+    "sponsor.incomplete.ok" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Got it"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Long-press an empty area of the Home Screen"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "知道了"
           }
         }
       }
     },
-    "widget.guide.step2": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "点击左上角「+」，搜索「百湖医大小助手」"
+    "sponsor.incomplete.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ad not fully watched"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tap + and search “百湖医大小助手”"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "广告未完整观看"
           }
         }
       }
     },
-    "widget.guide.step3": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "选择「今日课表」或「今明两天」，添加到桌面"
+    "sponsor.qr.hint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "688 per year..."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pick “Today” or “Today & Tomorrow” and add it"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每年要交 688..."
           }
         }
       }
     },
-    "profile.info": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "学生信息"
+    "sponsor.recovery.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cost Recovery"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Student Info"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "成本收回计划"
           }
         }
       }
     },
-    "profile.quickLinks": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "快捷入口"
+    "sponsor.rewardName" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "support"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quick Links"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "支持"
           }
         }
       }
     },
-    "profile.name": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "姓名"
+    "sponsor.sessionCount" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supported %d times today, thanks!"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Name"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今日已支持 %d 次，感谢！"
           }
         }
       }
     },
-    "profile.studentID": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "学号"
+    "sponsor.thanks.message" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You watched a full ad and supported the developer! (ﾉ>ω<)ﾉ"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Student ID"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你已完整观看广告，为开发者贡献了一份力量！(ﾉ>ω<)ﾉ"
           }
         }
       }
     },
-    "profile.gender": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "性别"
+    "sponsor.thanks.ok" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're welcome"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gender"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不客气"
           }
         }
       }
     },
-    "profile.birthday": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "出生日期"
+    "sponsor.thanks.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thanks for your support!"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Birthday"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "感谢支持！"
           }
         }
       }
     },
-    "profile.college": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "院系"
+    "sponsor.watchAd.subtitle" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Apple developer account costs ¥688/year — watching an ad helps"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "College"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "苹果开发者账号每年要交 ¥688，看条广告帮开发者回点血"
           }
         }
       }
     },
-    "profile.major": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "专业"
+    "sponsor.watchAd.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Watch Ads to Support the Developer"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Major"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "看广告赞助开发者"
           }
         }
       }
     },
-    "profile.className": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "班级"
+    "tab.assessment" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assessment"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Class"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "智慧考核"
           }
         }
       }
     },
-    "profile.grade": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "年级"
+    "tab.me" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Me"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Grade"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我的"
           }
         }
       }
     },
-    "settings.group.account": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "账号管理"
+    "tab.schedule" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schedule"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Account"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "课表"
           }
         }
       }
     },
-    "settings.group.features": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "应用功能"
+    "tab.tools" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tools"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Features"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "工具"
           }
         }
       }
     },
-    "settings.group.more": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "更多"
+    "tool.academicSystem" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Academic System"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "More"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "教务系统"
           }
         }
       }
     },
-    "settings.refreshSession.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "重新登录但保留账号密码"
+    "tool.academicSystem.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Academic affairs platform"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Re-login keeping saved credentials"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "访问教务管理平台"
           }
         }
       }
     },
-    "settings.logout.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "清除数据并返回登录页"
+    "tool.cnki" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CNKI"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Clear data and sign out"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中国知网"
           }
         }
       }
     },
-    "settings.addWidget.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "将课程表添加到桌面"
+    "tool.cnki.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Academic paper database"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Put the schedule on your Home Screen"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学术论文数据库"
           }
         }
       }
     },
-    "settings.scheduleDisplay": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "课表设置"
+    "tool.comingSoon" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coming soon"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schedule Display"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "功能移植中，敬请期待"
           }
         }
       }
     },
-    "settings.scheduleDisplay.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "字体大小、课程配色、背景图片"
+    "tool.courseSelect" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Course Selection"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Font size, course colors, background"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在线选课"
           }
         }
       }
     },
-    "settings.checkUpdate.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "当前版本 v%@"
+    "tool.courseSelect.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick this semester's courses"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Current version v%@"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择本学期课程"
           }
         }
       }
     },
-    "settings.feedback.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "向开发者反馈问题或建议"
+    "tool.dormRepair" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dorm Repair"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Report issues or suggestions"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "寝室报修"
           }
         }
       }
     },
-    "settings.share.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "分享给同学和朋友"
+    "tool.dormRepair.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Submit a repair request"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Share with classmates and friends"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在线提交寝室维修申请"
           }
         }
       }
     },
-    "settings.homepage.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "访问项目主页"
+    "tool.ebook" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-books"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Visit the project homepage"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "电子课本"
           }
         }
       }
     },
-    "settings.source.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "查看项目源代码"
+    "tool.ebook.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Read digital textbooks"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "View the source code"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在线阅读电子教材"
           }
         }
       }
     },
-    "settings.about.sub": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "应用版本和开发信息"
+    "tool.emptyClassroom" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empty Classrooms"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Version and developer info"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "空教室"
           }
         }
       }
     },
-    "update.found.title": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "发现新版本"
+    "tool.emptyClassroom.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find free classrooms"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Update Available"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查询空闲教室"
           }
         }
       }
     },
-    "login.passwordTip": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "默认为「Hmudq@身份证号后六位」"
+    "tool.evaluation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evaluation"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Default: \"Hmudq@last 6 digits of your ID\""
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "教师评价"
           }
         }
       }
     },
-    "login.savePassword": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "保存密码（下次自动填充）"
+    "tool.evaluation.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rate this semester's teachers"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Save password (auto-fill next time)"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "对本学期教师进行评价"
           }
         }
       }
     },
-    "login.agreementPrefix": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "我已阅读并同意 "
+    "tool.examGrades" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exam Grades"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "I have read and agree to the "
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "考级查询"
           }
         }
       }
     },
-    "login.and": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": " 和 "
+    "tool.examGrades.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standardized test scores"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": " and "
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查询等级考试成绩"
           }
         }
       }
     },
-    "login.securityNotice": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "所有请求均请求于官方教务，百湖医大小助手 App 不会上传任何隐私数据"
+    "tool.grades" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grades"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "All requests go to the official academic system. This app never uploads any private data"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "成绩查询"
           }
         }
       }
     },
-    "login.suggestAgreement": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "建议您阅读隐私政策和用户协议"
+    "tool.grades.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Course grades and GPA by semester"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Please read the Privacy Policy and User Agreement first"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按学期查看课程成绩和绩点"
           }
         }
       }
     },
-    "login.passwordShow": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "显示密码"
+    "tool.schoolPortal" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Service Hall"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show password"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "办事大厅"
           }
         }
       }
     },
-    "login.passwordHide": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "隐藏密码"
+    "tool.schoolPortal.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "School services portal"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hide password"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学校服务门户"
           }
         }
       }
     },
-    "login.failed.title": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "登录失败"
+    "tool.shuati" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Practice"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Login Failed"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "复习刷题"
           }
         }
       }
     },
-    "login.hint.case": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "密码是 Hmudq 开头——你是不是输成了《%@》，H 没大写？"
+    "tool.sponsor" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sponsor"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The password starts with \"Hmudq\" — did you type \"%@\" with a lowercase h?"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赞助开发者"
           }
         }
       }
     },
-    "login.hint.atMissing": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "你是不是少了个 @？"
+    "tool.wanfang" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wanfang"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Are you missing the @?"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "万方数据库"
           }
         }
       }
     },
-    "login.hint.typo": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "你是不是输成《%@》了？正确拼写是 Hmudq"
+    "tool.wanfang.sub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chinese academic database"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Did you mean \"Hmudq\" instead of \"%@\"?"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中文学术数据库"
           }
         }
       }
     },
-    "login.hint.suffix": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "@ 后面应该是身份证号后六位，你是不是多输或少输了？"
+    "tools.group.business" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Services"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "After @ should be exactly 6 digits (last 6 of your ID card)"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "业务办理"
           }
         }
       }
     },
-    "login.hint.fullwidth": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "你输入了全角字符＠，请改成英文半角 @"
+    "tools.group.convenience" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Convenience"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You typed a full-width ＠; use the ASCII @"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "便捷功能"
           }
         }
       }
     },
-    "sponsor.watchAd.title": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "看广告赞助开发者"
+    "tools.group.links" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Links"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Watch Ads to Support the Developer"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "快捷跳转"
           }
         }
       }
     },
-    "sponsor.watchAd.subtitle": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "苹果开发者账号每年要交 ¥688，看条广告帮开发者回点血"
+    "tools.group.query" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Queries"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The Apple developer account costs ¥688/year — watching an ad helps"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "信息查询"
           }
         }
       }
     },
-    "sponsor.button.ready.title": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "看广告赞助"
+    "update.check" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Watch Ad"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "检查"
           }
         }
       }
     },
-    "sponsor.button.ready": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "观看完整广告即算一次支持"
+    "update.currentVersion" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current version"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Watch a full ad to count as support"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当前版本"
           }
         }
       }
     },
-    "sponsor.button.wait": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "请稍候…"
+    "update.download" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Please wait…"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "去更新"
           }
         }
       }
     },
-    "sponsor.sessionCount": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "今日已支持 %d 次，感谢！"
+    "update.found.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update Available"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Supported %d times today, thanks!"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "发现新版本"
           }
         }
       }
     },
-    "sponsor.qr.hint": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "每年要交 688..."
+    "update.ignore" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignore This Version"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "688 per year..."
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "忽略此版本"
           }
         }
       }
     },
-    "sponsor.recovery.title": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "成本收回计划"
+    "update.later" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Later"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cost Recovery"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "稍后再说"
           }
         }
       }
     },
-    "sponsor.board.title": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "支持榜"
+    "update.newVersion" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New version v%@"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Supporters"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "发现新版本 v%@"
           }
         }
       }
     },
-    "sponsor.thanks.title": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "感谢支持！"
+    "update.now" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update Now"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Thanks for your support!"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "立即更新"
           }
         }
       }
     },
-    "sponsor.thanks.ok": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "不客气"
+    "update.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update Available"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You're welcome"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "发现新版本"
           }
         }
       }
     },
-    "sponsor.thanks.message": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "你已完整观看广告，为开发者贡献了一份力量！(ﾉ>ω<)ﾉ"
+    "update.upToDate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Up to date"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You watched a full ad and supported the developer! (ﾉ>ω<)ﾉ"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已是最新版本"
+          }
+        }
+      }
+    },
+    "v%@\n\n%@" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "v%1$@\n\n%2$@"
+          }
+        }
+      }
+    },
+    "v%@\n%@" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "v%1$@\n%2$@"
+          }
+        }
+      }
+    },
+    "v%@ (%lld)" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "v%1$@ (%2$lld)"
           }
         }
       }
     },
-    "sponsor.incomplete.title": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "广告未完整观看"
+    "weekday.fri" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fri"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ad not fully watched"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "五"
           }
         }
       }
     },
-    "sponsor.incomplete.ok": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "知道了"
+    "weekday.mon" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mon"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Got it"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一"
           }
         }
       }
     },
-    "sponsor.incomplete.message": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "由于您未完整观看视频，开发者无法收到奖励，求求把视频看完嘛qwq"
+    "weekday.sat" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sat"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Since you didn't watch the full video, the developer won't receive any reward. Please watch it completely next time (｡•́︿•̀｡)"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "六"
           }
         }
       }
     },
-    "sponsor.rewardName": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "支持"
+    "weekday.sun" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sun"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "support"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日"
           }
         }
       }
     },
-    "account.savedCount": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "已保存 %d 个账号"
+    "weekday.thu" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thu"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%d accounts saved"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "四"
           }
         }
       }
     },
-    "account.switch.hint": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "点击切换账号（会清除当前会话并重新登录，课表与小组件自动更新）。左滑删除已保存账号。"
+    "weekday.tue" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tue"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tap to switch (session resets and re-logs in; schedule and widgets refresh). Swipe to delete."
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "二"
           }
         }
       }
     },
-    "account.useOther": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "使用其他账号"
+    "weekday.wed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wed"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Use Another Account"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "三"
           }
         }
       }
     },
-    "sponsor.desc.appleFee": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "由于苹果限制，开发软件每年要交 ¥688 的 Developer 会员费"
+    "widget.guide.preview" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preview"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Apple requires a ¥688/year Developer membership"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "预览"
           }
         }
       }
     },
-    "sponsor.desc.noProfit": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "本软件没有任何盈利点，能不能看条广告给开发者回回血 0v0"
+    "widget.guide.step1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Long-press an empty area of the Home Screen"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This app makes no money — watching an ad helps the developer 0v0"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回到手机桌面，长按空白区域进入编辑模式"
           }
         }
       }
     },
-    "sponsor.desc.iterate": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "助力开发者更快迭代软件"
+    "widget.guide.step2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap + and search “百湖医大小助手”"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "It helps the app iterate faster"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点击左上角「+」，搜索「百湖医大小助手」"
           }
         }
       }
     },
-    "sponsor.button.load": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "加载广告"
+    "widget.guide.step3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick “Today” or “Today & Tomorrow” and add it"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Load Ad"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择「今日课表」或「今明两天」，添加到桌面"
           }
         }
       }
     },
-    "sponsor.button.loading": {
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "广告加载中…"
+    "widget.guide.steps" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Steps"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Loading ad…"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加步骤"
+          }
+        }
+      }
+    },
+    "widget.noCourse" : {
+
+    },
+    "widget.today" : {
+
+    },
+    "widget.vacation" : {
+
+    },
+    "widget.weekLabel" : {
+
+    },
+    "上次账号：%@" : {
+
+    },
+    "上次账号：%@（%@）" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "上次账号：%1$@（%2$@）"
           }
         }
       }
+    },
+    "弱网：慢 4 秒" : {
+
+    },
+    "挂起（不响应）" : {
+
+    },
+    "极弱网：慢 8 秒" : {
+
+    },
+    "立即生效。登录/课表/成绩等所有教务请求都会收到该状态码，后端与内置网页不受影响。退出登录后重新登录，可测试登录报错与「看缓存课表」入口。选「挂起」模拟连接挂死：请求 10 秒无响应被强制终止并提示超时，整条登录链 15 秒兜底。弱网档延迟后转发真实请求（响应是真的，只是慢）：单步 10 秒内能过，登录链总时长超 15 秒会被总闸截断。" : {
+
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

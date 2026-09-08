@@ -35,7 +35,7 @@
 	<key>beian_url</key>
 	<string>https://beian.miit.gov.cn/</string>
 	<key>bsdt_base</key>
-	<string>https://bsdt-443.webvpn.hmudq.edu.cn/mobile/view/services</string>
+	<string>https://bsdt-443.webvpn.hmudq.edu.cn/mobile/view/service</string>
 	<key>bugly_app_id</key>
 	<string>c192d3447e</string>
 	<key>cas_base</key>
@@ -84,8 +84,6 @@
 	<string>https://sheguanhui101.mikecrm.com/A1urdFL</string>
 	<key>privacy_html</key>
 	<string>20250828_011254_privacy.html</string>
-	<key>school_home</key>
-	<string>https://www.hmudq.edu.cn/</string>
 	<key>wanfang_webvpn</key>
 	<string>https://www-wanfangdata-com-cn-443.webvpn.hmudq.edu.cn/index.html</string>
 	<key>web_user_agent</key>

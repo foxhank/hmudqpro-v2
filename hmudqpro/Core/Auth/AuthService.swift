@@ -41,7 +41,21 @@ final class AuthService {
 
     /// 完整登录流程：CAS RSA 登录 → webvpn SSO → 教务可达性验证。
     /// 成功后凭据写入 Keychain、Cookie 持久化由调用方（AuthViewModel）决定。
+    ///
+    /// 整条链套 TimeoutGuard 总闸：单步请求各有 10s 超时，但教务"半卡"
+    /// （每步都挂着慢慢挤）时总时长无上限，最坏能转圈 5×10s+。总闸到点
+    /// 强制取消整条链（底层 URLSession 任务随 cancelAll 中断）并抛超时错误，
+    /// 手动登录 / 开屏自动重登（SessionKeeper）/ 切账号共用本函数，一并被兜住。
     func login(studentID: String, password: String) async throws -> LoginResult {
+        try await TimeoutGuard.withTimeout(seconds: Self.loginOverallTimeout, label: "login") {
+            try await self.loginChain(studentID: studentID, password: password)
+        }
+    }
+
+    /// 登录链总闸秒数：留出慢网络余量（正常登录约 2~4s），又不至于久等。
+    private static let loginOverallTimeout = 15
+
+    private func loginChain(studentID: String, password: String) async throws -> LoginResult {
         CookieSession.shared.clearAll()
 
         // 1. webvpn 主页（建立初始 Cookie）

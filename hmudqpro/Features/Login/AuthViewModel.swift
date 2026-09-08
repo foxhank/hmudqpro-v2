@@ -8,6 +8,9 @@ final class AuthViewModel: ObservableObject {
     @Published var isLoggedIn = false
     @Published var isLoading = false
     @Published var errorMessage: String?
+    /// 当前 errorMessage 是否属于教务/网络侧故障（HTTP 错误、超时、无法获取页面）。
+    /// 只有这类故障才显示「看缓存课表」兜底入口；账密错误是明确错误，不算。
+    @Published private(set) var isServerSideError = false
     @Published var studentInfo: StudentInfo?
     /// 启动会话恢复是否已结束（开屏页用它判断能否结束等待）。
     @Published var restoreFinished = false
@@ -54,9 +57,12 @@ final class AuthViewModel: ObservableObject {
     func login(studentID: String, password: String) async {
         guard !studentID.isEmpty, !password.isEmpty else {
             errorMessage = String(localized: "login.error.emptyFields")
+            isServerSideError = false
             return
         }
         isLoading = true
+        errorMessage = nil
+        isServerSideError = false
         defer { isLoading = false }
         do {
             let result = try await authService.login(studentID: studentID, password: password)
@@ -74,8 +80,10 @@ final class AuthViewModel: ObservableObject {
             let isCredential = (error as? AuthService.AuthError)?.isCredentialError ?? false
             if isCredential {
                 errorMessage = detail
+                isServerSideError = false
             } else {
                 errorMessage = detail + "\n" + String(localized: "login.error.jwcDownHint")
+                isServerSideError = true
             }
         }
     }
@@ -91,10 +99,40 @@ final class AuthViewModel: ObservableObject {
         return try? JSONDecoder().decode(StudentInfo.self, from: data)
     }
 
+    /// 登录页是否显示"跳过登录看缓存课表"入口：之前登录过（有持久化 Cookie 或课表缓存）就有。
+    var hasCachedSession: Bool {
+        if KeychainStore.data(forKey: KeychainStore.Keys.cookies) != nil { return true }
+        return !(ScheduleStore.shared?.load().isEmpty ?? true)
+    }
+
+    /// 不走网络登录，直接带缓存进主界面（恢复 Cookie → 置登录态）。
+    /// 适合教务故障 / 莫名卡退被踢回登录页的用户：课表先看本地缓存，
+    /// 若 Cookie 仍有效则各请求照常工作，失效则由 SessionKeeper 择机自动重登。
+    ///
+    /// 多账号：Cookie 与课表缓存都是单槽，天然属于「上次使用的账号」。
+    /// 唯一例外是登出后——Keychain 学号被清但课表缓存还在，这里从账号列表
+    /// （登录时间倒序，首位即上次账号）补回学号，保证「我的」页、埋点、
+    /// SessionKeeper 自动重登都对准上次账号而不是空值。
+    func enterWithCachedSession() {
+        CookieSession.shared.restore()
+        if AccountStore.currentID == nil, let last = AccountStore.accounts.first {
+            try? KeychainStore.setString(last.studentID, forKey: KeychainStore.Keys.studentID)
+        }
+        isLoggedIn = true
+    }
+
+    /// 清除登录页残留报错（如调试完教务故障返回登录页时调用）。
+    func clearError() {
+        errorMessage = nil
+        isServerSideError = false
+    }
+
     func logout() {
         authService.logout()
         isLoggedIn = false
         studentInfo = nil
+        errorMessage = nil
+        isServerSideError = false
         UserDefaults.standard.removeObject(forKey: Self.studentInfoKey)
     }
 

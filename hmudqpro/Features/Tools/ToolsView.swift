@@ -35,7 +35,7 @@ struct ToolsView: View {
                             WebViewScreen(titleKey: "tool.academicSystem", url: APIConfig.jwcDesktopURL)
                         }
                         ToolCard(icon: "globe.asia.australia.fill", tint: .green, titleKey: "tool.schoolPortal") {
-                            WebViewScreen(titleKey: "tool.schoolPortal", url: APIConfig.schoolHome)
+                            WebViewScreen(titleKey: "tool.schoolPortal", url: APIConfig.bsdtBase)
                         }
                         ToolCard(icon: "books.vertical.fill", tint: .blue, titleKey: "tool.cnki") {
                             WebViewScreen(titleKey: "tool.cnki", url: APIConfig.cnkiWebvpn)

@@ -10,6 +10,7 @@ enum DebugStore {
     private static let fakeUpdateKey = "debug.fakeUpdate"
     private static let holidayKey = "debug.forceHoliday"
     private static let birthdayKey = "debug.forceBirthday"
+    private static let jwcFaultKey = "debug.jwcFaultStatus"
 
     // MARK: - 课程调换
 
@@ -59,6 +60,23 @@ enum DebugStore {
             UserDefaults.standard.set(data, forKey: fakeUpdateKey)
         } else {
             UserDefaults.standard.removeObject(forKey: fakeUpdateKey)
+        }
+    }
+
+    // MARK: - 模拟教务故障
+
+    /// 教务故障注入要返回的 HTTP 状态码（404/500/502/503）；nil = 不模拟。
+    /// 命中范围见 DebugFaultURLProtocol（全部 webvpn 域），后端 foxhank.cn 不受影响。
+    static var jwcFailureStatus: Int? {
+        let code = UserDefaults.standard.integer(forKey: jwcFaultKey)
+        return code > 0 ? code : nil
+    }
+
+    static func setJwcFailureStatus(_ code: Int?) {
+        if let code, code > 0 {
+            UserDefaults.standard.set(code, forKey: jwcFaultKey)
+        } else {
+            UserDefaults.standard.removeObject(forKey: jwcFaultKey)
         }
     }
 

@@ -27,6 +27,8 @@ final class APIClient {
         config.timeoutIntervalForRequest = TimeInterval(TimeoutGuard.defaultLimit)
         config.timeoutIntervalForResource = TimeInterval(TimeoutGuard.defaultLimit)
         config.waitsForConnectivity = false
+        // 调试：模拟教务故障注入（我的 → 调试 → 模拟教务故障），平时 DebugStore 未设置时直通
+        config.protocolClasses = [DebugFaultURLProtocol.self]
         return URLSession(configuration: config)
     }()
 
@@ -71,8 +73,23 @@ final class APIClient {
         if body != nil && req.value(forHTTPHeaderField: "Content-Type") == nil {
             req.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         }
-        let (data, response) = try await session.data(for: req)
-        guard let http = response as? HTTPURLResponse else { throw APIError.emptyResponse }
+        let start = Date()
+        let (data, response): (Data, URLResponse)
+        do {
+            (data, response) = try await session.data(for: req)
+        } catch {
+            // 请求级日志：连接失败 / 超时等（区别于服务器返回的非2xx）
+            print("🌐 [HTTP] \(method) \(url.absoluteString) ✗ \(error.localizedDescription)")
+            throw error
+        }
+        guard let http = response as? HTTPURLResponse else {
+            print("🌐 [HTTP] \(method) \(url.absoluteString) → 非HTTP响应")
+            throw APIError.emptyResponse
+        }
+        print("🌐 [HTTP] \(method) \(url.absoluteString) → \(http.statusCode)（\(Int(Date().timeIntervalSince(start) * 1000))ms，\(data.count)B）")
+        if !(200...399).contains(http.statusCode), let bodyText = String(data: data.prefix(600), encoding: .utf8) {
+            print("🌐 [HTTP] 响应体：\(bodyText)")
+        }
         guard !(300...399).contains(http.statusCode) else {
             // 教务系统大量用 302 表达业务状态，由调用方决定如何处理，这里原样返回。
             return (data, http)

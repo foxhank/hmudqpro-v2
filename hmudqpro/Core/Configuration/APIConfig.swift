@@ -57,7 +57,6 @@ enum APIConfig {
     // MARK: - 第三方外链
     static var cnkiWebvpn: URL { URL(string: value("cnki_webvpn"))! }
     static var wanfangWebvpn: URL { URL(string: value("wanfang_webvpn"))! }
-    static var schoolHome: URL { URL(string: value("school_home"))! }
     static var homepageURL: URL { URL(string: value("homepage_url"))! }
     static var giteeRepo: URL { URL(string: value("gitee_repo"))! }
     static var feedbackURL: URL { URL(string: value("feedback_url"))! }
